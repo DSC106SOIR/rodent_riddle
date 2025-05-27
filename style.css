@@ -1,18 +1,34 @@
+:root {
+  /* Base Palette */
+  --color-background: #B8CFCE; 
+  --color-secondary: #7F8CAA;
+  --color-accent: #333446;
+  --color-light: #EAEFEF;
+
+  /* Gender Colors */
+  --color-female: #E86A92;
+  --color-male: #4C72B0;
+
+  /* Day/Night Colors */
+  --color-day: #F4C05E;
+  --color-night: #506680;
+}
+
+
 /* === Global Styles === */
 body {
     font: 100%/1.5 system-ui;
     max-width: 100ch;
     margin-inline: max(1em, (100% - 100ch) / 2);
-    background-color: #111;
-    color: #eee;
     line-height: 1.6;
     padding: 20px;
+    background-color: var(--color-background);
+    color: var(--color-accent);
 }
 
 h1 {
     font-size: 400%;
     margin-bottom: 1rem;
-    color: #fefefe;
     text-align: center;
     letter-spacing: 0.5px;
 }
