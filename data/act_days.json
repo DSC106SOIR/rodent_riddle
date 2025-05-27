@@ -1,0 +1,2914 @@
+[
+  {
+    "time": 1,
+    "value": 15.100694444444445,
+    "id": "f1",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 29.025,
+    "id": "f2",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 13.254926198555555,
+    "id": "f3",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 20.39097222222222,
+    "id": "f4",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 27.854619006451387,
+    "id": "f5",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 28.75931940777778,
+    "id": "f6",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 18.506544328902777,
+    "id": "f7",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 26.110416666666666,
+    "id": "f8",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 30.195165209166664,
+    "id": "f9",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 21.509027777777778,
+    "id": "f10",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 18.82638888888889,
+    "id": "f11",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 18.39082036388889,
+    "id": "f12",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 14.884027777777778,
+    "id": "f13",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 22.643055555555556,
+    "id": "m1",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 26.969444444444445,
+    "id": "m2",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 22.192795306458333,
+    "id": "m3",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 26.272916666666667,
+    "id": "m4",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 32.784188085972225,
+    "id": "m5",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 23.87434607805556,
+    "id": "m6",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 33.44909499611111,
+    "id": "m7",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 22.48494892909722,
+    "id": "m8",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 21.24575807347222,
+    "id": "m9",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 24.838261662986113,
+    "id": "m10",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 27.2294995925,
+    "id": "m11",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 26.24975785784722,
+    "id": "m12",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 1,
+    "value": 28.1875,
+    "id": "m13",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 16.54513888888889,
+    "id": "f1",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 31.14260390027778,
+    "id": "f2",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 20.234288127555555,
+    "id": "f3",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 25.757732204472223,
+    "id": "f4",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 39.44529248090278,
+    "id": "f5",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 32.536951370555556,
+    "id": "f6",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 23.358406434777777,
+    "id": "f7",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 33.12922741979167,
+    "id": "f8",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 29.794444444444444,
+    "id": "f9",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 27.936803694444446,
+    "id": "f10",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 20.56597222222222,
+    "id": "f11",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 22.07058023611111,
+    "id": "f12",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 20.83888888888889,
+    "id": "f13",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 21.413888888888888,
+    "id": "m1",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 27.869164346944444,
+    "id": "m2",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 21.538368390694444,
+    "id": "m3",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 26.37836217486111,
+    "id": "m4",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 28.280982931875002,
+    "id": "m5",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 20.736805555555556,
+    "id": "m6",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 28.337289440555555,
+    "id": "m7",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 25.325,
+    "id": "m8",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 18.458952517916664,
+    "id": "m9",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 25.380622774097223,
+    "id": "m10",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 26.530277268402777,
+    "id": "m11",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 27.51271016013889,
+    "id": "m12",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 2,
+    "value": 31.634722222222223,
+    "id": "m13",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 14.841666666666667,
+    "id": "f1",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 22.27932852611111,
+    "id": "f2",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 16.020203976333335,
+    "id": "f3",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 21.79662109336111,
+    "id": "f4",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 32.79345967243056,
+    "id": "f5",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 24.632364574166665,
+    "id": "f6",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 17.078338850375,
+    "id": "f7",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 26.42152777777778,
+    "id": "f8",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 25.398637431388888,
+    "id": "f9",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 15.969790736111111,
+    "id": "f10",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 17.220855830902778,
+    "id": "f11",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 16.703269744444444,
+    "id": "f12",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 19.115277777777777,
+    "id": "f13",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 24.14027777777778,
+    "id": "m1",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 46.81599708562499,
+    "id": "m2",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 20.025434195347223,
+    "id": "m3",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 28.150694444444444,
+    "id": "m4",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 31.887660308194448,
+    "id": "m5",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 23.872916666666665,
+    "id": "m6",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 24.76597222222222,
+    "id": "m7",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 22.774305555555557,
+    "id": "m8",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 20.750543924722223,
+    "id": "m9",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 25.244444444444444,
+    "id": "m10",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 29.43358302770833,
+    "id": "m11",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 28.985626826805557,
+    "id": "m12",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 3,
+    "value": 28.987002568819445,
+    "id": "m13",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 14.531944444444445,
+    "id": "f1",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 22.761111111111113,
+    "id": "f2",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 15.308083742277777,
+    "id": "f3",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 19.677777777777777,
+    "id": "f4",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 19.919444444444444,
+    "id": "f5",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 26.99515620416667,
+    "id": "f6",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 20.645833333333332,
+    "id": "f7",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 25.117361111111112,
+    "id": "f8",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 24.290972222222223,
+    "id": "f9",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 24.923955541666665,
+    "id": "f10",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 17.39793916423611,
+    "id": "f11",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 15.318699380555556,
+    "id": "f12",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 19.529166666666665,
+    "id": "f13",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 22.94375,
+    "id": "m1",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 25.740972222222222,
+    "id": "m2",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 19.965711973125,
+    "id": "m3",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 26.580445508194444,
+    "id": "m4",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 26.00625,
+    "id": "m5",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 23.64027777777778,
+    "id": "m6",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 28.62152777777778,
+    "id": "m7",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 19.20277777777778,
+    "id": "m8",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 19.228246442638888,
+    "id": "m9",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 24.239583333333332,
+    "id": "m10",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 35.983999185,
+    "id": "m11",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 19.916666666666668,
+    "id": "m12",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 4,
+    "value": 24.74375,
+    "id": "m13",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 18.964583333333334,
+    "id": "f1",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 24.2,
+    "id": "f2",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 21.406260758722222,
+    "id": "f3",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 21.080695528930555,
+    "id": "f4",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 27.71875,
+    "id": "f5",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 27.117652741111115,
+    "id": "f6",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 16.144044328902776,
+    "id": "f7",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 26.014583333333334,
+    "id": "f8",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 29.72988743138889,
+    "id": "f9",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 20.40381851388889,
+    "id": "f10",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 19.089605830902777,
+    "id": "f11",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 22.56487282222222,
+    "id": "f12",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 15.559027777777779,
+    "id": "f13",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 21.507638888888888,
+    "id": "m1",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 25.433089697847223,
+    "id": "m2",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 20.46710086201389,
+    "id": "m3",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 28.114583333333332,
+    "id": "m4",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 24.870566265208335,
+    "id": "m5",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 23.614583333333332,
+    "id": "m6",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 23.77777777777778,
+    "id": "m7",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 20.74883781798611,
+    "id": "m8",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 18.915972222222223,
+    "id": "m9",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 32.36971331861111,
+    "id": "m10",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 24.246415953541664,
+    "id": "m11",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 22.22267452451389,
+    "id": "m12",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 5,
+    "value": 22.96736111111111,
+    "id": "m13",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 17.925694444444446,
+    "id": "f1",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 28.53125,
+    "id": "f2",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 16.955371051944443,
+    "id": "f3",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 22.372362195597223,
+    "id": "f4",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 33.34773450958333,
+    "id": "f5",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 29.948079796944448,
+    "id": "f6",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 22.246261034083332,
+    "id": "f7",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 26.938255197569443,
+    "id": "f8",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 39.413299725555554,
+    "id": "f9",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 27.206596291666663,
+    "id": "f10",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 21.625716942013888,
+    "id": "f11",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 25.768004936111115,
+    "id": "f12",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 19.849305555555556,
+    "id": "f13",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 22.869444444444444,
+    "id": "m1",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 24.37847222222222,
+    "id": "m2",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 19.099305555555556,
+    "id": "m3",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 34.65233758833334,
+    "id": "m4",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 25.815277777777776,
+    "id": "m5",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 24.07847222222222,
+    "id": "m6",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 24.756944444444443,
+    "id": "m7",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 20.951615595763887,
+    "id": "m8",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 19.129016146944444,
+    "id": "m9",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 27.430689992638886,
+    "id": "m10",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 21.593055555555555,
+    "id": "m11",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 18.906944444444445,
+    "id": "m12",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 6,
+    "value": 24.12866923548611,
+    "id": "m13",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 16.457638888888887,
+    "id": "f1",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 26.820833333333333,
+    "id": "f2",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 13.057703976333332,
+    "id": "f3",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 18.9625,
+    "id": "f4",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 19.200950588125,
+    "id": "f5",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 23.667086796388887,
+    "id": "f6",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 17.34695547852778,
+    "id": "f7",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 23.709027777777777,
+    "id": "f8",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 24.227135973888892,
+    "id": "f9",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 20.886111111111113,
+    "id": "f10",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 23.03611111111111,
+    "id": "f11",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 21.644885791666667,
+    "id": "f12",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 20.541666666666668,
+    "id": "f13",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 24.54513888888889,
+    "id": "m1",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 25.304861111111112,
+    "id": "m2",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 24.009461973125,
+    "id": "m3",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 28.96808971583333,
+    "id": "m4",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 24.580288487430558,
+    "id": "m5",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 27.026469933888887,
+    "id": "m6",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 23.56875,
+    "id": "m7",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 18.959254484652778,
+    "id": "m8",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 18.30949644263889,
+    "id": "m9",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 31.34861111111111,
+    "id": "m10",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 17.87986111111111,
+    "id": "m11",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 21.49513888888889,
+    "id": "m12",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 7,
+    "value": 22.447222222222223,
+    "id": "m13",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 14.307638888888889,
+    "id": "f1",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 24.55248798194444,
+    "id": "f2",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 13.777842865222222,
+    "id": "f3",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 21.038982204472223,
+    "id": "f4",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 21.196527777777778,
+    "id": "f5",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 22.658753463055557,
+    "id": "f6",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 17.165972222222223,
+    "id": "f7",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 23.18611111111111,
+    "id": "f8",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 31.458359653611108,
+    "id": "f9",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 20.471527777777776,
+    "id": "f10",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 18.97222222222222,
+    "id": "f11",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 19.931047522222222,
+    "id": "f12",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 24.415277777777778,
+    "id": "f13",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 23.023611111111112,
+    "id": "m1",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 28.683333333333334,
+    "id": "m2",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 22.527865421180557,
+    "id": "m3",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 21.99550319125,
+    "id": "m4",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 23.695566265208335,
+    "id": "m5",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 28.257679411388892,
+    "id": "m6",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 21.349305555555556,
+    "id": "m7",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 21.090972222222224,
+    "id": "m8",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 18.203940887083334,
+    "id": "m9",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 26.09041221486111,
+    "id": "m10",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 20.01527777777778,
+    "id": "m11",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 24.102777777777778,
+    "id": "m12",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 8,
+    "value": 23.56616923548611,
+    "id": "m13",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 13.92876117675,
+    "id": "f1",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 30.397303151944445,
+    "id": "f2",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 12.577148420777778,
+    "id": "f3",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 20.261852213347222,
+    "id": "f4",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 22.615972222222222,
+    "id": "f5",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 24.06917012972222,
+    "id": "f6",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 17.93111662815278,
+    "id": "f7",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 29.25138888888889,
+    "id": "f8",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 27.764662294166666,
+    "id": "f9",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 18.145138888888887,
+    "id": "f10",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 20.79722222222222,
+    "id": "f11",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 19.477777777777778,
+    "id": "f12",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 17.446527777777778,
+    "id": "f13",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 25.179166666666667,
+    "id": "m1",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 27.150694444444444,
+    "id": "m2",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 20.643923946250002,
+    "id": "m3",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 23.25215165388889,
+    "id": "m4",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 25.213194444444444,
+    "id": "m5",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 23.544444444444444,
+    "id": "m6",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 27.301388888888887,
+    "id": "m7",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 31.01597222222222,
+    "id": "m8",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 16.686579775972223,
+    "id": "m9",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 25.864650551875002,
+    "id": "m10",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 18.98263888888889,
+    "id": "m11",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 20.20347222222222,
+    "id": "m12",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 9,
+    "value": 35.04047479104167,
+    "id": "m13",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 15.810705621194444,
+    "id": "f1",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 31.198402244999997,
+    "id": "f2",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 13.473990877055556,
+    "id": "f3",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 23.45648328895833,
+    "id": "f4",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 29.186367254791666,
+    "id": "f5",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 31.900197760833333,
+    "id": "f6",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 21.344444444444445,
+    "id": "f7",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 30.919444444444444,
+    "id": "f8",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 34.718828960833335,
+    "id": "f9",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 22.824305555555554,
+    "id": "f10",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 21.054861111111112,
+    "id": "f11",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 23.570138888888888,
+    "id": "f12",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 19.319809992152777,
+    "id": "f13",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 21.027083333333334,
+    "id": "m1",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 26.84375,
+    "id": "m2",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 22.162239750902778,
+    "id": "m3",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 30.319808746805556,
+    "id": "m4",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 22.852083333333333,
+    "id": "m5",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 34.35,
+    "id": "m6",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 26.892844996111112,
+    "id": "m7",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 23.909481191527775,
+    "id": "m8",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 21.719369184583332,
+    "id": "m9",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 28.864852207500004,
+    "id": "m10",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 27.661888787013886,
+    "id": "m11",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 26.579376826805557,
+    "id": "m12",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 10,
+    "value": 24.538888888888888,
+    "id": "m13",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 16.867650065638887,
+    "id": "f1",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 25.43782371888889,
+    "id": "f2",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 18.33485239711111,
+    "id": "f3",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 19.11875,
+    "id": "f4",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 22.76875,
+    "id": "f5",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 22.072788166944445,
+    "id": "f6",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 15.75,
+    "id": "f7",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 27.604861111111113,
+    "id": "f8",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 26.252804098055552,
+    "id": "f9",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 21.649305555555557,
+    "id": "f10",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 19.070138888888888,
+    "id": "f11",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 22.3775753,
+    "id": "f12",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 18.37152777777778,
+    "id": "f13",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 20.663861521666668,
+    "id": "m1",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 25.361805555555556,
+    "id": "m2",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 38.69844118652777,
+    "id": "m3",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 30.990642080138887,
+    "id": "m4",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 24.219177376319447,
+    "id": "m5",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 29.175694444444446,
+    "id": "m6",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 27.57986111111111,
+    "id": "m7",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 24.20670341375,
+    "id": "m8",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 17.107731254444445,
+    "id": "m9",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 28.579995548194443,
+    "id": "m10",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 37.126971509097224,
+    "id": "m11",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 21.19375,
+    "id": "m12",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 11,
+    "value": 26.9375,
+    "id": "m13",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 15.623611111111112,
+    "id": "f1",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 24.953297279166666,
+    "id": "f2",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 12.655620643,
+    "id": "f3",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 17.770185546680555,
+    "id": "f4",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 16.638194444444444,
+    "id": "f5",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 34.5094479075,
+    "id": "f6",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 18.921822106680555,
+    "id": "f7",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 28.698611111111113,
+    "id": "f8",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 28.811805555555555,
+    "id": "f9",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 19.03611111111111,
+    "id": "f10",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 19.149328053125,
+    "id": "f11",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 18.851388888888888,
+    "id": "f12",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 15.793421103263888,
+    "id": "f13",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 29.303444855,
+    "id": "m1",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 44.423611111111114,
+    "id": "m2",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 30.586805555555557,
+    "id": "m3",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 30.71264420763889,
+    "id": "m4",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 34.289209505277775,
+    "id": "m5",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 26.18892941138889,
+    "id": "m6",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 52.05228987555555,
+    "id": "m7",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 19.74420341375,
+    "id": "m8",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 18.115202517916664,
+    "id": "m9",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 28.916106659305555,
+    "id": "m10",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 23.871611009236112,
+    "id": "m11",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 20.466666666666665,
+    "id": "m12",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 12,
+    "value": 22.915972222222223,
+    "id": "m13",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 14.937094510083332,
+    "id": "f1",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 27.18136485277778,
+    "id": "f2",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 14.722102806055556,
+    "id": "f3",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 19.427223306708335,
+    "id": "f4",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 21.157456731805556,
+    "id": "f5",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 22.023318938875,
+    "id": "f6",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 16.478205478527777,
+    "id": "f7",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 30.081310753125,
+    "id": "f8",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 34.1284985425,
+    "id": "f9",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 22.463540736111113,
+    "id": "f10",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 22.68266138645833,
+    "id": "f11",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 19.899544425,
+    "id": "f12",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 16.413194444444443,
+    "id": "f13",
+    "sex": "female",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 18.653472222222224,
+    "id": "m1",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 29.457638888888887,
+    "id": "m2",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 21.555555555555557,
+    "id": "m3",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 28.697806619305553,
+    "id": "m4",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 26.542521419305558,
+    "id": "m5",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 26.300694444444446,
+    "id": "m6",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 21.13838274277778,
+    "id": "m7",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 15.000921151319444,
+    "id": "m8",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 19.1220717025,
+    "id": "m9",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 26.216666666666665,
+    "id": "m10",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 21.7625,
+    "id": "m11",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 19.12614674673611,
+    "id": "m12",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 13,
+    "value": 22.18978034659722,
+    "id": "m13",
+    "sex": "male",
+    "estrus": false,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 20.214061308027777,
+    "id": "f1",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 24.232268163333337,
+    "id": "f2",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 15.863834560166667,
+    "id": "f3",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 23.069537760027778,
+    "id": "f4",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 28.925512287361112,
+    "id": "f5",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 24.345833333333335,
+    "id": "f6",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 17.090011034083332,
+    "id": "f7",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 29.385416666666668,
+    "id": "f8",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 28.661805555555556,
+    "id": "f9",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 20.446527777777778,
+    "id": "f10",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 29.775716942013887,
+    "id": "f11",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 23.079759872222223,
+    "id": "f12",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 21.086805555555557,
+    "id": "f13",
+    "sex": "female",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 22.020833333333332,
+    "id": "m1",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 29.055555555555557,
+    "id": "m2",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 31.74739616847222,
+    "id": "m3",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 22.239583333333332,
+    "id": "m4",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 41.023664659375,
+    "id": "m5",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 24.473651633611112,
+    "id": "m6",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 15.285206107222221,
+    "id": "m7",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 11.918055555555556,
+    "id": "m8",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 19.777551998194443,
+    "id": "m9",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 23.57027332597222,
+    "id": "m10",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 21.755555555555556,
+    "id": "m11",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 20.151841191180555,
+    "id": "m12",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  },
+  {
+    "time": 14,
+    "value": 13.441666666666666,
+    "id": "m13",
+    "sex": "male",
+    "estrus": true,
+    "night": false
+  }
+]
