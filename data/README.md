@@ -36,13 +36,15 @@ Each file is a flat array of data points, where each point represents one readin
     "sex": "female",
     "time": 1,
     "value": 36.8,
-    "estrus": true
+    "estrus": true,
+    "night": true
   },
   {
     "id": "m1",
     "sex": "male",
     "time": 1,
     "value": 72.5,
-    "estrus": false
+    "estrus": false,
+    "night": true
   }
 ]
