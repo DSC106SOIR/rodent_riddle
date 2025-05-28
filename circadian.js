@@ -481,7 +481,9 @@ daySelect.on('change', function () {
         timeStaticText.text(parts.staticText);
         timeSlider.property('value', time);
 
-       
+        // Sync dropdown to current day  
+    const currentDay = Math.floor(time / CYCLE.MINUTES_PER_DAY);
+    daySelect.property('value', currentDay * CYCLE.MINUTES_PER_DAY);
 
         // Get current day/night state
         const dayOpacity = getDayNightOpacity(time);
