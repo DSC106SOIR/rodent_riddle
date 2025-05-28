@@ -81,7 +81,36 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1em;
 }
 
+.viz-answer {
+    color: var(--color-accent);
+    margin: 1em 0 2em;
+    max-width: 90ch;
+    line-height: 1.6;
+    font-size: 1.1em;
+    padding: 1em;
+    background-color: var(--color-secondary);
+    border-radius: 4px;
+}
 
+.show-answer-btn {
+    background-color: var(--color-accent);
+    color: var(--color-light);
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+}
+
+.show-answer-btn:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+.show-answer-btn:active {
+    transform: translateY(0);
+}
 
 
 /* === Circadian Visualization === */
@@ -175,7 +204,3 @@ h1, h2, h3, h4, h5, h6 {
 #circadian-viz svg {
     cursor: pointer;
 }
-
-
-
-

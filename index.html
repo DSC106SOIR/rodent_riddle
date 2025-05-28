@@ -6,6 +6,18 @@
     <title>Rodent Riddle</title>
     <link rel="stylesheet" href="style.css">
     <script src="main.js" type="module"></script>
+    <script>
+        function toggleAnswer(button) {
+            const answer = button.nextElementSibling;
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+                button.textContent = 'Hide our suggested answer';
+            } else {
+                answer.style.display = 'none';
+                button.textContent = 'Show our suggested answer';
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Rodent Riddle</h1>
@@ -35,6 +47,10 @@
     <p class="viz-questions">
         <strong>Question to consider:</strong> How do the activity patterns of these mice across day and night cycles reveal their natural circadian rhythm?
     </p>
+    <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
+    <p class="viz-answer" style="display: none;">
+        <strong>Our suggested answer:</strong> The visualization reveals clear circadian patterns in mouse behavior. During light-off periods (night), mice consistently show heightened activity levels, coupled with elevated body temperatures (shown by warmer colors). Conversely, during light-on periods (day), their activity decreases significantly, and body temperatures tend to be cooler. This day-night activity pattern strongly indicates nocturnal behavior, which is an evolutionary adaptation common in rodents. The synchronization between activity levels and body temperature also demonstrates how circadian rhythms coordinate multiple physiological processes to optimize survival during their most active periods.
+    </p>
 
 
     <!-- Other Visualizations (Use the same template) -->
@@ -45,6 +61,8 @@
         <!-- Visualization will be dynamically added here (other-file.js) -->    
     </div>
     <p class="viz-questions"></p>
+    <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
+    <p class="viz-answer" style="display: none;"></p>
 
 </body>
 </html>

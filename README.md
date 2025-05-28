@@ -24,12 +24,14 @@ Each visualization follows a **discovery-based learning approach**:
 2. **Interactive Features** - List of available interactions and controls
 3. **Visualization** - The actual D3.js interactive visualization
 4. **Exploration Question** - Thought-provoking question to guide discovery
+5. **Optional Answer** - Toggle-able suggested answer for validation and learning
 
 This structure encourages users to:
 - Understand the data and controls
 - Interact with the visualization
 - Form hypotheses and discover patterns
 - Reflect on their findings
+- Optionally compare their insights with expert analysis
 
 ## Adding a New Visualization
 
@@ -58,6 +60,10 @@ Add your visualization section to `index.html` following this template:
 </div>
 <p class="viz-questions">
     <strong>Question to consider:</strong> A thought-provoking, open-ended question that encourages exploration and discovery.
+</p>
+<button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
+<p class="viz-answer" style="display: none;">
+    <strong>Our suggested answer:</strong> Your detailed, analytical answer that references specific visual elements and connects to scientific concepts.
 </p>
 ```
 
@@ -121,6 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
 - `.viz-instructions` - Styled paragraphs for visualization descriptions
 - `.viz-features` - Styled lists for feature descriptions  
 - `.viz-questions` - Styled paragraphs for exploration questions
+- `.viz-answer` - Styled paragraphs for suggested answers (hidden by default)
+- `.show-answer-btn` - Styled toggle buttons for showing/hiding answers
 - `strong` elements automatically use `--color-secondary`
 
 ### Color Variables
@@ -183,7 +191,7 @@ Add styles under the appropriate section in `style.css`:
 - Avoid yes/no questions
 - Connect to the **biological or scientific context**
 - Guide users to use **specific visualization features**
-- Optionally, we can add a "show our answer" button below each question to show our suggested answer.
+- **Answer Quality**: Provide detailed answers that reference specific visual elements, explain biological significance, and demonstrate analytical thinking
 
 ## Example Question Types
 
