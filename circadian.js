@@ -382,11 +382,6 @@ export async function createCircadianVisualization() {
         }
     }
 
-    const sliderContainer = controlsContainer.append('div')
-    .style('display', 'flex')
-    .style('align-items', 'center')
-    .style('gap', '5px');
-
     // Day Jump Dropdown
 const dayJumpContainer = controlsContainer.append('div')
     .style('display', 'flex')
