@@ -37,37 +37,51 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.1;
 }
 
-/* === Visualization Styles === */
-.temp-axis, .act-axis {
+/* === Circadian Visualization === */
+#circadian-viz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 100ch;  /* Match body max-width */
+    margin: 0 auto;    /* Center the container */
+}
+
+#circadian-viz .temp-axis, 
+#circadian-viz .act-axis {
     color: var(--color-accent);
 }
 
-.temp-axis text, .act-axis text {
+#circadian-viz .temp-axis text, 
+#circadian-viz .act-axis text {
     fill: var(--color-accent);
     font-size: 12px;
 }
 
-.temp-axis path, .act-axis path,
-.temp-axis line, .act-axis line {
+#circadian-viz .temp-axis path, 
+#circadian-viz .act-axis path,
+#circadian-viz .temp-axis line, 
+#circadian-viz .act-axis line {
     stroke: var(--color-accent);
 }
 
 /* Button styles */
-button {
+#circadian-viz button {
     transition: all 0.2s ease;
 }
 
-button:hover {
+#circadian-viz button:hover {
     opacity: 0.8;
     transform: translateY(-1px);
 }
 
-button:active {
+#circadian-viz button:active {
     transform: translateY(0);
 }
 
 /* Slider styles */
-input[type="range"] {
+#circadian-viz input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     height: 6px;
@@ -76,7 +90,7 @@ input[type="range"] {
     outline: none;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+#circadian-viz input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 18px;
@@ -86,11 +100,22 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
 }
 
-input[type="range"]::-moz-range-thumb {
+#circadian-viz input[type="range"]::-moz-range-thumb {
     width: 18px;
     height: 18px;
     background: var(--color-secondary);
     border-radius: 50%;
     cursor: pointer;
     border: none;
+}
+
+#circadian-viz .light-status {
+    font-size: 0.9em;
+    fill: var(--color-accent);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+#circadian-viz .light-status-bg {
+    border-radius: 4px;
 }

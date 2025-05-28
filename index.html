@@ -8,6 +8,28 @@
     <script src="main.js" type="module"></script>
 </head>
 <body>
-    <!-- Visualization will be dynamically added here -->
+    <h1>Rodent Riddle</h1>
+    
+    <h2>Circadian Rhythm Visualization</h2>
+    <div id="circadian-viz">
+        <p class="viz-instructions">
+            This visualization shows mouse movement patterns and body temperature over multiple day/night cycles. The main plot (left) displays mouse positions and their movement, while the right plot shows the relationship between temperature and activity levels.
+        </p>
+        <ul class="viz-features">
+            <li><strong>Mouse Movement:</strong> Each point represents a mouse, with colors indicating body temperature (blue = cooler, red = warmer).</li>
+            <li><strong>Day/Night Cycles:</strong> Background changes indicate light conditions, with the status shown in the top-right corner.</li>
+            <li><strong>Interactive Features:</strong>
+                <ul>
+                    <li>Hover over any point to see detailed mouse data and highlight the same mouse in both plots</li>
+                    <li>Hover pauses the animation automatically</li>
+                    <li>Use the time slider to navigate through the data</li>
+                    <li>Play/Pause and Reset buttons control the animation</li>
+                </ul>
+            </li>
+            <li><strong>Temperature Scale:</strong> The color bar below the main plot shows the temperature range from 35°C (blue) to 39°C (red).</li>
+        </ul>
+        <!-- Visualization will be dynamically added here (circadian.js) -->    
+    </div>
+
 </body>
 </html>
