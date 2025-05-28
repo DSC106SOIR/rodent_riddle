@@ -119,3 +119,40 @@ h1, h2, h3, h4, h5, h6 {
 #circadian-viz .light-status-bg {
     border-radius: 4px;
 }
+
+#circadian-viz .mouse-point,
+#circadian-viz .temp-act-point {
+    cursor: pointer;
+}
+
+#circadian-viz svg {
+    cursor: pointer;
+}
+
+.viz-questions {
+    margin-top: 2em;
+    color: var(--color-accent);
+}
+
+.viz-questions h3 {
+    color: var(--color-secondary);
+    margin-bottom: 1em;
+}
+
+.viz-questions ol {
+    padding-left: 1.5em;
+    max-width: 90ch;
+    line-height: 1.6;
+}
+
+.viz-questions li {
+    margin-bottom: 1em;
+}
+
+.viz-instructions {
+    color: var(--color-accent);
+    margin: 1em 0;
+    max-width: 90ch;
+    line-height: 1.6;
+    font-size: 1.1em;
+}

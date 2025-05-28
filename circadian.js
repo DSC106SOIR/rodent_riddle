@@ -400,6 +400,7 @@ export async function createCircadianVisualization() {
         
         tooltip.html(`
             <div><strong>Mouse ID:</strong> ${d.id}</div>
+            <div><strong>Sex:</strong> ${d.sex === 'male' ? 'Male' : 'Female'}</div>
             <div><strong>Temperature:</strong> ${d.temp.toFixed(1)}°C</div>
             <div><strong>Activity level:</strong> ${Math.round(d.act)}</div>
         `)
@@ -624,13 +625,8 @@ export async function createCircadianVisualization() {
     // Initialize visualization
     updateVisualization(currentTime);
 
-    // Add hover events to main SVG
-    mainSvg
-        .on('mouseenter', pauseOnHover)
-        .on('mouseleave', resumeOnLeave);
-
-    // Add hover events to temp-act SVG
-    tempActSvg
+    // Add hover events to the plots container (not the entire viz container to avoid control conflicts)
+    plotsContainer
         .on('mouseenter', pauseOnHover)
         .on('mouseleave', resumeOnLeave);
 }
