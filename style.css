@@ -55,7 +55,6 @@ h1, h2, h3, h4, h5, h6 {
 .viz-instructions {
     color: var(--color-accent);
     margin: 1em 0;
-    max-width: 90ch;
     line-height: 1.6;
     font-size: 0.95em;
 }
@@ -63,7 +62,6 @@ h1, h2, h3, h4, h5, h6 {
 .viz-features {
     color: var(--color-accent);
     margin: 1em 0;
-    max-width: 90ch;
     line-height: 1.6;
     font-size: 0.95em;
 }
@@ -86,7 +84,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .viz-questions ol {
     padding-left: 1.5em;
-    max-width: 90ch;
     line-height: 1.6;
 }
 
@@ -97,7 +94,6 @@ h1, h2, h3, h4, h5, h6 {
 .viz-answer {
     color: var(--color-accent);
     margin: 1em 0 2em;
-    max-width: 90ch;
     line-height: 1.6;
     font-size: 0.95em;
     padding: 1em;
