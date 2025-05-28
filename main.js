@@ -3,6 +3,9 @@ import { createCircadianVisualization } from './circadian.js';
 
 // Execute circadian visualization when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Render circadian visualization
     createCircadianVisualization();
+
+    // Render other visualizations ...
 });
 
