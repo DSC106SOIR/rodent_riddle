@@ -213,3 +213,14 @@ h1, h2, h3, h4, h5, h6 {
   background-color: white;
   color: var(--color-accent);
 }
+.reflection-box {
+    background-color: var(--color-light); /* or any soft background like #f9f9f9 */
+    border-left: 6px solid var(--color-accent);
+    padding: 16px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--color-dark); /* or just black */
+}
