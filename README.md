@@ -2,6 +2,24 @@
 
 This project creates an interactive storytelling experience about mouse circadian rhythms through data visualization. Users can explore patterns in mouse behavior and discover insights through guided questions.
 
+## Prototype Writeup
+
+1. So far, we have created our central visualization and have laid out the template for all any additional visualizations. The central visualization
+is an overview of most of the features all at once. It aims to show viewers the general heat and activity trends of mice throughout each period of day and
+night. Smaller future visualizations will focus on more specific aspects of the dataset. By creating visualization
+and suggested response templates, additional work for the project will be streamlined. Our process is to add in a short visualization to guide
+viewers through the interactcive visualization, add a d3 plot, ask viewers an insightful question, and to answer their question using the drop-down
+suggested answer component. Using this format, our project can meet its original goal of teaching researchers about their mice in an engaging way, but can
+also be used to teach people (especially children) how to gain insight from a graph or visualization.
+
+2. The most challenging part of the project remaining is to curate a few more visualizations that feel fresh and interactive. Our dataset 
+is limited in its number of features (we can explore activity, temperature, gender, and estrus cycles), and so we'll need to work to
+create visualizations that add insight without feeling redundant. Our second challenge will be to come up with critical engagement questions
+that strike a balance between being too technical and boringly simple. A mix of difficulties will be beneficial, and our target is for the
+level of engagement to be at the point to make an older kid think for a few minutes and require most viewers to take a second look at the visualization
+before answering. These questions give us the most opportunity to ensure that scientists aren't missing interesting details and to promote 
+learning for the rest of our audience, so it's important that we get their level of difficulty right.
+
 ## Project Structure
 
 ```
