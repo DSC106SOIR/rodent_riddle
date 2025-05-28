@@ -204,3 +204,12 @@ h1, h2, h3, h4, h5, h6 {
 #circadian-viz svg {
     cursor: pointer;
 }
+
+#circadian-viz select {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--color-accent);
+  background-color: white;
+  color: var(--color-accent);
+}

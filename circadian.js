@@ -382,6 +382,40 @@ export async function createCircadianVisualization() {
         }
     }
 
+    // Day Jump Dropdown
+const dayJumpContainer = controlsContainer.append('div')
+    .style('display', 'flex')
+    .style('align-items', 'center')
+    .style('gap', '5px');
+
+dayJumpContainer.append('label')
+    .text('Jump to Day:')
+    .style('color', 'var(--color-accent)');
+
+const totalDays = Math.ceil(maxTime / CYCLE.MINUTES_PER_DAY);
+const daySelect = dayJumpContainer.append('select')
+    .style('padding', '5px')
+    .style('border-radius', '4px')
+    .style('border', '1px solid var(--color-accent)')
+    .style('background-color', 'white')
+    .style('color', 'var(--color-accent)');
+
+// Populate options
+for (let i = 1; i <= totalDays; i++) {
+    daySelect.append('option')
+        .attr('value', (i - 1) * CYCLE.MINUTES_PER_DAY)
+        .text(`Day ${i}`);
+}
+
+// Event listener to update time
+daySelect.on('change', function () {
+    const selectedTime = +this.value;
+    updateVisualization(selectedTime);
+    isPlaying = false;
+    playButton.text('Play');
+    if (animationId) cancelAnimationFrame(animationId);
+});
+
     // Function to resume animation when leaving hover
     function resumeOnLeave() {
         if (wasPlayingBeforeHover) {
