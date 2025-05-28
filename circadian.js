@@ -302,7 +302,7 @@ export async function createCircadianVisualization() {
         const cycleLength = CYCLE.MINUTES_PER_DAY;
         const cycleNumber = Math.floor(time / cycleLength) + 1;
         const isDay = getDayNightOpacity(time) > 0.5;
-        const period = isDay ? 'day' : 'night';
+        const period = isDay ? 'light-on cycle' : 'light-off cycle';
         const minuteText = time === 1 ? 'minute' : 'minutes';
         return {
             timeNumber: time,
@@ -329,6 +329,7 @@ export async function createCircadianVisualization() {
     timeNumber.text(initialParts.timeNumber);
     timeStaticText.text(initialParts.staticText);
 
+
     // Play/pause controls
     const buttonContainer = controlsContainer.append('div')
         .style('display', 'flex')
@@ -336,21 +337,56 @@ export async function createCircadianVisualization() {
 
     const playButton = buttonContainer.append('button')
         .text('Play')
-        .style('padding', '8px 16px')
+        .style('padding', '5px 16px')
         .style('background-color', 'var(--color-secondary)')
-        .style('color', 'white')
+        .style('color', 'var(--color-light)')
         .style('border', 'none')
         .style('border-radius', '4px')
         .style('cursor', 'pointer');
 
+    // Day Jump Dropdown
+    const dayJumpContainer = buttonContainer.append('div')
+        .style('display', 'flex')
+        .style('gap', '5px');
+
+    dayJumpContainer.append('label')
+        .text('Jump to:')
+        .style('color', 'var(--color-accent)');
+
+    const totalDays = Math.ceil(maxTime / CYCLE.MINUTES_PER_DAY);
+    const daySelect = dayJumpContainer.append('select')
+        .style('padding', '5px')
+        .style('border-radius', '4px')
+        .style('border', 'none')
+        .style('background-color', 'var(--color-secondary)')
+        .style('color', 'var(--color-light)');
+
+    // Reset Button
     const resetButton = buttonContainer.append('button')
         .text('Reset')
-        .style('padding', '8px 16px')
+        .style('padding', '5px 16px')
         .style('background-color', 'var(--color-accent)')
-        .style('color', 'white')
+        .style('color', 'var(--color-light)')
         .style('border', 'none')
         .style('border-radius', '4px')
         .style('cursor', 'pointer');
+
+
+    // Populate options
+    for (let i = 1; i <= totalDays; i++) {
+        daySelect.append('option')
+            .attr('value', (i - 1) * CYCLE.MINUTES_PER_DAY)
+            .text(`Day ${i}`);
+    }
+
+    // Event listener to update time
+    daySelect.on('change', function () {
+        const selectedTime = +this.value;
+        updateVisualization(selectedTime);
+        isPlaying = false;
+        playButton.text('Play');
+        if (animationId) cancelAnimationFrame(animationId);
+    });
 
     // Animation state
     let isPlaying = false;
@@ -381,40 +417,6 @@ export async function createCircadianVisualization() {
             }
         }
     }
-
-    // Day Jump Dropdown
-const dayJumpContainer = controlsContainer.append('div')
-    .style('display', 'flex')
-    .style('align-items', 'center')
-    .style('gap', '5px');
-
-dayJumpContainer.append('label')
-    .text('Jump to Day:')
-    .style('color', 'var(--color-accent)');
-
-const totalDays = Math.ceil(maxTime / CYCLE.MINUTES_PER_DAY);
-const daySelect = dayJumpContainer.append('select')
-    .style('padding', '5px')
-    .style('border-radius', '4px')
-    .style('border', '1px solid var(--color-accent)')
-    .style('background-color', 'white')
-    .style('color', 'var(--color-accent)');
-
-// Populate options
-for (let i = 1; i <= totalDays; i++) {
-    daySelect.append('option')
-        .attr('value', (i - 1) * CYCLE.MINUTES_PER_DAY)
-        .text(`Day ${i}`);
-}
-
-// Event listener to update time
-daySelect.on('change', function () {
-    const selectedTime = +this.value;
-    updateVisualization(selectedTime);
-    isPlaying = false;
-    playButton.text('Play');
-    if (animationId) cancelAnimationFrame(animationId);
-});
 
     // Function to resume animation when leaving hover
     function resumeOnLeave() {

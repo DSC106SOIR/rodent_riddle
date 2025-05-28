@@ -15,6 +15,7 @@
 }
 
 
+
 /* === Global Styles === */
 body {
     font: 100%/1.5 system-ui;
@@ -39,6 +40,18 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* === Visualization Write Up Styles === */
+.reflection-box {
+    background-color: var(--color-light);
+    border-left: 6px solid var(--color-accent);
+    padding: 16px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px var(--color-accent);
+    border-radius: 8px;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--color-accent);
+}
+
 .viz-instructions {
     color: var(--color-accent);
     margin: 1em 0;
@@ -58,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 .viz-features strong,
 .viz-instructions strong,
 .viz-questions strong {
-    color: var(--color-secondary);
+    color: var(--color-accent);
 }
 
 .viz-questions {
@@ -111,6 +124,7 @@ h1, h2, h3, h4, h5, h6 {
 .show-answer-btn:active {
     transform: translateY(0);
 }
+
 
 
 /* === Circadian Visualization === */
@@ -203,24 +217,4 @@ h1, h2, h3, h4, h5, h6 {
 
 #circadian-viz svg {
     cursor: pointer;
-}
-
-#circadian-viz select {
-  font-size: 14px;
-  padding: 5px 10px;
-  border-radius: 4px;
-  border: 1px solid var(--color-accent);
-  background-color: white;
-  color: var(--color-accent);
-}
-.reflection-box {
-    background-color: var(--color-light); /* or any soft background like #f9f9f9 */
-    border-left: 6px solid var(--color-accent);
-    padding: 16px;
-    margin: 20px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    font-size: 0.95em;
-    line-height: 1.6;
-    color: var(--color-dark); /* or just black */
 }
