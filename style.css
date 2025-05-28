@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 1em 0;
     max-width: 90ch;
     line-height: 1.6;
-    font-size: 1.1em;
+    font-size: 0.95em;
 }
 
 .viz-features {
@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 1em 0;
     max-width: 90ch;
     line-height: 1.6;
-    font-size: 1.1em;
+    font-size: 0.95em;
 }
 
 .viz-features strong,
@@ -99,9 +99,9 @@ h1, h2, h3, h4, h5, h6 {
     margin: 1em 0 2em;
     max-width: 90ch;
     line-height: 1.6;
-    font-size: 1.1em;
+    font-size: 0.95em;
     padding: 1em;
-    background-color: var(--color-secondary);
+    background-color: var(--color-light);
     border-radius: 4px;
 }
 
