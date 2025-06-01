@@ -214,3 +214,8 @@ h1, h2, h3, h4, h5, h6 {
 #circadian-viz svg {
     cursor: pointer;
 }
+
+#other-viz div {
+    z-index: 10;
+    position: absolute;
+  }
