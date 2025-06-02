@@ -214,3 +214,113 @@ h1, h2, h3, h4, h5, h6 {
 #circadian-viz svg {
     cursor: pointer;
 }
+
+
+/* === Activity Ranking Visualization === */
+#activity-rank-viz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 100ch;
+    margin: 0 auto;
+}
+
+#activity-rank-viz .x-axis-up, 
+#activity-rank-viz .x-axis-down,
+#activity-rank-viz .y-axis-up, 
+#activity-rank-viz .y-axis-down {
+    color: var(--color-accent);
+}
+
+#activity-rank-viz .x-axis-up text, 
+#activity-rank-viz .x-axis-down text,
+#activity-rank-viz .y-axis-up text, 
+#activity-rank-viz .y-axis-down text {
+    fill: var(--color-accent);
+    font-size: 12px;
+}
+
+#activity-rank-viz .x-axis-up path, 
+#activity-rank-viz .x-axis-down path,
+#activity-rank-viz .y-axis-up path, 
+#activity-rank-viz .y-axis-down path,
+#activity-rank-viz .x-axis-up line, 
+#activity-rank-viz .x-axis-down line,
+#activity-rank-viz .y-axis-up line, 
+#activity-rank-viz .y-axis-down line {
+    stroke: var(--color-accent);
+}
+
+#activity-rank-viz .bar-up,
+#activity-rank-viz .bar-down {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+#activity-rank-viz .bar-up:hover,
+#activity-rank-viz .bar-down:hover {
+    opacity: 0.8;
+}
+
+/* Button styles for activity ranking */
+#activity-rank-viz button {
+    transition: all 0.2s ease;
+}
+
+#activity-rank-viz button:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+#activity-rank-viz button:active {
+    transform: translateY(0);
+}
+
+/* Slider styles for activity ranking */
+#activity-rank-viz input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: var(--color-light);
+    border-radius: 3px;
+    outline: none;
+}
+
+#activity-rank-viz input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#activity-rank-viz input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+/* Select dropdown styling for activity ranking */
+#activity-rank-viz select {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#activity-rank-viz select:hover {
+    opacity: 0.9;
+}
+
+#activity-rank-viz .light-off-bg {
+    opacity: 0.3;
+}
+
+#activity-rank-viz .light-on-bg {
+    opacity: 0.3;
+}

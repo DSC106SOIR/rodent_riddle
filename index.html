@@ -52,6 +52,36 @@
         <strong>Our suggested answer:</strong> The visualization reveals clear circadian patterns in mouse behavior. During light-off periods (night), mice consistently show heightened activity levels, coupled with elevated body temperatures (shown by warmer colors). Conversely, during light-on periods (day), their activity decreases significantly, and body temperatures tend to be cooler. This day-night activity pattern strongly indicates nocturnal behavior, which is an evolutionary adaptation common in rodents. The synchronization between activity levels and body temperature also demonstrates how circadian rhythms coordinate multiple physiological processes to optimize survival during their most active periods.
     </p>
 
+    <!-- Activity Ranking Visualization -->
+    <h2>Activity Rankings: Day vs Night Comparison</h2>
+    <p class="viz-instructions">
+        This visualization compares mouse activity levels between light-off (night) and light-on (day) periods using dual bar charts. The upper chart shows activity during light-off periods with upward bars, while the lower chart shows activity during light-on periods with downward bars. Mice are automatically sorted by their activity levels in descending order at each time point.
+    </p>
+    <ul class="viz-features">
+        <li><strong>Dual Bar Charts:</strong> Upper bars (night) and lower bars (day) allow direct comparison of activity levels.</li>
+        <li><strong>Dynamic Sorting:</strong> Mice are ranked by activity level at each time point, creating a dynamic leaderboard.</li>
+        <li><strong>Color Coding:</strong> Blue bars represent male mice, pink bars represent female mice.</li>
+        <li><strong>Interactive Controls:</strong>
+            <ul>
+                <li>Time slider to navigate through a 12-hour cycle (720 minutes)</li>
+                <li>Day selector to jump between different days</li>
+                <li>Play/Pause animation to see activity changes over time</li>
+                <li>Hover over bars to see detailed mouse information</li>
+            </ul>
+        </li>
+        <li><strong>Equal Scale:</strong> Both upper and lower charts use the same activity scale for fair comparison.</li>
+    </ul>
+    <div id="activity-rank-viz">
+        <!-- Visualization will be dynamically added here (activity_rank.js) -->    
+    </div>
+    <p class="viz-questions">
+        <strong>Question to consider:</strong> How do the activity rankings change between day and night periods, and what does this tell us about individual mouse behavior patterns?
+    </p>
+    <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
+    <p class="viz-answer" style="display: none;">
+        <strong>Our suggested answer:</strong> The activity rankings reveal distinct differences between day and night periods. During night periods, mice generally show much higher activity levels and more variation between individuals, with some mice being consistently highly active while others remain relatively inactive. During day periods, most mice show significantly reduced activity levels, with rankings often flattening out as mice enter their rest phase. Individual differences become more pronounced during active periods, suggesting that some mice are naturally more active than others during their preferred activity time. The consistent appearance of certain mice at the top of the rankings during night periods indicates individual behavioral traits and circadian rhythm strength variations within the population.
+    </p>
+
 
     <!-- Other Visualizations (Use the same template) -->
     <h2>Other Visualizations ...</h2>
