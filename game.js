@@ -30,9 +30,9 @@ function drawLegend() {
     .attr('width', legendWidth)
     .attr('height', legendHeight + 2 * legendPad);
   const defs = legendSvg.append('defs');
-  const linearGradient = defs.select('#temp-gradient').empty()
-    ? defs.append('linearGradient').attr('id', 'temp-gradient')
-    : defs.select('#temp-gradient');
+  // Remove any existing gradient so old stops don't persist
+  defs.select('#temp-gradient').remove();
+  const linearGradient = defs.append('linearGradient').attr('id', 'temp-gradient');
 
   linearGradient
     .attr('x1', '0%').attr('y1', '100%')
