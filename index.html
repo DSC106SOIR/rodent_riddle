@@ -55,31 +55,36 @@
     <!-- Activity Ranking Visualization -->
     <h2>Activity Rankings: Day vs Night Comparison</h2>
     <p class="viz-instructions">
-        This visualization compares mouse activity levels between light-off (night) and light-on (day) periods using dual bar charts. The upper chart shows activity during light-off periods with upward bars, while the lower chart shows activity during light-on periods with downward bars. Mice are automatically sorted by their activity levels in descending order at each time point.
+        This visualization provides a comprehensive view of mouse activity patterns across day and night cycles, with a special focus on gender differences. The dual bar charts show activity levels during light-off (night) and light-on (day) periods, with mice automatically sorted by their activity levels. The visualization includes mini-plots showing the proportion of male vs female activity over time, allowing for detailed analysis of gender-based activity patterns.
     </p>
     <ul class="viz-features">
-        <li><strong>Dual Bar Charts:</strong> Upper bars (night) and lower bars (day) allow direct comparison of activity levels.</li>
-        <li><strong>Dynamic Sorting:</strong> Mice are ranked by activity level at each time point, creating a dynamic leaderboard.</li>
-        <li><strong>Color Coding:</strong> Blue bars represent male mice, pink bars represent female mice.</li>
+        <li><strong>Dual Bar Charts:</strong> Upper bars (light off) and lower bars (light on) show activity levels, with mice ranked by activity at each time point.</li>
+        <li><strong>Gender Analysis:</strong> Blue bars represent male mice, pink bars represent female mice, with mini-plots showing the proportion of activity by gender over time.</li>
+        <li><strong>Dynamic Features:</strong>
+            <ul>
+                <li>Real-time activity ranking updates as you move through time</li>
+                <li>Running average rankings show consistent activity patterns</li>
+                <li>Hover over bars to see detailed mouse information and highlight corresponding bars across all plots</li>
+                <li>Mini-plots reveal gender activity proportions throughout the cycle</li>
+            </ul>
+        </li>
         <li><strong>Interactive Controls:</strong>
             <ul>
                 <li>Time slider to navigate through a 12-hour cycle (720 minutes)</li>
-                <li>Day selector to jump between different days</li>
-                <li>Play/Pause animation to see activity changes over time</li>
-                <li>Hover over bars to see detailed mouse information</li>
+                <li>Day selector to compare activity patterns across different days</li>
+                <li>Play/Pause animation to observe activity changes over time</li>
             </ul>
         </li>
-        <li><strong>Equal Scale:</strong> Both upper and lower charts use the same activity scale for fair comparison.</li>
     </ul>
     <div id="activity-rank-viz">
         <!-- Visualization will be dynamically added here (activity_rank.js) -->    
     </div>
     <p class="viz-questions">
-        <strong>Question to consider:</strong> How do the activity rankings change between day and night periods, and what does this tell us about individual mouse behavior patterns?
+        <strong>Question to consider:</strong> How do the activity levels of male and female mice compare during different periods of the day, and what changes do we observe in female activity patterns during estrus days?
     </p>
     <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
     <p class="viz-answer" style="display: none;">
-        <strong>Our suggested answer:</strong> The activity rankings reveal distinct differences between day and night periods. During night periods, mice generally show much higher activity levels and more variation between individuals, with some mice being consistently highly active while others remain relatively inactive. During day periods, most mice show significantly reduced activity levels, with rankings often flattening out as mice enter their rest phase. Individual differences become more pronounced during active periods, suggesting that some mice are naturally more active than others during their preferred activity time. The consistent appearance of certain mice at the top of the rankings during night periods indicates individual behavioral traits and circadian rhythm strength variations within the population.
+        <strong>Our suggested answer:</strong> The visualization reveals interesting patterns in gender-based activity levels. Overall, male mice tend to show higher activity levels compared to female mice across both day and night periods. However, during estrus days, we observe a notable increase in female activity levels that extends beyond just the night period. While this increased activity doesn't surpass the overall male activity levels, it represents a significant behavioral change in female mice during their reproductive cycle. The mini-plots showing gender activity proportions help visualize these patterns, with the male proportion typically being higher but showing interesting variations during estrus periods. These findings suggest that while male mice maintain generally higher activity levels, female activity patterns are more dynamic and influenced by their reproductive state.
     </p>
 
 

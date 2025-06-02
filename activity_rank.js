@@ -2,7 +2,7 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
 // Constants for activity ranking visualization
 const ACTIVITY_RANK = {
-    MARGIN: { top: 40, right: 60, bottom: 40, left: 80 },
+    MARGIN: { top: 40, right: 60, bottom: 10, left: 80 },
     CHART_WIDTH: 600, // Reduced to make room for ranking plots
     CHART_HEIGHT: 200, // Height for each half (up/down)
     RANKING_WIDTH: 200, // Width for ranking plots
@@ -361,7 +361,7 @@ export async function createActivityRankVisualization() {
         .attr('text-anchor', 'start')
         .style('fill', 'var(--color-accent)')
         .style('font-size', '0.9em')
-        .text('Mouse Activity Rankings at a single time point');
+        .text('Mouse activity at a single time point');
 
     // Add ranking plot titles
     svg.append('text')
@@ -540,7 +540,7 @@ export async function createActivityRankVisualization() {
         .attr('transform', `translate(45, ${margin.top + chartHeight / 2}) rotate(-90)`)
         .attr('text-anchor', 'middle')
         .style('fill', 'var(--color-accent)')
-        .style('font-size', '0.9em')
+        .style('font-size', '0.8em')
         .text('Light-OFF Activity Level');
 
     svg.append('text')
@@ -548,17 +548,8 @@ export async function createActivityRankVisualization() {
         .attr('transform', `translate(45, ${margin.top + chartHeight + ACTIVITY_RANK.PLOT_GAP + chartHeight / 2}) rotate(-90)`)
         .attr('text-anchor', 'middle')
         .style('fill', 'var(--color-accent)')
-        .style('font-size', '0.9em')
+        .style('font-size', '0.8em')
         .text('Light-ON Activity Level');
-
-    svg.append('text')
-        .attr('class', 'axis-label')
-        .attr('x', margin.left + chartWidth / 2)
-        .attr('y', totalHeight - 20)
-        .attr('text-anchor', 'middle')
-        .style('fill', 'var(--color-accent)')
-        .style('font-size', '0.9em')
-        .text('Mouse ID');
 
     // Color scale for mice (alternating colors based on sex)
     const colorScale = d3.scaleOrdinal()
@@ -630,9 +621,10 @@ export async function createActivityRankVisualization() {
 
     // Populate day options
     for (let i = 1; i <= totalDays; i++) {
+        const isEstrusDay = [2, 6, 10, 14].includes(i);
         daySelect.append('option')
             .attr('value', i)
-            .text(`Day ${i}`);
+            .text(`Day ${i}${isEstrusDay ? ' - estrus day' : ''}`);
     }
 
     // Reset button
@@ -706,12 +698,44 @@ export async function createActivityRankVisualization() {
         .style('max-width', '150px')
         .style('line-height', '1.2')
 
+    // Tooltips for proportion plots
+    const tooltipLightOffProportion = d3.select('body')
+        .append('div')
+        .attr('class', 'tooltip-light-off-proportion')
+        .style('position', 'absolute')
+        .style('background', 'var(--color-night)')
+        .style('color', 'var(--color-light)')
+        .style('padding', '6px')
+        .style('border-radius', '4px')
+        .style('font-size', '10px')
+        .style('pointer-events', 'none')
+        .style('opacity', 0)
+        .style('z-index', 1005)
+        .style('max-width', '180px')
+        .style('line-height', '1.2')
+
+    const tooltipLightOnProportion = d3.select('body')
+        .append('div')
+        .attr('class', 'tooltip-light-on-proportion')
+        .style('position', 'absolute')
+        .style('background', 'var(--color-day)')
+        .style('color', 'var(--color-accent)')
+        .style('padding', '6px')
+        .style('border-radius', '4px')
+        .style('font-size', '10px')
+        .style('pointer-events', 'none')
+        .style('opacity', 0)
+        .style('z-index', 1006)
+        .style('max-width', '180px')
+        .style('line-height', '1.2')
+
     // Enhanced hover functions
     function highlightMouse(mouseId) {
         // Highlight all bars for this mouse
         svg.selectAll('.bar-up, .bar-down, .ranking-bar-off, .ranking-bar-on')
             .filter(d => d.id === mouseId)
-            .attr('stroke-width', 0.5)
+            .attr('stroke-width', 0.8)
+            .attr('stroke', 'var(--color-light)')
             .style('opacity', 1);
         
         // Dim other bars
@@ -861,6 +885,8 @@ export async function createActivityRankVisualization() {
         tooltipLightOnMain.style('opacity', '0');
         tooltipLightOffRanking.style('opacity', '0');
         tooltipLightOnRanking.style('opacity', '0');
+        tooltipLightOffProportion.style('opacity', '0');
+        tooltipLightOnProportion.style('opacity', '0');
         
         // Get data for all plots
         const lightOffData = combinedData.find(d => d.time === getActualTime(currentTime, parseInt(daySelect.property('value')), false) && d.id === mouseId);
@@ -954,6 +980,8 @@ export async function createActivityRankVisualization() {
             tooltipLightOnMain.transition().duration(300).style('opacity', 0);
             tooltipLightOffRanking.transition().duration(300).style('opacity', 0);
             tooltipLightOnRanking.transition().style('opacity', 0);
+            tooltipLightOffProportion.transition().duration(300).style('opacity', 0);
+            tooltipLightOnProportion.transition().duration(300).style('opacity', 0);
             
             hideTimeout = null;
         }, 100); // 100ms delay
@@ -1190,6 +1218,68 @@ export async function createActivityRankVisualization() {
                 .attr('d', areaGeneratorInverted)
                 .attr('fill', 'var(--color-female)')
                 .attr('opacity', 0.6);
+            
+            // Add vertical line indicator (initially hidden)
+            const lightOffVerticalLine = lightOffProportion.selectAll('.vertical-indicator')
+                .data([0]);
+            
+            lightOffVerticalLine.enter()
+                .append('line')
+                .attr('class', 'vertical-indicator')
+                .attr('stroke', 'var(--color-accent)')
+                .attr('stroke-width', 1)
+                .attr('stroke-dasharray', '3,3')
+                .attr('opacity', 0)
+                .attr('y1', 0)
+                .attr('y2', ACTIVITY_RANK.PROPORTION_HEIGHT)
+                .merge(lightOffVerticalLine);
+            
+            // Add invisible overlay rectangle for hover detection
+            const lightOffOverlay = lightOffProportion.selectAll('.proportion-overlay')
+                .data([1]); // Use constant data to avoid rebinding issues
+            
+            lightOffOverlay.enter()
+                .append('rect')
+                .attr('class', 'proportion-overlay')
+                .merge(lightOffOverlay)
+                .attr('x', 0)
+                .attr('y', 0)
+                .attr('width', ACTIVITY_RANK.PROPORTION_WIDTH)
+                .attr('height', ACTIVITY_RANK.PROPORTION_HEIGHT)
+                .attr('fill', 'transparent')
+                .style('cursor', 'crosshair')
+                .on('mousemove', function(event) {
+                    const [mouseX] = d3.pointer(event, this);
+                    const currentPropTime = Math.max(1, Math.min(cycleTime, Math.round(proportionXScale.invert(mouseX))));
+                    const currentPropData = lightOffProportions.find(d => d.time === currentPropTime) || lightOffProportions[lightOffProportions.length - 1];
+                    
+                    if (currentPropData) {
+                        // Update vertical line position
+                        lightOffProportion.select('.vertical-indicator')
+                            .attr('x1', proportionXScale(currentPropTime))
+                            .attr('x2', proportionXScale(currentPropTime))
+                            .attr('opacity', 0.7);
+                        
+                        const malePercent = (currentPropData.proportion * 100).toFixed(1);
+                        const femalePercent = ((1 - currentPropData.proportion) * 100).toFixed(1);
+                        const content = `<div><strong>Activity Proportions</strong></div><div>Time: ${Math.floor((currentPropTime - 1) / 60)}h ${(currentPropTime - 1) % 60}m</div><div>Male Activity: ${malePercent}%</div><div>Female Activity: ${femalePercent}%</div>`;
+                        
+                        tooltipLightOffProportion
+                            .html(content)
+                            .style('left', (event.pageX + 10) + 'px')
+                            .style('top', (event.pageY - 10) + 'px')
+                            .style('opacity', 0.9);
+                    }
+                })
+                .on('mouseenter', function(event) {
+                    // Show vertical line on initial hover
+                    lightOffProportion.select('.vertical-indicator').attr('opacity', 0.7);
+                })
+                .on('mouseleave', function() {
+                    // Hide vertical line and tooltip
+                    lightOffProportion.select('.vertical-indicator').attr('opacity', 0);
+                    tooltipLightOffProportion.style('opacity', 0);
+                });
         }
         
         // Update light-on proportion plot
@@ -1217,6 +1307,68 @@ export async function createActivityRankVisualization() {
                 .attr('d', areaGeneratorInverted)
                 .attr('fill', 'var(--color-female)')
                 .attr('opacity', 0.6);
+            
+            // Add vertical line indicator (initially hidden)
+            const lightOnVerticalLine = lightOnProportion.selectAll('.vertical-indicator')
+                .data([0]);
+            
+            lightOnVerticalLine.enter()
+                .append('line')
+                .attr('class', 'vertical-indicator')
+                .attr('stroke', 'var(--color-accent)')
+                .attr('stroke-width', 1)
+                .attr('stroke-dasharray', '3,3')
+                .attr('opacity', 0)
+                .attr('y1', 0)
+                .attr('y2', ACTIVITY_RANK.PROPORTION_HEIGHT)
+                .merge(lightOnVerticalLine);
+            
+            // Add invisible overlay rectangle for hover detection
+            const lightOnOverlay = lightOnProportion.selectAll('.proportion-overlay')
+                .data([1]); // Use constant data to avoid rebinding issues
+            
+            lightOnOverlay.enter()
+                .append('rect')
+                .attr('class', 'proportion-overlay')
+                .merge(lightOnOverlay)
+                .attr('x', 0)
+                .attr('y', 0)
+                .attr('width', ACTIVITY_RANK.PROPORTION_WIDTH)
+                .attr('height', ACTIVITY_RANK.PROPORTION_HEIGHT)
+                .attr('fill', 'transparent')
+                .style('cursor', 'crosshair')
+                .on('mousemove', function(event) {
+                    const [mouseX] = d3.pointer(event, this);
+                    const currentPropTime = Math.max(1, Math.min(cycleTime, Math.round(proportionXScale.invert(mouseX))));
+                    const currentPropData = lightOnProportions.find(d => d.time === currentPropTime) || lightOnProportions[lightOnProportions.length - 1];
+                    
+                    if (currentPropData) {
+                        // Update vertical line position
+                        lightOnProportion.select('.vertical-indicator')
+                            .attr('x1', proportionXScale(currentPropTime))
+                            .attr('x2', proportionXScale(currentPropTime))
+                            .attr('opacity', 0.7);
+                        
+                        const malePercent = (currentPropData.proportion * 100).toFixed(1);
+                        const femalePercent = ((1 - currentPropData.proportion) * 100).toFixed(1);
+                        const content = `<div><strong>Activity Proportions</strong></div><div>Time: ${Math.floor((currentPropTime - 1) / 60)}h ${(currentPropTime - 1) % 60}m</div><div>Male Activity: ${malePercent}%</div><div>Female Activity: ${femalePercent}%</div>`;
+                        
+                        tooltipLightOnProportion
+                            .html(content)
+                            .style('left', (event.pageX + 10) + 'px')
+                            .style('top', (event.pageY - 10) + 'px')
+                            .style('opacity', 0.9);
+                    }
+                })
+                .on('mouseenter', function(event) {
+                    // Show vertical line on initial hover
+                    lightOnProportion.select('.vertical-indicator').attr('opacity', 0.7);
+                })
+                .on('mouseleave', function() {
+                    // Hide vertical line and tooltip
+                    lightOnProportion.select('.vertical-indicator').attr('opacity', 0);
+                    tooltipLightOnProportion.style('opacity', 0);
+                });
         }
     }
 
