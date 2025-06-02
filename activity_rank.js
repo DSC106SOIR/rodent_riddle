@@ -12,7 +12,11 @@ const ACTIVITY_RANK = {
     CONTROL_HEIGHT: 80,
     AXIS_BUFFER: 10,
     MIN_ACTIVITY: 0,
-    MAX_ACTIVITY_DEFAULT: 100
+    MAX_ACTIVITY_DEFAULT: 100,
+    // New proportion plot constants
+    PROPORTION_WIDTH: 120,
+    PROPORTION_HEIGHT: 60,
+    PROPORTION_MARGIN: 10
 };
 
 // Constants for cycle timing
@@ -31,6 +35,243 @@ export async function createActivityRankVisualization() {
     const maxTime = d3.max(combinedData, d => d.time);
     const maxActivity = Math.max(ACTIVITY_RANK.MAX_ACTIVITY_DEFAULT, d3.max(combinedData, d => d.act));
     const totalDays = Math.ceil(maxTime / (CYCLE.MINUTES_PER_HALF_DAY * 2));
+
+    // Pre-compute cumulative sums for efficiency
+    let cumulativeSums = {};
+    let isPrecomputed = false;
+    let proportionData = {}; // Cache for proportion calculations
+    
+    // Optimized data structures for fast lookups
+    let dataByTimeDay = new Map(); // Map: "time_day" -> {lightOff: [...], lightOn: [...]}
+    let precomputedProportions = new Map(); // Map: "day_isLightOff" -> [...proportions]
+    let precomputedAverages = new Map(); // Map: "day_isLightOff_time" -> [...averages]
+
+    // Optimized data pre-processing function
+    function preProcessAllData() {
+        console.log('Pre-processing data for optimal performance...');
+        
+        // Clear existing data structures
+        dataByTimeDay.clear();
+        precomputedProportions.clear();
+        precomputedAverages.clear();
+        
+        // Index data by time and day for O(1) lookups
+        combinedData.forEach(d => {
+            const day = Math.ceil(d.time / (CYCLE.MINUTES_PER_HALF_DAY * 2));
+            const cycleTime = ((d.time - 1) % (CYCLE.MINUTES_PER_HALF_DAY * 2)) + 1;
+            const isLightOn = cycleTime > CYCLE.MINUTES_PER_HALF_DAY;
+            const adjustedTime = isLightOn ? cycleTime - CYCLE.MINUTES_PER_HALF_DAY : cycleTime;
+            
+            const key = `${adjustedTime}_${day}`;
+            if (!dataByTimeDay.has(key)) {
+                dataByTimeDay.set(key, { lightOff: [], lightOn: [] });
+            }
+            
+            if (isLightOn) {
+                dataByTimeDay.get(key).lightOn.push(d);
+            } else {
+                dataByTimeDay.get(key).lightOff.push(d);
+            }
+        });
+        
+        // Pre-compute proportions for all days
+        for (let day = 1; day <= totalDays; day++) {
+            preComputeProportions(day, true);  // Light-off
+            preComputeProportions(day, false); // Light-on
+        }
+        
+        console.log('Data pre-processing complete!');
+    }
+    
+    // Pre-compute proportions for a specific day and light condition
+    function preComputeProportions(selectedDay, isLightOff) {
+        const cacheKey = `${selectedDay}_${isLightOff}`;
+        
+        if (precomputedProportions.has(cacheKey)) {
+            return; // Already computed
+        }
+        
+        const proportions = [];
+        let cumulativeMaleActivity = 0;
+        let cumulativeFemaleActivity = 0;
+        
+        for (let t = 1; t <= CYCLE.MINUTES_PER_HALF_DAY; t++) {
+            const dataKey = `${t}_${selectedDay}`;
+            const timeData = dataByTimeDay.get(dataKey);
+            
+            if (timeData) {
+                const currentData = isLightOff ? timeData.lightOff : timeData.lightOn;
+                
+                // Sum activity by gender for this time point
+                let maleSum = 0;
+                let femaleSum = 0;
+                
+                currentData.forEach(d => {
+                    if (d.sex === 'male') {
+                        maleSum += d.act;
+                    } else {
+                        femaleSum += d.act;
+                    }
+                });
+                
+                // Add to cumulative totals
+                cumulativeMaleActivity += maleSum;
+                cumulativeFemaleActivity += femaleSum;
+            }
+            
+            // Calculate proportion (avoid division by zero)
+            const totalActivity = cumulativeMaleActivity + cumulativeFemaleActivity;
+            const proportion = totalActivity > 0 ? cumulativeMaleActivity / totalActivity : 0.5;
+            
+            proportions.push({
+                time: t,
+                proportion: proportion,
+                maleActivity: cumulativeMaleActivity,
+                femaleActivity: cumulativeFemaleActivity,
+                totalActivity: totalActivity
+            });
+        }
+        
+        precomputedProportions.set(cacheKey, proportions);
+    }
+
+    // Function to pre-compute cumulative sums once (using modulo for cyclical data)
+    function preComputeCumulativeSums() {
+        if (isPrecomputed) {
+            return; // Already computed
+        }
+
+        try {
+            cumulativeSums = {
+                lightOff: {},
+                lightOn: {}
+            };
+            
+            // Group data by mouse ID and normalize time using modulo
+            const dataByMouse = {};
+            combinedData.forEach(d => {
+                if (!dataByMouse[d.id]) {
+                    dataByMouse[d.id] = {};
+                }
+                const normalizedTime = ((d.time - 1) % 1440) + 1; // Normalize to 1-1440 cycle
+                dataByMouse[d.id][normalizedTime] = d.act;
+            });
+            
+            mice.forEach(mouseId => {
+                cumulativeSums.lightOff[mouseId] = [];
+                cumulativeSums.lightOn[mouseId] = [];
+                
+                let lightOffSum = 0;
+                let lightOnSum = 0;
+                
+                for (let t = 1; t <= CYCLE.MINUTES_PER_HALF_DAY; t++) {
+                    // Light-off data (first half of day: 1-720)
+                    const lightOffActivity = dataByMouse[mouseId] && dataByMouse[mouseId][t];
+                    if (lightOffActivity && typeof lightOffActivity === 'number') {
+                        lightOffSum += lightOffActivity;
+                    }
+                    cumulativeSums.lightOff[mouseId][t - 1] = lightOffSum;
+                    
+                    // Light-on data (second half of day: 721-1440)
+                    const lightOnTime = t + CYCLE.MINUTES_PER_HALF_DAY;
+                    const lightOnActivity = dataByMouse[mouseId] && dataByMouse[mouseId][lightOnTime];
+                    if (lightOnActivity && typeof lightOnActivity === 'number') {
+                        lightOnSum += lightOnActivity;
+                    }
+                    cumulativeSums.lightOn[mouseId][t - 1] = lightOnSum;
+                }
+            });
+            
+            isPrecomputed = true;
+        } catch (error) {
+            console.error('Error computing cumulative sums:', error);
+            // Fallback to empty sums
+            cumulativeSums = {
+                lightOff: {},
+                lightOn: {}
+            };
+        }
+    }
+
+    // Function to get running averages efficiently using pre-computed sums
+    function getRunningAverages(cycleTime, isLightOff) {
+        try {
+            if (!cumulativeSums || !cumulativeSums.lightOff || !cumulativeSums.lightOn) {
+                return []; // Return empty array if sums not computed
+            }
+            
+            const sumData = isLightOff ? cumulativeSums.lightOff : cumulativeSums.lightOn;
+            const averages = [];
+            
+            mice.forEach(mouseId => {
+                if (sumData[mouseId] && 
+                    Array.isArray(sumData[mouseId]) && 
+                    sumData[mouseId][cycleTime - 1] !== undefined &&
+                    typeof sumData[mouseId][cycleTime - 1] === 'number') {
+                    
+                    const sum = sumData[mouseId][cycleTime - 1];
+                    const average = sum / cycleTime;
+                    
+                    if (!isNaN(average) && isFinite(average)) {
+                        const sexData = combinedData.find(d => d.id === mouseId);
+                        averages.push({
+                            id: mouseId,
+                            average: average,
+                            sex: sexData ? sexData.sex : 'unknown'
+                        });
+                    }
+                }
+            });
+            
+            return averages.sort((a, b) => b.average - a.average); // Sort in descending order
+        } catch (error) {
+            console.error('Error getting running averages:', error);
+            return []; // Return empty array on error
+        }
+    }
+
+    // Optimized function to get data for a specific time (O(1) lookup)
+    function getDataForTime(cycleTime, selectedDay = 1) {
+        const dataKey = `${cycleTime}_${selectedDay}`;
+        const timeData = dataByTimeDay.get(dataKey);
+        
+        if (timeData) {
+            return {
+                lightOffData: timeData.lightOff,
+                lightOnData: timeData.lightOn
+            };
+        }
+        
+        return { lightOffData: [], lightOnData: [] };
+    }
+
+    // Optimized function to get proportion data (direct lookup)
+    function getProportionData(maxTime, selectedDay, isLightOff) {
+        const cacheKey = `${selectedDay}_${isLightOff}`;
+        const fullData = precomputedProportions.get(cacheKey);
+        
+        if (fullData) {
+            return fullData.slice(0, maxTime); // Return up to maxTime
+        }
+        
+        // Fallback: compute on demand if not pre-computed
+        preComputeProportions(selectedDay, isLightOff);
+        return precomputedProportions.get(cacheKey)?.slice(0, maxTime) || [];
+    }
+
+    // Helper function to get actual time for data lookup
+    function getActualTime(cycleTime, selectedDay, isLightOn) {
+        const dayOffset = (selectedDay - 1) * CYCLE.MINUTES_PER_HALF_DAY * 2;
+        return dayOffset + cycleTime + (isLightOn ? CYCLE.MINUTES_PER_HALF_DAY : 0);
+    }
+
+    // Function to sort data by activity level
+    function sortDataByActivity(data) {
+        return data.sort((a, b) => b.act - a.act);
+    }
+
+    // Pre-process all data for optimal performance
+    preProcessAllData();
 
     // Set up dimensions
     const margin = ACTIVITY_RANK.MARGIN;
@@ -73,6 +314,14 @@ export async function createActivityRankVisualization() {
     
     const lightOnRanking = svg.append('g')
         .attr('transform', `translate(${margin.left + chartWidth + rankingGap}, ${margin.top + chartHeight + ACTIVITY_RANK.PLOT_GAP})`);
+
+    // Create proportion plot groups (top right of main plots)
+    const lightOffProportion = svg.append('g')
+        .attr('transform', `translate(${margin.left + chartWidth - ACTIVITY_RANK.PROPORTION_WIDTH - ACTIVITY_RANK.PROPORTION_MARGIN}, ${margin.top + ACTIVITY_RANK.PROPORTION_MARGIN})`);
+    
+    // For the lower plot, place at bottom right
+    const lightOnProportion = svg.append('g')
+        .attr('transform', `translate(${margin.left + chartWidth - ACTIVITY_RANK.PROPORTION_WIDTH - ACTIVITY_RANK.PROPORTION_MARGIN}, ${margin.top + chartHeight + ACTIVITY_RANK.PLOT_GAP + chartHeight - ACTIVITY_RANK.PROPORTION_HEIGHT - ACTIVITY_RANK.PROPORTION_MARGIN})`);
 
     // Add background rectangles
     lightOffPlot.append('rect')
@@ -161,6 +410,28 @@ export async function createActivityRankVisualization() {
     const rankingXScaleOn = d3.scaleLinear()
         .domain([0, 100]) // Fixed max at 100
         .range([0, rankingWidth]); // Bars point to the right
+
+    // Set up scales for proportion plots
+    const proportionXScale = d3.scaleLinear()
+        .domain([1, CYCLE.MINUTES_PER_HALF_DAY])
+        .range([0, ACTIVITY_RANK.PROPORTION_WIDTH]);
+
+    const proportionYScale = d3.scaleLinear()
+        .domain([0, 1]) // 0 to 100% proportion
+        .range([ACTIVITY_RANK.PROPORTION_HEIGHT, 0]);
+
+    // Area generators for proportion plots
+    const areaGenerator = d3.area()
+        .x(d => proportionXScale(d.time))
+        .y0(proportionYScale(0))
+        .y1(d => proportionYScale(d.proportion))
+        .curve(d3.curveMonotoneX);
+
+    const areaGeneratorInverted = d3.area()
+        .x(d => proportionXScale(d.time))
+        .y0(d => proportionYScale(d.proportion))
+        .y1(proportionYScale(1))
+        .curve(d3.curveMonotoneX);
 
     // Create separate axes for each plot
     const xAxisUp = d3.axisBottom(xScaleUp)
@@ -373,105 +644,6 @@ export async function createActivityRankVisualization() {
         .style('border', 'none')
         .style('border-radius', '4px')
         .style('cursor', 'pointer');
-
-    // Pre-compute cumulative sums for efficiency
-    let cumulativeSums = {};
-    let isPrecomputed = false;
-
-    // Function to pre-compute cumulative sums once (using modulo for cyclical data)
-    function preComputeCumulativeSums() {
-        if (isPrecomputed) {
-            return; // Already computed
-        }
-
-        try {
-            cumulativeSums = {
-                lightOff: {},
-                lightOn: {}
-            };
-            
-            // Group data by mouse ID and normalize time using modulo
-            const dataByMouse = {};
-            combinedData.forEach(d => {
-                if (!dataByMouse[d.id]) {
-                    dataByMouse[d.id] = {};
-                }
-                const normalizedTime = ((d.time - 1) % 1440) + 1; // Normalize to 1-1440 cycle
-                dataByMouse[d.id][normalizedTime] = d.act;
-            });
-            
-            mice.forEach(mouseId => {
-                cumulativeSums.lightOff[mouseId] = [];
-                cumulativeSums.lightOn[mouseId] = [];
-                
-                let lightOffSum = 0;
-                let lightOnSum = 0;
-                
-                for (let t = 1; t <= CYCLE.MINUTES_PER_HALF_DAY; t++) {
-                    // Light-off data (first half of day: 1-720)
-                    const lightOffActivity = dataByMouse[mouseId] && dataByMouse[mouseId][t];
-                    if (lightOffActivity && typeof lightOffActivity === 'number') {
-                        lightOffSum += lightOffActivity;
-                    }
-                    cumulativeSums.lightOff[mouseId][t - 1] = lightOffSum;
-                    
-                    // Light-on data (second half of day: 721-1440)
-                    const lightOnTime = t + CYCLE.MINUTES_PER_HALF_DAY;
-                    const lightOnActivity = dataByMouse[mouseId] && dataByMouse[mouseId][lightOnTime];
-                    if (lightOnActivity && typeof lightOnActivity === 'number') {
-                        lightOnSum += lightOnActivity;
-                    }
-                    cumulativeSums.lightOn[mouseId][t - 1] = lightOnSum;
-                }
-            });
-            
-            isPrecomputed = true;
-        } catch (error) {
-            console.error('Error computing cumulative sums:', error);
-            // Fallback to empty sums
-            cumulativeSums = {
-                lightOff: {},
-                lightOn: {}
-            };
-        }
-    }
-
-    // Function to get running averages efficiently using pre-computed sums
-    function getRunningAverages(cycleTime, isLightOff) {
-        try {
-            if (!cumulativeSums || !cumulativeSums.lightOff || !cumulativeSums.lightOn) {
-                return []; // Return empty array if sums not computed
-            }
-            
-            const sumData = isLightOff ? cumulativeSums.lightOff : cumulativeSums.lightOn;
-            const averages = [];
-            
-            mice.forEach(mouseId => {
-                if (sumData[mouseId] && 
-                    Array.isArray(sumData[mouseId]) && 
-                    sumData[mouseId][cycleTime - 1] !== undefined &&
-                    typeof sumData[mouseId][cycleTime - 1] === 'number') {
-                    
-                    const sum = sumData[mouseId][cycleTime - 1];
-                    const average = sum / cycleTime;
-                    
-                    if (!isNaN(average) && isFinite(average)) {
-                        const sexData = combinedData.find(d => d.id === mouseId);
-                        averages.push({
-                            id: mouseId,
-                            average: average,
-                            sex: sexData ? sexData.sex : 'unknown'
-                        });
-                    }
-                }
-            });
-            
-            return averages.sort((a, b) => b.average - a.average); // Sort in descending order
-        } catch (error) {
-            console.error('Error getting running averages:', error);
-            return []; // Return empty array on error
-        }
-    }
 
     // Create 4 separate tooltips for each plot type
     const tooltipLightOffMain = d3.select('body')
@@ -781,33 +953,10 @@ export async function createActivityRankVisualization() {
             tooltipLightOffMain.transition().duration(300).style('opacity', 0);
             tooltipLightOnMain.transition().duration(300).style('opacity', 0);
             tooltipLightOffRanking.transition().duration(300).style('opacity', 0);
-            tooltipLightOnRanking.transition().duration(300).style('opacity', 0);
+            tooltipLightOnRanking.transition().style('opacity', 0);
             
             hideTimeout = null;
         }, 100); // 100ms delay
-    }
-
-    // Helper function to get actual time for data lookup
-    function getActualTime(cycleTime, selectedDay, isLightOn) {
-        const dayOffset = (selectedDay - 1) * CYCLE.MINUTES_PER_HALF_DAY * 2;
-        return dayOffset + cycleTime + (isLightOn ? CYCLE.MINUTES_PER_HALF_DAY : 0);
-    }
-
-    // Function to get data for a specific time
-    function getDataForTime(cycleTime, selectedDay = 1) {
-        const dayOffset = (selectedDay - 1) * CYCLE.MINUTES_PER_HALF_DAY * 2;
-        const lightOffTime = dayOffset + cycleTime;
-        const lightOnTime = dayOffset + cycleTime + CYCLE.MINUTES_PER_HALF_DAY;
-        
-        const lightOffData = combinedData.filter(d => d.time === lightOffTime);
-        const lightOnData = combinedData.filter(d => d.time === lightOnTime);
-        
-        return { lightOffData, lightOnData };
-    }
-
-    // Function to sort data by activity level
-    function sortDataByActivity(data) {
-        return data.sort((a, b) => b.act - a.act);
     }
 
     // Function to update visualization
@@ -1005,6 +1154,70 @@ export async function createActivityRankVisualization() {
             .attr('fill', d => colorScale(d.sex));
 
         lightOnRankingBars.exit().remove();
+
+        // Function to update proportion plots
+        updateProportionPlots(cycleTime, selectedDay);
+    }
+
+    // Function to update proportion plots
+    function updateProportionPlots(cycleTime, selectedDay) {
+        // Get proportion data up to current time
+        const lightOffProportions = getProportionData(cycleTime, selectedDay, true);
+        const lightOnProportions = getProportionData(cycleTime, selectedDay, false);
+        
+        // Update light-off proportion plot
+        if (lightOffProportions.length > 0) {
+            // Male area (bottom)
+            const lightOffMaleArea = lightOffProportion.selectAll('.male-area')
+                .data([lightOffProportions]);
+            
+            lightOffMaleArea.enter()
+                .append('path')
+                .attr('class', 'male-area')
+                .merge(lightOffMaleArea)
+                .attr('d', areaGenerator)
+                .attr('fill', 'var(--color-male)')
+                .attr('opacity', 0.6);
+            
+            // Female area (top)
+            const lightOffFemaleArea = lightOffProportion.selectAll('.female-area')
+                .data([lightOffProportions]);
+            
+            lightOffFemaleArea.enter()
+                .append('path')
+                .attr('class', 'female-area')
+                .merge(lightOffFemaleArea)
+                .attr('d', areaGeneratorInverted)
+                .attr('fill', 'var(--color-female)')
+                .attr('opacity', 0.6);
+        }
+        
+        // Update light-on proportion plot
+        if (lightOnProportions.length > 0) {
+            // Male area (bottom)
+            const lightOnMaleArea = lightOnProportion.selectAll('.male-area')
+                .data([lightOnProportions]);
+            
+            lightOnMaleArea.enter()
+                .append('path')
+                .attr('class', 'male-area')
+                .merge(lightOnMaleArea)
+                .attr('d', areaGenerator)
+                .attr('fill', 'var(--color-male)')
+                .attr('opacity', 0.6);
+            
+            // Female area (top)
+            const lightOnFemaleArea = lightOnProportion.selectAll('.female-area')
+                .data([lightOnProportions]);
+            
+            lightOnFemaleArea.enter()
+                .append('path')
+                .attr('class', 'female-area')
+                .merge(lightOnFemaleArea)
+                .attr('d', areaGeneratorInverted)
+                .attr('fill', 'var(--color-female)')
+                .attr('opacity', 0.6);
+        }
     }
 
     // Animation function
@@ -1043,8 +1256,7 @@ export async function createActivityRankVisualization() {
         currentTime = 1;
         // Reset to Day 1
         daySelect.property('value', 1);
-        // Force recalculation for Day 1
-        isPrecomputed = false;
+        // No need to clear caches - just update visualization
         updateVisualization(currentTime, 1);
     });
 
@@ -1074,20 +1286,15 @@ export async function createActivityRankVisualization() {
                 }
             }
             
-            // Force recalculation for new day
-            isPrecomputed = false;
-            
-            // Reset time to start of day
+            // No need to clear caches - data is already pre-computed!
+            // Just reset time and update visualization
             currentTime = 1;
-            
-            // Update visualization
             updateVisualization(currentTime, selectedDay);
         } catch (error) {
             console.error('Error changing day:', error);
             // Reset to safe state
             this.value = 1;
             currentTime = 1;
-            isPrecomputed = false;
             updateVisualization(currentTime, 1);
         }
     });
