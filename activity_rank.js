@@ -46,6 +46,7 @@ export async function createActivityRankVisualization() {
     let animationId = null;
     let currentTime = 1;
     let wasPlayingBeforeHover = false; // Track if animation was playing before hover
+    let hideTimeout = null; // Track hide timeout for tooltip debouncing
 
     // Create container
     const container = d3.select('#activity-rank-viz');
@@ -674,6 +675,12 @@ export async function createActivityRankVisualization() {
     }
 
     function showAllTooltips(event, mouseId, hoveredPlot) {
+        // Clear any pending hide timeout
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+        
         // Remove any existing test tooltips immediately
         d3.selectAll('.test-tooltip').remove();
         
@@ -759,15 +766,25 @@ export async function createActivityRankVisualization() {
     }
 
     function hideAllTooltips() {
-        // Remove any test tooltips
-        d3.selectAll('.test-tooltip').remove();
-        d3.select('.cursor-test-tooltip').remove();
+        // Clear any existing hide timeout
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+        }
         
-        // Hide original tooltips
-        tooltipLightOffMain.transition().duration(300).style('opacity', 0);
-        tooltipLightOnMain.transition().duration(300).style('opacity', 0);
-        tooltipLightOffRanking.transition().duration(300).style('opacity', 0);
-        tooltipLightOnRanking.transition().duration(300).style('opacity', 0);
+        // Set a delay before hiding to prevent flicker when moving between bars
+        hideTimeout = setTimeout(() => {
+            // Remove any test tooltips
+            d3.selectAll('.test-tooltip').remove();
+            d3.select('.cursor-test-tooltip').remove();
+            
+            // Hide original tooltips
+            tooltipLightOffMain.transition().duration(300).style('opacity', 0);
+            tooltipLightOnMain.transition().duration(300).style('opacity', 0);
+            tooltipLightOffRanking.transition().duration(300).style('opacity', 0);
+            tooltipLightOnRanking.transition().duration(300).style('opacity', 0);
+            
+            hideTimeout = null;
+        }, 100); // 100ms delay
     }
 
     // Helper function to get actual time for data lookup
