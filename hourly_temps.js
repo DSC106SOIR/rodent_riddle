@@ -66,6 +66,15 @@ export async function createHourlyTemps() {
         .y0(d => yScale(d.lower))
         .y1(d => yScale(d.upper));
 
+
+    svg.append('rect')
+      .attr('x', HOURLY_TEMPS_CONFIG.MARGIN.left)
+      .attr('y', 30)
+      .attr('width', 385)
+      .attr('height', 370)
+      .attr('stroke', 'white')
+      .attr('fill', '#ececec');
+
     svg.append("path")
       .datum(m_areaData)
       .attr("id", "m_area")
@@ -118,6 +127,7 @@ export async function createHourlyTemps() {
       .attr('stroke-width', '30px')
       .attr("fill", "none")
       .attr("opacity", 0);
+
 
 
     // mousing over reveals and hides the area
