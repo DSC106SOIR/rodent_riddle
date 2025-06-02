@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rodent Riddle</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game.css">
     <script src="main.js" type="module"></script>
     <script>
         function toggleAnswer(button) {
@@ -152,6 +153,67 @@
 <p>
     The most challenging part of the project remaining is to curate a few more visualizations that feel fresh and interactive. Our dataset is limited in its number of features (we can explore activity, temperature, gender, and estrus cycles), and so we'll need to work to create visualizations that add insight without feeling redundant. Our second challenge will be to come up with critical engagement questions that strike a balance between being too technical and boringly simple. A mix of difficulties will be beneficial, and our target is for the level of engagement to be at the point to make an older kid think for a few minutes and require most viewers to take a second look at the visualization before answering. These questions give us the most opportunity to ensure that scientists aren't missing interesting details and to promote learning for the rest of our audience, so it's important that we get their level of difficulty right.
 </p>
+</div>
+
+<!-- Mice Data Interactive Game -->
+<hr>
+<h2>Interactive Mouse Behavior Game</h2>
+<p class="viz-instructions">
+    Think you understand mouse behavior? Test your scientific intuition! This interactive game challenges you to determine a mouse's sex and reproductive state (estrus) based solely on temperature and activity data. Just like real researchers, you'll need to identify patterns in physiological data to make accurate inferences about the internal states of laboratory animals.
+</p>
+
+<div id="game-section">
+  <div id="start-overlay" class="start-overlay">
+    <div class="start-content">
+      <h1>Mice Data Interactive</h1>
+      <img src="./image/mouse.gif" alt="Mouse GIF" style="width:180px;display:block;margin:0 auto 24px auto;" />
+      <button id="start-btn">Start Game</button>
+    </div>
+  </div>
+  <div class="main-flex">
+    <div class="container mouse-bg" style="display:none;">
+      <div id="narrative" class="narrative">
+        <p>
+          You are a mouse scientist. Can you infer the inner life of a mouse from its outward signs? <br>
+          Guess the sex and estrus state based only on temperature and activity — just like a real researcher!
+        </p>
+      </div>
+      <h1>Mice Data Interactive</h1>
+      <div style="margin-bottom: 16px;">
+        <label for="granularity-select" style="color:#7ed6df;font-weight:600;">Time Granularity: </label>
+        <select id="granularity-select">
+          <option value="day">Day</option>
+          <option value="halfday">Halfday</option>
+          <option value="hour" selected>Hour</option>
+          <option value="minute">Minute</option>
+        </select>
+      </div>
+      <div id="graph1"></div>
+      <div id="graph2" style="display:none;"></div>
+      <div id="sex-guess" class="button-group">
+        <button id="guess-male">Guess: Male</button>
+        <button id="guess-female">Guess: Female</button>
+        <span id="sex-result"></span>
+      </div>
+      <div id="estrus-guess" class="button-group" style="display:none;">
+        <button id="estrus-yes">Guess: Estrus</button>
+        <button id="estrus-no">Guess: Not Estrus</button>
+        <span id="result"></span>
+      </div>
+      <div id="final-explanation" style="display:none; opacity:0;">
+        <h2>Result</h2>
+        <div id="final-result" style="font-size:1.3rem;margin-bottom:18px;"></div>
+        <h2>Why is this important?</h2>
+        <p>
+          Just as you did, scientists must infer the internal states of animals from their behavior and physiology. This helps us understand biology, health, and the hidden lives of creatures.
+        </p>
+        <button onclick="location.reload()">Play Again</button>
+      </div>
+    </div>
+    <div id="legend-container"></div>
+  </div>
+
+  <script type="module" src="game.js"></script>
 </div>
 
 </body>
