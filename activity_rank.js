@@ -1183,15 +1183,145 @@ export async function createActivityRankVisualization() {
 
         lightOnRankingBars.exit().remove();
 
+        // Update top active mouse labels
+        // Light-off main plot - top left corner
+        const topLightOffMouse = sortedLightOffData.length > 0 ? sortedLightOffData[0] : null;
+        const lightOffTopLabel = lightOffPlot.selectAll('.top-mouse-label')
+            .data(topLightOffMouse ? [topLightOffMouse] : []);
+        
+        lightOffTopLabel.enter()
+            .append('text')
+            .attr('class', 'top-mouse-label')
+            .attr('x', 10)
+            .attr('y', 20)
+            .style('font-size', '12px')
+            .style('font-weight', 'bold')
+            .merge(lightOffTopLabel)
+            .text(d => `Top: ${d.id}`)
+            .style('fill', d => colorScale(d.sex));
+        
+        lightOffTopLabel.exit().remove();
+
+        // Light-on main plot - bottom left corner
+        const topLightOnMouse = sortedLightOnData.length > 0 ? sortedLightOnData[0] : null;
+        const lightOnTopLabel = lightOnPlot.selectAll('.top-mouse-label')
+            .data(topLightOnMouse ? [topLightOnMouse] : []);
+        
+        lightOnTopLabel.enter()
+            .append('text')
+            .attr('class', 'top-mouse-label')
+            .attr('x', 10)
+            .attr('y', chartHeight - 10)
+            .style('font-size', '12px')
+            .style('font-weight', 'bold')
+            .merge(lightOnTopLabel)
+            .text(d => `Top: ${d.id}`)
+            .style('fill', d => colorScale(d.sex));
+        
+        lightOnTopLabel.exit().remove();
+
+        // Light-off ranking plot - bottom right corner
+        // Clear any existing labels
+        lightOffRanking.selectAll('.top-ranking-label, .top-ranking-title').remove();
+        
+        // Get top 3 mice
+        const top3RankingOffMice = lightOffRankingData.slice(0, 3);
+        
+        if (top3RankingOffMice.length > 0) {
+            // Add "Top of day" title
+            lightOffRanking.append('text')
+                .attr('class', 'top-ranking-title')
+                .attr('x', rankingWidth - 10)
+                .attr('y', chartHeight - 50)
+                .attr('text-anchor', 'end')
+                .style('font-size', '10px')
+                .style('font-weight', 'bold')
+                .style('fill', 'var(--color-accent)')
+                .text('Top of light-off:');
+            
+            // Add each top mouse on separate lines
+            top3RankingOffMice.forEach((mouse, index) => {
+                // Add rank number
+                lightOffRanking.append('text')
+                    .attr('class', 'top-ranking-label')
+                    .attr('x', rankingWidth - 50)
+                    .attr('y', chartHeight - 35 + (index * 12))
+                    .attr('text-anchor', 'start')
+                    .style('font-size', '10px')
+                    .style('font-weight', 'bold')
+                    .style('fill', 'var(--color-accent)')
+                    .text(`${index + 1}.`);
+                
+                // Add mouse ID
+                lightOffRanking.append('text')
+                    .attr('class', 'top-ranking-label')
+                    .attr('x', rankingWidth - 35)
+                    .attr('y', chartHeight - 35 + (index * 12))
+                    .attr('text-anchor', 'start')
+                    .style('font-size', '10px')
+                    .style('font-weight', 'bold')
+                    .style('fill', colorScale(mouse.sex))
+                    .text(`${mouse.id}`);
+            });
+        }
+
+        // Light-on ranking plot - bottom right corner
+        // Clear any existing labels
+        lightOnRanking.selectAll('.top-ranking-label, .top-ranking-title').remove();
+        
+        // Get top 3 mice
+        const top3RankingOnMice = lightOnRankingData.slice(0, 3);
+        
+        if (top3RankingOnMice.length > 0) {
+            // Add "Top of day" title
+            lightOnRanking.append('text')
+                .attr('class', 'top-ranking-title')
+                .attr('x', rankingWidth - 10)
+                .attr('y', chartHeight - 50)
+                .attr('text-anchor', 'end')
+                .style('font-size', '10px')
+                .style('font-weight', 'bold')
+                .style('fill', 'var(--color-accent)')
+                .text('Top of light-on:');
+            
+            // Add each top mouse on separate lines
+            top3RankingOnMice.forEach((mouse, index) => {
+                // Add rank number
+                lightOnRanking.append('text')
+                    .attr('class', 'top-ranking-label')
+                    .attr('x', rankingWidth - 50)
+                    .attr('y', chartHeight - 35 + (index * 12))
+                    .attr('text-anchor', 'start')
+                    .style('font-size', '10px')
+                    .style('font-weight', 'bold')
+                    .style('fill', 'var(--color-accent)')
+                    .text(`${index + 1}.`);
+                
+                // Add mouse ID
+                lightOnRanking.append('text')
+                    .attr('class', 'top-ranking-label')
+                    .attr('x', rankingWidth - 35)
+                    .attr('y', chartHeight - 35 + (index * 12))
+                    .attr('text-anchor', 'start')
+                    .style('font-size', '10px')
+                    .style('font-weight', 'bold')
+                    .style('fill', colorScale(mouse.sex))
+                    .text(`${mouse.id}`);
+            });
+        }
+
         // Function to update proportion plots
         updateProportionPlots(cycleTime, selectedDay);
     }
 
     // Function to update proportion plots
     function updateProportionPlots(cycleTime, selectedDay) {
-        // Get proportion data up to current time
-        const lightOffProportions = getProportionData(cycleTime, selectedDay, true);
-        const lightOnProportions = getProportionData(cycleTime, selectedDay, false);
+        // Show entire plot when at the beginning (time = 1), otherwise show up to current time
+        const maxTime = cycleTime === 1 ? CYCLE.MINUTES_PER_HALF_DAY : cycleTime;
+        
+        // Get proportion data up to maxTime
+        const lightOffProportions = getProportionData(maxTime, selectedDay, true);
+        const lightOnProportions = getProportionData(maxTime, selectedDay, false);
         
         // Update light-off proportion plot
         if (lightOffProportions.length > 0) {
@@ -1250,7 +1380,7 @@ export async function createActivityRankVisualization() {
                 .style('cursor', 'crosshair')
                 .on('mousemove', function(event) {
                     const [mouseX] = d3.pointer(event, this);
-                    const currentPropTime = Math.max(1, Math.min(cycleTime, Math.round(proportionXScale.invert(mouseX))));
+                    const currentPropTime = Math.max(1, Math.min(maxTime, Math.round(proportionXScale.invert(mouseX))));
                     const currentPropData = lightOffProportions.find(d => d.time === currentPropTime) || lightOffProportions[lightOffProportions.length - 1];
                     
                     if (currentPropData) {
@@ -1339,7 +1469,7 @@ export async function createActivityRankVisualization() {
                 .style('cursor', 'crosshair')
                 .on('mousemove', function(event) {
                     const [mouseX] = d3.pointer(event, this);
-                    const currentPropTime = Math.max(1, Math.min(cycleTime, Math.round(proportionXScale.invert(mouseX))));
+                    const currentPropTime = Math.max(1, Math.min(maxTime, Math.round(proportionXScale.invert(mouseX))));
                     const currentPropData = lightOnProportions.find(d => d.time === currentPropTime) || lightOnProportions[lightOnProportions.length - 1];
                     
                     if (currentPropData) {
