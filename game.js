@@ -30,26 +30,22 @@ function drawLegend() {
     .attr('width', legendWidth)
     .attr('height', legendHeight + 2 * legendPad);
   const defs = legendSvg.append('defs');
-  const linearGradient = defs.append('linearGradient')
-    .attr('id', 'temp-gradient')
-    .attr('x1', '0%').attr('y1', '100%')
-    .attr('x2', '0%').attr('y2', '0%');
+  const linearGradient = defs.select('#temp-gradient').empty()
+    ? defs.append('linearGradient').attr('id', 'temp-gradient')
+    : defs.select('#temp-gradient');
 
-  const NUM_STOPS = 12; // smoother gradient
-  const stopData = d3.range(NUM_STOPS).map(i => {
-      const t = i / (NUM_STOPS - 1);
-      const tempValue = globalMinTemp + t * (globalMaxTemp - globalMinTemp);
-      return {
-        offset: `${t * 100}%`,
-        color: tempColor(tempValue)
-      };
-  });
+  linearGradient
+    .attr('x1', '0%').attr('y1', '100%')
+    .attr('x2', '0%').attr('y2', '0%')
+    .selectAll('stop').remove();
 
   linearGradient.selectAll('stop')
-    .data(stopData)
-    .enter()
-    .append('stop')
-    .attr('offset', d => d.offset)
+    .data([
+      { offset: '0%',   color: tempColor(globalMinTemp) },
+      { offset: '100%', color: tempColor(globalMaxTemp) }
+    ])
+    .enter().append('stop')
+    .attr('offset',     d => d.offset)
     .attr('stop-color', d => d.color);
 
   legendSvg.append('rect')
