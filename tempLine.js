@@ -118,11 +118,13 @@ export function compareTemperatureChart() {
     const tooltip = d3.select("#other-viz")
       .append("div")
       .style("position", "absolute")
-      .style("background", "white")
+      .style("background", "rgba(255,255,255,0.95)")
       .style("border", "1px solid #999")
-      .style("padding", "8px")
-      .style("border-radius", "4px")
+      .style("padding", "8px 10px")
+      .style("border-radius", "6px")
       .style("font-size", "12px")
+      .style("max-width", "240px")
+      .style("white-space", "nowrap")
       .style("display", "none")
       .style("pointer-events", "none");
 

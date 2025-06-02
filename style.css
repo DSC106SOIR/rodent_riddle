@@ -454,12 +454,13 @@ hr {
 
 /* === Effect of Estrus Visualization === */
 #other-viz {
+    box-sizing: border-box; /* include padding & border in width calc */
+    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: 100%;        /* take full available width */
-    max-width: none;    /* remove hard cap so svg can scale */
     margin: 0 auto;
     overflow-x: auto;   /* allow horizontal scroll if still too wide */
     background: rgba(255, 245, 215, 0.3);
@@ -479,6 +480,7 @@ hr {
 
 /* Make the Estrus SVG responsive */
 #other-viz svg {
+    box-sizing: border-box;
     width: 100% !important; /* scale to container width */
     height: auto !important;
     background: transparent;
