@@ -458,10 +458,10 @@ hr {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: 100%;
-    max-width: 100ch;
+    width: 100%;        /* take full available width */
+    max-width: none;    /* remove hard cap so svg can scale */
     margin: 0 auto;
-    overflow: hidden;
+    overflow-x: auto;   /* allow horizontal scroll if still too wide */
     background: rgba(255, 245, 215, 0.3);
     padding: 20px;
     border-radius: 15px;
@@ -477,8 +477,9 @@ hr {
     overflow: hidden;
 }
 
+/* Make the Estrus SVG responsive */
 #other-viz svg {
-    max-width: 100%;
-    height: auto;
+    width: 100% !important; /* scale to container width */
+    height: auto !important;
     background: transparent;
 }

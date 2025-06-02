@@ -75,15 +75,19 @@ function drawLegend() {
     .attr('x', 36)
     .attr('y', 18)
     .attr('text-anchor', 'start')
-    .attr('fill', '#f6e58d')
+    .attr('fill', tempColor(globalMaxTemp))
     .attr('font-size', '15px')
+    .attr('font-weight', '600')
+    .attr('text-shadow', '1px 1px 2px rgba(0, 0, 0, 0.5)')
     .text('Hotter');
   legendSvg.append('text')
     .attr('x', 36)
     .attr('y', legendHeight + legendPad + 18)
     .attr('text-anchor', 'start')
-    .attr('fill', '#7ed6df')
+    .attr('fill', tempColor(globalMinTemp))
     .attr('font-size', '15px')
+    .attr('font-weight', '600')
+    .attr('text-shadow', '1px 1px 2px rgba(0, 0, 0, 0.5)')
     .text('Colder');
 }
 
