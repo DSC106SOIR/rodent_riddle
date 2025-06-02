@@ -52,6 +52,41 @@
         <strong>Our suggested answer:</strong> The visualization reveals clear circadian patterns in mouse behavior. During light-off periods (night), mice consistently show heightened activity levels, coupled with elevated body temperatures (shown by warmer colors). Conversely, during light-on periods (day), their activity decreases significantly, and body temperatures tend to be cooler. This day-night activity pattern strongly indicates nocturnal behavior, which is an evolutionary adaptation common in rodents. The synchronization between activity levels and body temperature also demonstrates how circadian rhythms coordinate multiple physiological processes to optimize survival during their most active periods.
     </p>
 
+    <!-- Activity Ranking Visualization -->
+    <h2>Activity Rankings: Day vs Night Comparison</h2>
+    <p class="viz-instructions">
+        This visualization provides a comprehensive view of mouse activity patterns across day and night cycles, with a special focus on gender differences. The dual bar charts show activity levels during light-off (night) and light-on (day) periods, with mice automatically sorted by their activity levels. The visualization includes mini-plots showing the proportion of male vs female activity over time, allowing for detailed analysis of gender-based activity patterns.
+    </p>
+    <ul class="viz-features">
+        <li><strong>Dual Bar Charts:</strong> Upper bars (light off) and lower bars (light on) show activity levels, with mice ranked by activity at each time point.</li>
+        <li><strong>Gender Analysis:</strong> Blue bars represent male mice, pink bars represent female mice, with mini-plots showing the proportion of activity by gender over time.</li>
+        <li><strong>Dynamic Features:</strong>
+            <ul>
+                <li>Real-time activity ranking updates as you move through time</li>
+                <li>Running average rankings show consistent activity patterns</li>
+                <li>Hover over bars to see detailed mouse information and highlight corresponding bars across all plots</li>
+                <li>Mini-plots reveal gender activity proportions throughout the cycle</li>
+            </ul>
+        </li>
+        <li><strong>Interactive Controls:</strong>
+            <ul>
+                <li>Time slider to navigate through a 12-hour cycle (720 minutes)</li>
+                <li>Day selector to compare activity patterns across different days</li>
+                <li>Play/Pause animation to observe activity changes over time</li>
+            </ul>
+        </li>
+    </ul>
+    <div id="activity-rank-viz">
+        <!-- Visualization will be dynamically added here (activity_rank.js) -->    
+    </div>
+    <p class="viz-questions">
+        <strong>Question to consider:</strong> How do the activity levels of male and female mice compare during different periods of the day, and what changes do we observe in female activity patterns during estrus days?
+    </p>
+    <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
+    <p class="viz-answer" style="display: none;">
+        <strong>Our suggested answer:</strong> The visualization reveals interesting patterns in gender-based activity levels. Overall, male mice tend to show higher activity levels compared to female mice across both day and night periods. However, during estrus days, we observe a notable increase in female activity levels that extends beyond just the night period. While this increased activity doesn't surpass the overall male activity levels, it represents a significant behavioral change in female mice during their reproductive cycle. The mini-plots showing gender activity proportions help visualize these patterns, with the male proportion typically being higher but showing interesting variations during estrus periods. These findings suggest that while male mice maintain generally higher activity levels, female activity patterns are more dynamic and influenced by their reproductive state.
+    </p>
+
 
     <!-- Other Visualizations (Use the same template) -->
     <h2>Effect of Estrus</h2>
