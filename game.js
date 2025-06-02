@@ -15,7 +15,7 @@ let globalMaxTemp = 39;
 let currentGranularity = 'hour';
 const MAX_MICE = 8;
 const MAX_TIMEPOINTS = 20;
-let currentStep = 1; // 1: sex, 2: estrus, 3: explanation
+let currentStep = 1; 
 
 function computeGlobalTempRange(data) {
   globalMinTemp = d3.min(data, d => d.temp);
@@ -44,7 +44,6 @@ function drawLegend() {
     .attr('offset', d => d.offset)
     .attr('stop-color', d => d.color);
 
-  // Draw the vertical gradient bar with border
   legendSvg.append('rect')
     .attr('x', 0)
     .attr('y', legendPad)
