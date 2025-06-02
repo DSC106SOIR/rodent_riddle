@@ -324,3 +324,9 @@ h1, h2, h3, h4, h5, h6 {
 #activity-rank-viz .light-on-bg {
     opacity: 0.3;
 }
+
+
+#other-viz div {
+    z-index: 10;
+    position: absolute;
+  }

@@ -89,6 +89,34 @@
 
 
     <!-- Other Visualizations (Use the same template) -->
+    <h2>Effect of Estrus</h2>
+    <p class="viz-instructions">
+        This visualization shows the difference of body temperature and activity level of female mice depending on the period. The line chart shows the average body temperature of 12 female mice. Hovering shows the activity level of each time.
+    </p>
+    <ul class="viz-features">
+    <li><strong>Mouse Temperature:</strong> Each line represents average mouse temperature change in one day of each period.<br>(red: estrus day, blue: 1day before estrus day, green: 1day after estrus day, purple: 2day after estrus day)</li>
+        <li><strong>Day/Night Cycles:</strong> Background changes indicate light conditions.</li>
+        <li><strong>Interactive Features:</strong>
+            <ul>
+                <li>Hover over any point to see detailed mouse activity data of the point</li>
+                <li>Activity data is sorted by descending order</li>
+            </ul>
+        </li>
+        <li><strong>Data Sorting:</strong> Each line is an average temperature of 12 female mice on designated days as following.<br>
+        Estrus Day: Average of Day2, Day6, Day10, and Day14<br> 1day Before Estrus Day: Average of Day1, Day5, Day9, and Day13<br> 1day After Estrus Day: Average of Day3, Day7, Day11<br> 2day After Estrus Day: Average of Day4, Day8, Day12</li>
+    <div id="other-viz">
+        <!-- Visualization will be dynamically added here (other-file.js) -->    
+    </div>
+    <p class="viz-questions">
+        <strong>Question to consider:</strong> How do estrus cycle effect on the female mouce body temperature and activity level and why?
+    </p>
+    <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
+    <p class="viz-answer" style="display: none;">
+        <strong>Our suggested answer:</strong> The visualization reveals that estrus affects mouce temperature starting from around 4hours(240 minutes) later after light is turned off(night starts) and ends around 5hours(300 minutes) later after light is turned on(day starts). During that period, average temperature is 0.6°C higher than that in other period at maximum, which is quite large considering that mice is homeotherm. Regarding activity level, estrus activates as well but affected duration is a little different from the case of body temperature. Around the same time body temperature increases, activity level also increases but it ends around 1hour later light is turned on(day starts), which ends earlier than body temperature increasing. Hence we can say that estrus let female mice move a lot to find male mice to breed which is one factor that increase body temperature. In addition, the level of estrogen increases significantly. This leads to the stimulation of the hypothalamus and thermoregulatory centers, which can raise the set point for body temperature and Increasing basal metabolic rate (BMR), resulting in more internal heat production.
+        Other than estrus day, we can see the mice one day before estrus day has high body temperature and activity level compared to others. It is because female mice start to prepare for the estrus. As we can see estrus increases mouce body temperature and activity level highest on the day but starting one day before that as well.
+    </p>
+
+    <!-- Other Visualizations (Use the same template) -->
     <h2>Other Visualizations ...</h2>
     <p class="viz-instructions"></p>
     <ul class="viz-features"></ul>
@@ -97,7 +125,9 @@
     </div>
     <p class="viz-questions"></p>
     <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
-    <p class="viz-answer" style="display: none;"></p>
+    <p class="viz-answer" style="display: none;">
+        <strong>Our suggested answer:</strong> 
+    </p>
 <hr>
 <h2>Initial Prototype Writeup</h2>
 <div class="reflection-box">
