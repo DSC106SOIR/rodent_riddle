@@ -487,7 +487,6 @@ export async function createActivityRankVisualization() {
         .style('z-index', 1001)
         .style('max-width', '150px')
         .style('line-height', '1.2')
-        .style('border', '1px solid var(--color-night)');
 
     const tooltipLightOnMain = d3.select('body')
         .append('div')
@@ -503,13 +502,12 @@ export async function createActivityRankVisualization() {
         .style('z-index', 1002)
         .style('max-width', '150px')
         .style('line-height', '1.2')
-        .style('border', '1px solid var(--color-day)');
 
     const tooltipLightOffRanking = d3.select('body')
         .append('div')
         .attr('class', 'tooltip-light-off-ranking')
         .style('position', 'absolute')
-        .style('background', 'var(--color-secondary)')
+        .style('background', 'var(--color-night)')
         .style('color', 'var(--color-light)')
         .style('padding', '6px')
         .style('border-radius', '4px')
@@ -519,14 +517,13 @@ export async function createActivityRankVisualization() {
         .style('z-index', 1003)
         .style('max-width', '150px')
         .style('line-height', '1.2')
-        .style('border', '1px solid var(--color-accent)');
 
     const tooltipLightOnRanking = d3.select('body')
         .append('div')
         .attr('class', 'tooltip-light-on-ranking')
         .style('position', 'absolute')
-        .style('background', 'var(--color-accent)')
-        .style('color', 'var(--color-light)')
+        .style('background', 'var(--color-day)')
+        .style('color', 'var(--color-accent)')
         .style('padding', '6px')
         .style('border-radius', '4px')
         .style('font-size', '10px')
@@ -535,20 +532,19 @@ export async function createActivityRankVisualization() {
         .style('z-index', 1004)
         .style('max-width', '150px')
         .style('line-height', '1.2')
-        .style('border', '1px solid var(--color-secondary)');
 
     // Enhanced hover functions
     function highlightMouse(mouseId) {
         // Highlight all bars for this mouse
         svg.selectAll('.bar-up, .bar-down, .ranking-bar-off, .ranking-bar-on')
             .filter(d => d.id === mouseId)
-            .attr('stroke-width', 2)
+            .attr('stroke-width', 0.5)
             .style('opacity', 1);
         
         // Dim other bars
         svg.selectAll('.bar-up, .bar-down, .ranking-bar-off, .ranking-bar-on')
             .filter(d => d.id !== mouseId)
-            .style('opacity', 0.3);
+            .style('opacity', 0.4);
     }
 
     function removeHighlight() {
@@ -576,9 +572,12 @@ export async function createActivityRankVisualization() {
                         const barX = mouseIndex * bandWidth;
                         const barY = yScaleUp(lightOffMouse.act);
                         
+                        const absoluteX = svgRect.left + window.scrollX + margin.left + barX + bandWidth/2;
+                        const absoluteY = svgRect.top + window.scrollY + margin.top + barY - 10;
+                        
                         return {
-                            x: svgRect.left + margin.left + barX + bandWidth/2,
-                            y: svgRect.top + margin.top + barY - 10
+                            x: absoluteX,
+                            y: absoluteY
                         };
                     }
                     break;
@@ -596,9 +595,12 @@ export async function createActivityRankVisualization() {
                         const barX = mouseIndex * bandWidth;
                         const barHeight = yScaleDown(lightOnMouse.act);
                         
+                        const absoluteX = svgRect.left + window.scrollX + margin.left + barX + bandWidth/2;
+                        const absoluteY = svgRect.top + window.scrollY + margin.top + chartHeight + ACTIVITY_RANK.PLOT_GAP + barHeight + 10;
+                        
                         return {
-                            x: svgRect.left + margin.left + barX + bandWidth/2,
-                            y: svgRect.top + margin.top + chartHeight + ACTIVITY_RANK.PLOT_GAP + barHeight + 10
+                            x: absoluteX,
+                            y: absoluteY
                         };
                     }
                     break;
@@ -615,9 +617,12 @@ export async function createActivityRankVisualization() {
                         const barY = mouseIndex * bandHeight;
                         const barWidth = rankingXScaleOff(lightOffAvgMouse.average);
                         
+                        const absoluteX = svgRect.left + window.scrollX + margin.left + chartWidth + rankingGap + barWidth + 10;
+                        const absoluteY = svgRect.top + window.scrollY + margin.top + barY + bandHeight/2;
+                        
                         return {
-                            x: svgRect.left + margin.left + chartWidth + rankingGap + barWidth + 10,
-                            y: svgRect.top + margin.top + barY + bandHeight/2
+                            x: absoluteX,
+                            y: absoluteY
                         };
                     }
                     break;
@@ -634,9 +639,12 @@ export async function createActivityRankVisualization() {
                         const barY = mouseIndex * bandHeight;
                         const barWidth = rankingXScaleOn(lightOnAvgMouse.average);
                         
+                        const absoluteX = svgRect.left + window.scrollX + margin.left + chartWidth + rankingGap + barWidth + 10;
+                        const absoluteY = svgRect.top + window.scrollY + margin.top + chartHeight + ACTIVITY_RANK.PLOT_GAP + barY + bandHeight/2;
+                        
                         return {
-                            x: svgRect.left + margin.left + chartWidth + rankingGap + barWidth + 10,
-                            y: svgRect.top + margin.top + chartHeight + ACTIVITY_RANK.PLOT_GAP + barY + bandHeight/2
+                            x: absoluteX,
+                            y: absoluteY
                         };
                     }
                     break;
@@ -650,27 +658,31 @@ export async function createActivityRankVisualization() {
     }
 
     function showTooltipAtPosition(tooltip, content, position) {
-        if (content) {
-            tooltip.transition()
-                .duration(200)
-                .style('opacity', 0.9);
-            
-            if (position) {
-                // Use calculated position
-                tooltip.html(content)
-                    .style('left', position.x + 'px')
-                    .style('top', position.y + 'px');
-            } else {
-                // Fallback: show tooltip at a default offset from the SVG
-                const svgRect = svg.node().getBoundingClientRect();
-                tooltip.html(content)
-                    .style('left', (svgRect.left + 50) + 'px')
-                    .style('top', (svgRect.top + 50) + 'px');
-            }
+        if (content && position) {
+            // Set tooltip content and position
+            tooltip
+                .html(content)
+                .style('position', 'absolute')
+                .style('left', position.x + 'px')
+                .style('top', position.y + 'px')
+                .style('opacity', '0.9')
+                .style('z-index', '10000')
+                .style('pointer-events', 'none')
+                .style('display', 'block')
+                .style('visibility', 'visible');
         }
     }
 
     function showAllTooltips(event, mouseId, hoveredPlot) {
+        // Remove any existing test tooltips immediately
+        d3.selectAll('.test-tooltip').remove();
+        
+        // Hide all original tooltips first
+        tooltipLightOffMain.style('opacity', '0');
+        tooltipLightOnMain.style('opacity', '0');
+        tooltipLightOffRanking.style('opacity', '0');
+        tooltipLightOnRanking.style('opacity', '0');
+        
         // Get data for all plots
         const lightOffData = combinedData.find(d => d.time === getActualTime(currentTime, parseInt(daySelect.property('value')), false) && d.id === mouseId);
         const lightOnData = combinedData.find(d => d.time === getActualTime(currentTime, parseInt(daySelect.property('value')), true) && d.id === mouseId);
@@ -679,18 +691,18 @@ export async function createActivityRankVisualization() {
         
         const sexText = lightOffData?.sex === 'male' ? 'Male' : 'Female';
         
-        // Content for each tooltip
+        // Content for each tooltip (restored to original format)
         const lightOffMainContent = lightOffData ? 
-            `<div><strong>🌙 Light-OFF</strong></div><div>${mouseId} (${sexText})</div><div>Activity: ${Math.round(lightOffData.act)}</div>` : '';
+            `<div><strong>Light-OFF</strong></div><div>Mouse: ${mouseId} (${sexText})</div><div>Activity: ${Math.round(lightOffData.act)}</div>` : '';
             
         const lightOnMainContent = lightOnData ? 
-            `<div><strong>☀️ Light-ON</strong></div><div>${mouseId} (${sexText})</div><div>Activity: ${Math.round(lightOnData.act)}</div>` : '';
+            `<div><strong>Light-ON</strong></div><div>Mouse: ${mouseId} (${sexText})</div><div>Activity: ${Math.round(lightOnData.act)}</div>` : '';
             
         const lightOffRankingContent = lightOffAvg ? 
-            `<div><strong>🌙 Ranking</strong></div><div>${mouseId} (${sexText})</div><div>Avg: ${lightOffAvg.average.toFixed(1)}</div><div>Rank: ${getRunningAverages(currentTime, true).findIndex(d => d.id === mouseId) + 1}</div>` : '';
+            `<div><strong>Light-OFF</strong></div><div>Mouse: ${mouseId} (${sexText})</div><div>Running Average: ${lightOffAvg.average.toFixed(1)}</div><div>Rank: ${getRunningAverages(currentTime, true).findIndex(d => d.id === mouseId) + 1}</div>` : '';
             
         const lightOnRankingContent = lightOnAvg ? 
-            `<div><strong>☀️ Ranking</strong></div><div>${mouseId} (${sexText})</div><div>Avg: ${lightOnAvg.average.toFixed(1)}</div><div>Rank: ${getRunningAverages(currentTime, false).findIndex(d => d.id === mouseId) + 1}</div>` : '';
+            `<div><strong>Light-ON</strong></div><div>Mouse: ${mouseId} (${sexText})</div><div>Running Average: ${lightOnAvg.average.toFixed(1)}</div><div>Rank: ${getRunningAverages(currentTime, false).findIndex(d => d.id === mouseId) + 1}</div>` : '';
 
         // Show tooltip at cursor for the hovered plot
         let cursorTooltip, cursorContent;
@@ -715,41 +727,43 @@ export async function createActivityRankVisualization() {
         
         // Show tooltip at cursor for the hovered plot
         if (cursorTooltip && cursorContent) {
-            cursorTooltip.transition()
-                .duration(200)
-                .style('opacity', 0.9);
-            
-            cursorTooltip.html(cursorContent)
+            cursorTooltip
+                .html(cursorContent)
+                .style('position', 'absolute')
                 .style('left', (event.pageX + 10) + 'px')
-                .style('top', (event.pageY - 10) + 'px');
+                .style('top', (event.pageY - 10) + 'px')
+                .style('opacity', '0.9')
+                .style('z-index', '10001')
+                .style('pointer-events', 'none')
+                .style('display', 'block')
+                .style('visibility', 'visible');
         }
 
-        // Show other tooltips at their actual bar positions after the next frame
-        requestAnimationFrame(() => {
-            if (hoveredPlot !== 'lightOffMain' && lightOffMainContent) {
-                const position = getBarPosition(mouseId, 'lightOffMain');
-                console.log('lightOffMain position', position);
-                showTooltipAtPosition(tooltipLightOffMain, lightOffMainContent, position);
-            }
-            if (hoveredPlot !== 'lightOnMain' && lightOnMainContent) {
-                const position = getBarPosition(mouseId, 'lightOnMain');
-                console.log('lightOnMain position', position);
-                showTooltipAtPosition(tooltipLightOnMain, lightOnMainContent, position);
-            }
-            if (hoveredPlot !== 'lightOffRanking' && lightOffRankingContent) {
-                const position = getBarPosition(mouseId, 'lightOffRanking');
-                console.log('lightOffRanking position', position);
-                showTooltipAtPosition(tooltipLightOffRanking, lightOffRankingContent, position);
-            }
-            if (hoveredPlot !== 'lightOnRanking' && lightOnRankingContent) {
-                const position = getBarPosition(mouseId, 'lightOnRanking');
-                console.log('lightOnRanking position', position);
-                showTooltipAtPosition(tooltipLightOnRanking, lightOnRankingContent, position);
-            }
-        });
+        // Show other tooltips at their actual bar positions
+        if (hoveredPlot !== 'lightOffMain' && lightOffMainContent) {
+            const position = getBarPosition(mouseId, 'lightOffMain');
+            showTooltipAtPosition(tooltipLightOffMain, lightOffMainContent, position);
+        }
+        if (hoveredPlot !== 'lightOnMain' && lightOnMainContent) {
+            const position = getBarPosition(mouseId, 'lightOnMain');
+            showTooltipAtPosition(tooltipLightOnMain, lightOnMainContent, position);
+        }
+        if (hoveredPlot !== 'lightOffRanking' && lightOffRankingContent) {
+            const position = getBarPosition(mouseId, 'lightOffRanking');
+            showTooltipAtPosition(tooltipLightOffRanking, lightOffRankingContent, position);
+        }
+        if (hoveredPlot !== 'lightOnRanking' && lightOnRankingContent) {
+            const position = getBarPosition(mouseId, 'lightOnRanking');
+            showTooltipAtPosition(tooltipLightOnRanking, lightOnRankingContent, position);
+        }
     }
 
     function hideAllTooltips() {
+        // Remove any test tooltips
+        d3.selectAll('.test-tooltip').remove();
+        d3.select('.cursor-test-tooltip').remove();
+        
+        // Hide original tooltips
         tooltipLightOffMain.transition().duration(300).style('opacity', 0);
         tooltipLightOnMain.transition().duration(300).style('opacity', 0);
         tooltipLightOffRanking.transition().duration(300).style('opacity', 0);
