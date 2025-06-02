@@ -1,0 +1,226 @@
+body {
+  background: #10131a;
+  color: #eaf6fb;
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: rgba(20, 24, 36, 0.98);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #000a  ;
+  padding: 32px 32px 24px 32px;
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  color: #7ed6df;
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+/* Layout for main content and legend */
+.main-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.container {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+svg {
+  background: #181c2a;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #0007;
+}
+
+.button-group {
+  margin: 18px 0 0 0;
+}
+
+.button-group button {
+  background: linear-gradient(90deg, #273c75 0%, #0097e6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  margin: 0 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0004;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.button-group button:hover {
+  background: linear-gradient(90deg, #0097e6 0%, #273c75 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+#sex-result, #result {
+  display: inline-block;
+  margin-left: 18px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #f6e58d;
+  min-width: 120px;
+}
+
+#final-explanation {
+  background: #181c2a;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #0007;
+  padding: 32px 24px;
+  margin-top: 32px;
+  color: #fff;
+  transition: opacity 0.6s;
+}
+
+#final-explanation h2 {
+  color: #7ed6df;
+  margin-bottom: 12px;
+}
+
+#final-explanation button {
+  margin-top: 18px;
+  background: #273c75;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0004;
+  transition: background 0.2s, transform 0.2s;
+}
+#final-explanation button:hover {
+  background: #0097e6;
+  transform: translateY(-2px) scale(1.04);
+  }
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: #222b3a;
+  color: #fff;
+  border: 1px solid #7ed6df;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px #0007;
+  z-index: 1000;
+  transition: opacity 0.2s;
+}
+
+/* Hide scrollbars for SVGs */
+#graph1, #graph2 {
+  overflow: hidden;
+  margin: 0 auto 18px auto;
+  min-height: 360px;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 900px) {
+  .main-flex {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 98vw;
+  }
+  #legend {
+    margin: 0 auto 18px auto;
+    width: 98vw;
+    min-width: 0;
+    align-items: flex-start;
+  }
+}
+
+.narrative {
+  color: #b2becd;
+  font-size: 1.15rem;
+  margin-bottom: 18px;
+  text-align: center;
+  font-style: italic;
+}
+
+.mouse-bg {
+  background-image: url('data:image/svg+xml;utf8,<svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="40" rx="55" ry="30" fill="%23344a60" fill-opacity="0.10"/><ellipse cx="90" cy="30" rx="15" ry="10" fill="%23344a60" fill-opacity="0.13"/><ellipse cx="30" cy="30" rx="15" ry="10" fill="%23344a60" fill-opacity="0.13"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 180px 120px;
+}
+
+.start-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(16, 19, 26, 0.98);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s;
+}
+.start-content {
+  text-align: center;
+}
+#start-btn {
+  background: linear-gradient(90deg, #273c75 0%, #0097e6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 36px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 12px #0007;
+  margin-top: 24px;
+  transition: background 0.2s, transform 0.2s;
+}
+#start-btn:hover {
+  background: linear-gradient(90deg, #0097e6 0%, #273c75 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+.fade-out {
+  opacity: 0 !important;
+  pointer-events: none;
+  transition: opacity 0.7s;
+}
+.fade-in {
+  opacity: 1 !important;
+  transition: opacity 0.7s;
+}
+
+/* Add embedded legend style for clarity */
+.embedded-legend text {
+  fill: #fff;
+  font-size: 12px;
+}
+
+#legend-container {
+  position: fixed;
+  top: 50%;
+  left: auto;
+  right: 40px;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  pointer-events: none;
+}
+#legend-container svg {
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
