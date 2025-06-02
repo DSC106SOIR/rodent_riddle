@@ -196,6 +196,20 @@ export async function createActivityRankVisualization() {
     // Function to get running averages efficiently using pre-computed sums
     function getRunningAverages(cycleTime, isLightOff) {
         try {
+            // At time 1, use current time data instead of running average
+            if (cycleTime === 1) {
+                const currentData = getDataForTime(cycleTime, parseInt(daySelect?.property('value') || 1));
+                const timeData = isLightOff ? currentData.lightOffData : currentData.lightOnData;
+                
+                const averages = timeData.map(d => ({
+                    id: d.id,
+                    average: d.act, // Use current activity as "average" at time 1
+                    sex: d.sex
+                }));
+                
+                return averages.sort((a, b) => b.average - a.average);
+            }
+            
             if (!cumulativeSums || !cumulativeSums.lightOff || !cumulativeSums.lightOn) {
                 return []; // Return empty array if sums not computed
             }
