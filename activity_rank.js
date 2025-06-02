@@ -1066,7 +1066,7 @@ export async function createActivityRankVisualization() {
             .style('fill', 'var(--color-accent)')
             .style('font-size', '0.7em');
 
-        // Update light-off bars (upward) - immediate transition
+        // Update light-off bars (upward) - smooth transition
         const lightOffBars = lightOffPlot.selectAll('.bar-up')
             .data(sortedLightOffData, d => d.id);
 
@@ -1090,14 +1090,15 @@ export async function createActivityRankVisualization() {
                 hideAllTooltips();
             })
             .merge(lightOffBars)
-            .attr('x', d => xScaleUp(d.id)) // Immediate position update
+            .transition().duration(1)
+            .attr('x', d => xScaleUp(d.id))
             .attr('y', d => yScaleUp(d.act))
             .attr('height', d => chartHeight - yScaleUp(d.act))
             .attr('fill', d => colorScale(d.sex));
 
         lightOffBars.exit().remove();
 
-        // Update light-on bars (downward) - immediate transition
+        // Update light-on bars (downward) - smooth transition
         const lightOnBars = lightOnPlot.selectAll('.bar-down')
             .data(sortedLightOnData, d => d.id);
 
@@ -1121,14 +1122,15 @@ export async function createActivityRankVisualization() {
                 hideAllTooltips();
             })
             .merge(lightOnBars)
-            .attr('x', d => xScaleDown(d.id)) // Immediate position update
+            .transition().duration(1)
+            .attr('x', d => xScaleDown(d.id))
             .attr('y', 0)
             .attr('height', d => yScaleDown(d.act))
             .attr('fill', d => colorScale(d.sex));
 
         lightOnBars.exit().remove();
 
-        // Update light-off ranking bars (horizontal, pointing right)
+        // Update light-off ranking bars (horizontal, pointing right) - smooth transition
         const lightOffRankingBars = lightOffRanking.selectAll('.ranking-bar-off')
             .data(lightOffRankingData, d => d.id);
 
@@ -1152,6 +1154,7 @@ export async function createActivityRankVisualization() {
                 hideAllTooltips();
             })
             .merge(lightOffRankingBars)
+            .transition().duration(1)
             .attr('y', d => rankingYScaleOff(d.id))
             .attr('x', 0)
             .attr('width', d => rankingXScaleOff(d.average))
@@ -1159,7 +1162,7 @@ export async function createActivityRankVisualization() {
 
         lightOffRankingBars.exit().remove();
 
-        // Update light-on ranking bars (horizontal, pointing right)
+        // Update light-on ranking bars (horizontal, pointing right) - smooth transition
         const lightOnRankingBars = lightOnRanking.selectAll('.ranking-bar-on')
             .data(lightOnRankingData, d => d.id);
 
@@ -1183,6 +1186,7 @@ export async function createActivityRankVisualization() {
                 hideAllTooltips();
             })
             .merge(lightOnRankingBars)
+            .transition().duration(1)
             .attr('y', d => rankingYScaleOn(d.id))
             .attr('x', 0)
             .attr('width', d => rankingXScaleOn(d.average))
