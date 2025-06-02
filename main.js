@@ -1,6 +1,7 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 import { createCircadianVisualization } from './circadian.js';
 import { compareTemperatureChart } from './tempLine.js';
+import { createHourlyTemps } from './hourly_temps.js'
 
 // Execute circadian visualization when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,5 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     createCircadianVisualization();
     compareTemperatureChart(); 
     // Render other visualizations ...
+});
+
+// Create the hourly average temperatures plot
+document.addEventListener('DOMContentLoaded', () => {
+    createHourlyTemps();
 });
 
