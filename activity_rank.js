@@ -582,10 +582,16 @@ export async function createActivityRankVisualization() {
         .attr('step', 1)
         .style('width', '400px');
 
-    const timeDisplay = sliderContainer.append('span')
+    const timeDisplayContainer = sliderContainer.append('span')
+        .style('min-width', '200px')
+        .style('display', 'inline-block');
+
+    const timeDisplayTime = timeDisplayContainer.append('span')
         .style('color', 'var(--color-accent)')
-        .style('min-width', '100px')
-        .text('0h 0m');
+        .style('display', 'inline-block')
+        .style('min-width', '10em')
+        .style('text-align', 'left')
+        .text('0h 0m (0 minutes)');
 
     // Buttons container
     const buttonContainer = controlsContainer.append('div')
@@ -999,7 +1005,8 @@ export async function createActivityRankVisualization() {
         // Update time display
         const hours = Math.floor((cycleTime - 1) / 60);
         const minutes = (cycleTime - 1) % 60;
-        timeDisplay.text(`${hours}h ${minutes}m`);
+        const totalMinutes = cycleTime - 1;
+        timeDisplayTime.text(`${hours}h ${minutes}m (${totalMinutes} minutes)`);
         timeSlider.property('value', cycleTime);
 
         // Sort data independently for each plot
@@ -1197,8 +1204,8 @@ export async function createActivityRankVisualization() {
             .style('font-size', '12px')
             .style('font-weight', 'bold')
             .merge(lightOffTopLabel)
-            .text(d => `Top: ${d.id}`)
-            .style('fill', d => colorScale(d.sex));
+            .html(d => `<tspan style='fill:var(--color-accent)'>Top active mouse:</tspan> <tspan style='fill:${colorScale(d.sex)}'>${d.id}</tspan>`)
+            .style('fill', null);
         
         lightOffTopLabel.exit().remove();
 
@@ -1215,8 +1222,8 @@ export async function createActivityRankVisualization() {
             .style('font-size', '12px')
             .style('font-weight', 'bold')
             .merge(lightOnTopLabel)
-            .text(d => `Top: ${d.id}`)
-            .style('fill', d => colorScale(d.sex));
+            .html(d => `<tspan style='fill:var(--color-accent)'>Top active mouse:</tspan> <tspan style='fill:${colorScale(d.sex)}'>${d.id}</tspan>`)
+            .style('fill', null);
         
         lightOnTopLabel.exit().remove();
 
@@ -1392,7 +1399,8 @@ export async function createActivityRankVisualization() {
                         
                         const malePercent = (currentPropData.proportion * 100).toFixed(1);
                         const femalePercent = ((1 - currentPropData.proportion) * 100).toFixed(1);
-                        const content = `<div><strong>Activity Proportions</strong></div><div>Time: ${Math.floor((currentPropTime - 1) / 60)}h ${(currentPropTime - 1) % 60}m</div><div>Male Activity: ${malePercent}%</div><div>Female Activity: ${femalePercent}%</div>`;
+                        const totalMinutes = currentPropTime - 1;
+                        const content = `<div><strong>Activity Proportions</strong></div><div>Time: ${Math.floor((currentPropTime - 1) / 60)}h ${(currentPropTime - 1) % 60}m (${totalMinutes} minutes)</div><div>Male Activity: ${malePercent}%</div><div>Female Activity: ${femalePercent}%</div>`;
                         
                         tooltipLightOffProportion
                             .html(content)
@@ -1481,7 +1489,8 @@ export async function createActivityRankVisualization() {
                         
                         const malePercent = (currentPropData.proportion * 100).toFixed(1);
                         const femalePercent = ((1 - currentPropData.proportion) * 100).toFixed(1);
-                        const content = `<div><strong>Activity Proportions</strong></div><div>Time: ${Math.floor((currentPropTime - 1) / 60)}h ${(currentPropTime - 1) % 60}m</div><div>Male Activity: ${malePercent}%</div><div>Female Activity: ${femalePercent}%</div>`;
+                        const totalMinutes = currentPropTime - 1;
+                        const content = `<div><strong>Activity Proportions</strong></div><div>Time: ${Math.floor((currentPropTime - 1) / 60)}h ${(currentPropTime - 1) % 60}m (${totalMinutes} minutes)</div><div>Male Activity: ${malePercent}%</div><div>Female Activity: ${femalePercent}%</div>`;
                         
                         tooltipLightOnProportion
                             .html(content)
