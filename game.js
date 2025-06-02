@@ -34,11 +34,19 @@ function drawLegend() {
     .attr('id', 'temp-gradient')
     .attr('x1', '0%').attr('y1', '100%')
     .attr('x2', '0%').attr('y2', '0%');
+
+  const NUM_STOPS = 12; // smoother gradient
+  const stopData = d3.range(NUM_STOPS).map(i => {
+      const t = i / (NUM_STOPS - 1);
+      const tempValue = globalMinTemp + t * (globalMaxTemp - globalMinTemp);
+      return {
+        offset: `${t * 100}%`,
+        color: tempColor(tempValue)
+      };
+  });
+
   linearGradient.selectAll('stop')
-    .data([
-      {offset: '0%', color: tempColor(globalMinTemp)},
-      {offset: '100%', color: tempColor(globalMaxTemp)}
-    ])
+    .data(stopData)
     .enter()
     .append('stop')
     .attr('offset', d => d.offset)
