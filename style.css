@@ -1,16 +1,16 @@
 :root {
   /* Base Palette - Updated to Modern Theme */
-  --color-background: #fff5d7; /* Ragin Beige */
-  --color-secondary: #ff5e6c; /* Coral Pink */
-  --color-accent: #333446; /* Keep dark for readability */
-  --color-light: #ffaaab; /* Pink Leaf */
+  --color-background: #fff5d7;
+  --color-secondary: #ff5e6c; 
+  --color-accent: #333446; 
+  --color-light: #ffaaab; 
 
   /* Gender Colors */
   --color-female: #E86A92;
   --color-male: #4C72B0;
 
   /* Day/Night Colors */
-  --color-day: #feb300; /* Sleuthe Yellow */
+  --color-day: #feb300; 
   --color-night: #506680;
 
   /* Modern Color Theme */
@@ -452,8 +452,33 @@ hr {
     opacity: 0.3;
 }
 
+/* === Effect of Estrus Visualization === */
+#other-viz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 100ch;
+    margin: 0 auto;
+    overflow: hidden;
+    background: rgba(255, 245, 215, 0.3);
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid var(--pink-leaf);
+    box-shadow: 0 4px 15px rgba(255, 170, 171, 0.2);
+}
 
 #other-viz div {
-    z-index: 10;
-    position: absolute;
-  }
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+#other-viz svg {
+    max-width: 100%;
+    height: auto;
+    background: transparent;
+}
