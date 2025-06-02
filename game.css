@@ -1,4 +1,5 @@
-body {
+/* Scoped styles for the game section only */
+#game-section {
   background: #10131a;
   color: #eaf6fb;
   font-family: 'Inter', 'Roboto', Arial, sans-serif;
@@ -6,18 +7,18 @@ body {
   min-height: 100vh;
 }
 
-.container {
+#game-section .container {
   max-width: 800px;
   margin: 40px auto;
   background: rgba(20, 24, 36, 0.98);
   border-radius: 18px;
-  box-shadow: 0 4px 32px #000a  ;
+  box-shadow: 0 4px 32px #000a;
   padding: 32px 32px 24px 32px;
   text-align: center;
   position: relative;
 }
 
-h1 {
+#game-section h1 {
   color: #7ed6df;
   font-size: 2.2rem;
   margin-bottom: 18px;
@@ -25,7 +26,7 @@ h1 {
 }
 
 /* Layout for main content and legend */
-.main-flex {
+#game-section .main-flex {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -33,22 +34,22 @@ h1 {
   max-width: 1100px;
   margin: 0 auto;
 }
-.container {
+#game-section .container {
   flex: 1 1 0%;
   min-width: 0;
 }
 
-svg {
+#game-section svg {
   background: #181c2a;
   border-radius: 12px;
   box-shadow: 0 2px 12px #0007;
 }
 
-.button-group {
+#game-section .button-group {
   margin: 18px 0 0 0;
 }
 
-.button-group button {
+#game-section .button-group button {
   background: linear-gradient(90deg, #273c75 0%, #0097e6 100%);
   color: #fff;
   border: none;
@@ -62,12 +63,13 @@ svg {
   transition: background 0.2s, transform 0.2s;
 }
 
-.button-group button:hover {
+#game-section .button-group button:hover {
   background: linear-gradient(90deg, #0097e6 0%, #273c75 100%);
   transform: translateY(-2px) scale(1.04);
 }
 
-#sex-result, #result {
+#game-section #sex-result, 
+#game-section #result {
   display: inline-block;
   margin-left: 18px;
   font-size: 1.2rem;
@@ -76,7 +78,7 @@ svg {
   min-width: 120px;
 }
 
-#final-explanation {
+#game-section #final-explanation {
   background: #181c2a;
   border-radius: 12px;
   box-shadow: 0 2px 12px #0007;
@@ -86,12 +88,12 @@ svg {
   transition: opacity 0.6s;
 }
 
-#final-explanation h2 {
+#game-section #final-explanation h2 {
   color: #7ed6df;
   margin-bottom: 12px;
 }
 
-#final-explanation button {
+#game-section #final-explanation button {
   margin-top: 18px;
   background: #273c75;
   color: #fff;
@@ -104,12 +106,12 @@ svg {
   box-shadow: 0 2px 8px #0004;
   transition: background 0.2s, transform 0.2s;
 }
-#final-explanation button:hover {
+#game-section #final-explanation button:hover {
   background: #0097e6;
   transform: translateY(-2px) scale(1.04);
-  }
+}
 
-.tooltip {
+#game-section .tooltip {
   position: absolute;
   pointer-events: none;
   background: #222b3a;
@@ -124,7 +126,8 @@ svg {
 }
 
 /* Hide scrollbars for SVGs */
-#graph1, #graph2 {
+#game-section #graph1, 
+#game-section #graph2 {
   overflow: hidden;
   margin: 0 auto 18px auto;
   min-height: 360px;
@@ -132,12 +135,12 @@ svg {
 
 /* Responsive for smaller screens */
 @media (max-width: 900px) {
-  .main-flex {
+  #game-section .main-flex {
     flex-direction: column;
     align-items: stretch;
     max-width: 98vw;
   }
-  #legend {
+  #game-section #legend {
     margin: 0 auto 18px auto;
     width: 98vw;
     min-width: 0;
@@ -145,7 +148,7 @@ svg {
   }
 }
 
-.narrative {
+#game-section .narrative {
   color: #b2becd;
   font-size: 1.15rem;
   margin-bottom: 18px;
@@ -153,27 +156,33 @@ svg {
   font-style: italic;
 }
 
-.mouse-bg {
+#game-section .mouse-bg {
   background-image: url('data:image/svg+xml;utf8,<svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="40" rx="55" ry="30" fill="%23344a60" fill-opacity="0.10"/><ellipse cx="90" cy="30" rx="15" ry="10" fill="%23344a60" fill-opacity="0.13"/><ellipse cx="30" cy="30" rx="15" ry="10" fill="%23344a60" fill-opacity="0.13"/></svg>');
   background-repeat: no-repeat;
   background-position: right bottom;
   background-size: 180px 120px;
 }
 
-.start-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+#game-section .start-overlay {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
   background: rgba(16, 19, 26, 0.98);
   z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: opacity 0.7s;
+  border-radius: 13px;
 }
-.start-content {
+
+#game-section .start-content {
   text-align: center;
 }
-#start-btn {
+
+#game-section #start-btn {
   background: linear-gradient(90deg, #273c75 0%, #0097e6 100%);
   color: #fff;
   border: none;
@@ -186,41 +195,61 @@ svg {
   margin-top: 24px;
   transition: background 0.2s, transform 0.2s;
 }
-#start-btn:hover {
+
+#game-section #start-btn:hover {
   background: linear-gradient(90deg, #0097e6 0%, #273c75 100%);
   transform: translateY(-2px) scale(1.04);
 }
-.fade-out {
+
+#game-section .fade-out {
   opacity: 0 !important;
   pointer-events: none;
   transition: opacity 0.7s;
 }
-.fade-in {
+
+#game-section .fade-in {
   opacity: 1 !important;
   transition: opacity 0.7s;
 }
 
 /* Add embedded legend style for clarity */
-.embedded-legend text {
+#game-section .embedded-legend text {
   fill: #fff;
   font-size: 12px;
 }
 
-#legend-container {
-  position: fixed;
-  top: 50%;
+#game-section #legend-container {
+  position: relative;
+  top: auto;
   left: auto;
-  right: 40px;
-  transform: translateY(-50%);
+  right: auto;
+  transform: none;
   z-index: 2;
   background: none;
   box-shadow: none;
   border-radius: 0;
   pointer-events: none;
+  margin-left: 20px;
 }
-#legend-container svg {
+
+#game-section #legend-container svg {
   background: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
+}
+
+/* Specific game element styles */
+#game-section select {
+  background: #273c75;
+  color: #fff;
+  border: 1px solid #7ed6df;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 1rem;
+}
+
+#game-section label {
+  color: #7ed6df;
+  font-weight: 600;
 }
 
