@@ -1,0 +1,355 @@
+/* Scoped styles for the game section only */
+#game-section {
+  background: #10131a;
+  color: #eaf6fb;
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: #222b3a;
+  color: #fff;
+  border: 1px solid #7ed6df;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px #0007;
+  z-index: 1000;
+  transition: opacity 0.2s;
+}
+
+#final-insight-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: #222b3a;
+  color: #fff;
+  border: 1px solid #7ed6df;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px #0007;
+  z-index: 1000;
+  transition: opacity 0.25s;
+}
+
+#game-section .container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: rgba(20, 24, 36, 0.98);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #000a;
+  padding: 32px 32px 24px 32px;
+  text-align: center;
+  position: relative;
+}
+
+#game-section h1 {
+  color: #7ed6df;
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+/* Layout for main content and legend */
+#game-section .main-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+#game-section .container {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+#game-section svg {
+  background: #181c2a;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #0007;
+}
+
+#game-section .button-group {
+  margin: 18px 0 0 0;
+}
+
+#game-section .button-group button {
+  background: linear-gradient(90deg, #273c75 0%, #0097e6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  margin: 0 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0004;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#game-section .button-group button:hover {
+  background: linear-gradient(90deg, #0097e6 0%, #273c75 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+#game-section #sex-result, 
+#game-section #result {
+  display: inline-block;
+  margin-left: 18px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #f6e58d;
+  min-width: 120px;
+}
+
+#game-section #final-explanation {
+  background: #181c2a;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #0007;
+  padding: 32px 24px;
+  margin-top: 32px;
+  color: #fff;
+  transition: opacity 0.6s;
+}
+
+#game-section #final-explanation h2 {
+  color: #7ed6df;
+  margin-bottom: 12px;
+}
+
+#game-section #final-explanation button {
+  margin-top: 18px;
+  background: #273c75;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0004;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#game-section #final-explanation button:hover {
+  background: #0097e6;
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Hide scrollbars for SVGs */
+#game-section #graph1, 
+#game-section #graph2 {
+  overflow: hidden;
+  margin: 0 auto 18px auto;
+  min-height: 360px;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 900px) {
+  #game-section .main-flex {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 98vw;
+  }
+  #game-section #legend {
+    margin: 0 auto 18px auto;
+    width: 98vw;
+    min-width: 0;
+    align-items: flex-start;
+  }
+}
+
+/* Enhanced narrative styling for better visibility */
+#game-section .narrative {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(126, 214, 223, 0.2) 0%, rgba(246, 229, 141, 0.2) 100%);
+  border: 2px solid rgba(126, 214, 223, 0.4);
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 1.15rem;
+  margin-bottom: 18px;
+  text-align: center;
+  font-style: italic;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 15px rgba(126, 214, 223, 0.1);
+}
+
+#game-section .mouse-bg {
+  background-image: url('data:image/svg+xml;utf8,<svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="40" rx="55" ry="30" fill="%23344a60" fill-opacity="0.10"/><ellipse cx="90" cy="30" rx="15" ry="10" fill="%23344a60" fill-opacity="0.13"/><ellipse cx="30" cy="30" rx="15" ry="10" fill="%23344a60" fill-opacity="0.13"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 180px 120px;
+}
+
+#game-section .start-overlay {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+  background: rgba(16, 19, 26, 0.98);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s;
+  border-radius: 13px;
+}
+
+#game-section .start-content {
+  text-align: center;
+}
+
+#game-section #start-btn {
+  background: linear-gradient(90deg, #273c75 0%, #0097e6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 36px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 12px #0007;
+  margin-top: 24px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#game-section #start-btn:hover {
+  background: linear-gradient(90deg, #0097e6 0%, #273c75 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+#game-section .fade-out {
+  opacity: 0 !important;
+  pointer-events: none;
+  transition: opacity 0.7s;
+}
+
+#game-section .fade-in {
+  opacity: 1 !important;
+  transition: opacity 0.7s;
+}
+
+#game-section .embedded-legend text {
+  fill: #fff;
+  font-size: 12px;
+}
+
+#game-section #legend-container {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  z-index: 2;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  pointer-events: none;
+  margin-left: 20px;
+}
+
+#game-section #legend-container svg {
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+#game-section select {
+  background: #273c75;
+  color: #fff;
+  border: 1px solid #7ed6df;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 1rem;
+}
+
+#game-section label {
+  color: #7ed6df;
+  font-weight: 600;
+}
+
+/* Hide granularity dropdown in final results */
+#game-section #final-explanation ~ * #granularity-select,
+#game-section #final-explanation:not([style*="display:none"]) ~ * #granularity-select,
+#game-section #final-explanation[style*="display:block"] ~ * #granularity-select {
+  display: none !important;
+}
+
+/* More specific hiding when final explanation is visible */
+#game-section #final-explanation[style*="opacity:1"] ~ div #granularity-select,
+#game-section #final-explanation[style*="opacity: 1"] ~ div #granularity-select {
+  display: none !important;
+}
+
+/* Hide granularity when final explanation parent is displayed */
+#game-section:has(#final-explanation[style*="display:block"]) #granularity-select,
+#game-section:has(#final-explanation[style*="opacity:1"]) #granularity-select {
+  display: none !important;
+}
+
+/* Hide estrus guess buttons in final results */
+#game-section #final-explanation ~ * #estrus-guess,
+#game-section #final-explanation:not([style*="display:none"]) ~ * #estrus-guess,
+#game-section #final-explanation[style*="display:block"] ~ * #estrus-guess {
+  display: none !important;
+}
+
+/* More specific hiding for estrus buttons when final explanation is visible */
+#game-section #final-explanation[style*="opacity:1"] ~ div #estrus-guess,
+#game-section #final-explanation[style*="opacity: 1"] ~ div #estrus-guess {
+  display: none !important;
+}
+
+/* Hide estrus buttons when final explanation parent is displayed */
+#game-section:has(#final-explanation[style*="display:block"]) #estrus-guess,
+#game-section:has(#final-explanation[style*="opacity:1"]) #estrus-guess {
+  display: none !important;
+}
+
+/* Also hide sex guess buttons in final results for consistency */
+#game-section #final-explanation ~ * #sex-guess,
+#game-section #final-explanation:not([style*="display:none"]) ~ * #sex-guess,
+#game-section #final-explanation[style*="display:block"] ~ * #sex-guess {
+  display: none !important;
+}
+
+#game-section #final-explanation[style*="opacity:1"] ~ div #sex-guess,
+#game-section #final-explanation[style*="opacity: 1"] ~ div #sex-guess {
+  display: none !important;
+}
+
+#game-section:has(#final-explanation[style*="display:block"]) #sex-guess,
+#game-section:has(#final-explanation[style*="opacity:1"]) #sex-guess {
+  display: none !important;
+}
+
+#game-section #final-explanation p {
+  background: rgba(126, 214, 223, 0.1);
+  border: 1px solid rgba(126, 214, 223, 0.3);
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px 0;
+  color: #fff;
+  font-weight: 500;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#game-section #final-result {
+  background: linear-gradient(135deg, rgba(246, 229, 141, 0.2) 0%, rgba(126, 214, 223, 0.2) 100%);
+  border: 2px solid rgba(246, 229, 141, 0.4);
+  border-radius: 10px;
+  padding: 18px;
+  margin: 20px auto;
+  color: #f6e58d !important;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 15px rgba(246, 229, 141, 0.2);
+}
+

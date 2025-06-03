@@ -39,10 +39,10 @@ The original separate files are still available but deprecated:
 - `act_*.json`: Activity data only
 
 The `time` field represents:
-- Minutes in `*_minutes.json` 
-- Hours in `*_hours.json`
-- 12-hour blocks in `*_halfdays.json`
-- Days in `*_days.json`
+  - Minutes in `*_minutes.json`
+  - Hours in `*_hours.json`
+  - 12-hour blocks in `*_halfdays.json`
+  - Days in `*_days.json`
 
 ## Performance Benefits
 
@@ -58,7 +58,7 @@ The combined files offer significant advantages:
 [
   {
     "id": "f1",
-    "sex": "female", 
+    "sex": "female",
     "time": 1,
     "temp": 36.8,
     "act": 72.5,
@@ -68,7 +68,7 @@ The combined files offer significant advantages:
   {
     "id": "m1",
     "sex": "male",
-    "time": 1, 
+    "time": 1,
     "temp": 36.9,
     "act": 68.2,
     "estrus": false,

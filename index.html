@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rodent Riddle</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="main.js" type="module"></script>
     <script>
         function toggleAnswer(button) {
@@ -20,7 +22,13 @@
     </script>
 </head>
 <body>
-    <h1>Rodent Riddle</h1>
+    <div class="main-header">
+        <h1 class="main-title">
+            <span class="rodent-text">Rodent</span>
+            <span class="riddle-text">Riddle</span>
+        </h1>
+        <p class="main-subtitle">Inferring internal states from external behavior</p>
+    </div>
     
 
     <!-- Circadian Rhythm -->
@@ -79,6 +87,56 @@
     </p>
 
 
+    <!-- Activity Ranking Visualization -->
+    <h2>Activity Rankings: Day vs Night Comparison</h2>
+    <p class="viz-instructions">
+        This visualization provides a comprehensive view of mouse activity patterns across day and night cycles, with a special focus on gender differences. The dual bar charts show activity levels during light-off (night) and light-on (day) periods, with mice automatically sorted by their activity levels. The visualization includes mini-plots showing the proportion of male vs female activity over time, allowing for detailed analysis of gender-based activity patterns.
+    </p>
+    <ul class="viz-features">
+        <li><strong>Dual Bar Charts:</strong> Upper bars (light off) and lower bars (light on) show activity levels, with mice ranked by activity at each time point.</li>
+        <li><strong>Gender Analysis:</strong> Blue bars represent male mice, pink bars represent female mice, with mini-plots showing the proportion of activity by gender over time.</li>
+        <li><strong>Dynamic Features:</strong>
+            <ul>
+                <li>Real-time activity ranking updates as you move through time</li>
+                <li>Running average rankings show consistent activity patterns</li>
+                <li>Hover over bars to see detailed mouse information and highlight corresponding bars across all plots</li>
+                <li>Mini-plots reveal gender activity proportions throughout the cycle</li>
+            </ul>
+        </li>
+        <li><strong>Interactive Controls:</strong>
+            <ul>
+                <li>Time slider to navigate through a 12-hour cycle (720 minutes)</li>
+                <li>Day selector to compare activity patterns across different days</li>
+                <li>Play/Pause animation to observe activity changes over time</li>
+            </ul>
+        </li>
+    </ul>
+    <div id="activity-rank-viz">
+        <!-- Visualization will be dynamically added here (activity_rank.js) -->    
+    </div>
+    <p class="viz-questions">
+        <strong>Question to consider:</strong> How do the activity levels of male and female mice compare during different periods of the day, and what changes do we observe in female activity patterns during estrus days?
+    </p>
+    <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
+    <p class="viz-answer" style="display: none;">
+        <strong>Our suggested answer:</strong> The visualization reveals interesting patterns in gender-based activity levels. Overall, male mice tend to show higher activity levels compared to female mice across both day and night periods. However, during estrus days, we observe a notable increase in female activity levels that extends beyond just the night period. While this increased activity doesn't surpass the overall male activity levels, it represents a significant behavioral change in female mice during their reproductive cycle. The mini-plots showing gender activity proportions help visualize these patterns, with the male proportion typically being higher but showing interesting variations during estrus periods. These findings suggest that while male mice maintain generally higher activity levels, female activity patterns are more dynamic and influenced by their reproductive state.
+    </p>
+
+
+    <h2>Overall Activity Level</h2>
+    This visualization shows the overall mice activity level, proving mice have a nocturnal habit.
+    <p class="viz-instructions"></p>
+    <ul class="viz-features"></ul>
+    <div id="activity_overall">
+        <!-- Visualization will be dynamically added here (other-file.js) -->    
+    </div>
+    <p class="viz-questions"></p>
+    <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
+    <p class="viz-answer" style="display: none;">
+        <strong>Our suggested answer:</strong> 
+    </p>
+
+
     <!-- Other Visualizations (Use the same template) -->
     <h2>Effect of Estrus</h2>
     <p class="viz-instructions">
@@ -132,6 +190,99 @@
 <p>
     The most challenging part of the project remaining is to curate a few more visualizations that feel fresh and interactive. Our dataset is limited in its number of features (we can explore activity, temperature, gender, and estrus cycles), and so we'll need to work to create visualizations that add insight without feeling redundant. Our second challenge will be to come up with critical engagement questions that strike a balance between being too technical and boringly simple. A mix of difficulties will be beneficial, and our target is for the level of engagement to be at the point to make an older kid think for a few minutes and require most viewers to take a second look at the visualization before answering. These questions give us the most opportunity to ensure that scientists aren't missing interesting details and to promote learning for the rest of our audience, so it's important that we get their level of difficulty right.
 </p>
+</div>
+
+<!-- Mice Data Interactive Game -->
+<hr>
+<h2>Interactive Mouse Behavior Game</h2>
+<p class="viz-instructions">
+    Think you understand mouse behavior? Test your scientific intuition! This interactive game challenges you to determine a mouse's sex and reproductive state (estrus) based solely on temperature and activity data. Just like real researchers, you'll need to identify patterns in physiological data to make accurate inferences about the internal states of laboratory animals.
+</p>
+
+<div id="game-section" style="
+    border: 2px solid #7ed6df;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+">
+  <div id="start-overlay" class="start-overlay" style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 46, 0.95);
+    z-index: 1000;
+    border-radius: 13px;
+  ">
+    <div class="start-content">
+      <h1>Mice Data Interactive</h1>
+      <img src="./image/mouse.gif" alt="Mouse GIF" style="width:180px;display:block;margin:0 auto 24px auto;" />
+      <button id="start-btn">Start Game</button>
+    </div>
+  </div>
+  <div class="main-flex" style="position: relative; z-index: 1;">
+    <div class="container mouse-bg" style="display:none; background: transparent; padding: 0; margin: 0;">
+      <div id="narrative" class="narrative">
+        <p>
+          You are a mouse scientist. Can you infer the inner life of a mouse from its outward signs? <br>
+          Guess the sex and estrus state based only on temperature and activity — just like a real researcher!
+        </p>
+      </div>
+      <h1 style="color: #7ed6df; text-align: center; margin-bottom: 20px;">Mice Data Interactive</h1>
+      <div style="margin-bottom: 16px; text-align: center;">
+        <label for="granularity-select" style="color:#7ed6df;font-weight:600;">Time Granularity: </label>
+        <select id="granularity-select">
+          <option value="day">Day</option>
+          <option value="halfday">Halfday</option>
+          <option value="hour" selected>Hour</option>
+          <option value="minute">Minute</option>
+        </select>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div style="flex: 1;">
+          <div id="graph1"></div>
+          <div id="graph2" style="display:none;"></div>
+        </div>
+        <div id="legend-container" style="margin-left: 20px;"></div>
+      </div>
+      <div id="sex-guess" class="button-group" style="text-align: center; margin: 20px 0;">
+        <button id="guess-male">Guess: Male</button>
+        <button id="guess-female">Guess: Female</button>
+        <span id="sex-result"></span>
+      </div>
+      <div id="estrus-guess" class="button-group" style="display:none; text-align: center; margin: 20px 0;">
+        <button id="estrus-yes">Guess: Estrus</button>
+        <button id="estrus-no">Guess: Not Estrus</button>
+        <span id="result"></span>
+      </div>
+      <div id="final-explanation" style="display:none; opacity:0; text-align: center; color: #fff;">
+        <h2 style="color: #7ed6df;">Result</h2>
+        <div id="final-result" style="font-size:1.3rem;margin-bottom:18px; color: #f6e58d;"></div>
+        <h2 style="color: #7ed6df;">Why is this important?</h2>
+        <p style="color: #fff; max-width: 600px; margin: 0 auto 20px auto;">
+          Just as you did, scientists must infer the internal states of animals from their behavior and physiology. This helps us understand biology, health, and the hidden lives of creatures.
+        </p>
+        <button onclick="location.reload(); return false;" style="
+          background: #7ed6df;
+          color: #1a1a2e;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: bold;
+          font-size: 16px;
+        ">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
 </div>
 
 </body>

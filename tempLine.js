@@ -7,9 +7,11 @@ export function compareTemperatureChart() {
     d3.json('./data/1dayafter_estrus_combined.json'),
     d3.json('./data/2dayafter_estrus_combined.json')
   ]).then(([estrusData, beforeData, after1Data, after2Data]) => {
-    const width = 1000;
+    // Determine width dynamically to avoid clipping on smaller screens
+    const containerWidth = parseInt(d3.select('#other-viz').style('width')) || 1000;
+    const width = Math.max(containerWidth, 600); // enforce sensible minimum
     const height = 500;
-    const margin = { top: 20, right: 30, bottom: 50, left: 50 };
+    const margin = { top: 20, right: 40, bottom: 50, left: 50 };
 
     const svg = d3.select('#other-viz')
       .append('svg')
@@ -109,20 +111,33 @@ export function compareTemperatureChart() {
         .attr('d', line);
     });
 
+    // Legend positioned  at the right with adaptive offset to stay inside svg
+    const legendX = width - margin.right - 180; // 180px wide legend box
     datasets.forEach((d, i) => {
-      const yPos = 30 + i * 20;
-      svg.append("circle").attr("cx", width - 200).attr("cy", yPos).attr("r", 6).style("fill", d.color);
-      svg.append("text").attr("x", width - 190).attr("y", yPos + 4).text(d.label).style("font-size", "12px");
+      const yPos = margin.top + 10 + i * 20;
+      svg.append("circle")
+        .attr("cx", legendX)
+        .attr("cy", yPos)
+        .attr("r", 6)
+        .style("fill", d.color);
+      svg.append("text")
+        .attr("x", legendX + 10)
+        .attr("y", yPos + 4)
+        .text(d.label)
+        .style("font-size", "12px")
+        .style("dominant-baseline", "middle");
     });
 
     const tooltip = d3.select("#other-viz")
       .append("div")
       .style("position", "absolute")
-      .style("background", "white")
+      .style("background", "rgba(255,255,255,0.95)")
       .style("border", "1px solid #999")
-      .style("padding", "8px")
-      .style("border-radius", "4px")
+      .style("padding", "8px 10px")
+      .style("border-radius", "6px")
       .style("font-size", "12px")
+      .style("max-width", "240px")
+      .style("white-space", "nowrap")
       .style("display", "none")
       .style("pointer-events", "none");
 
