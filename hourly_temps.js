@@ -128,13 +128,30 @@ export async function createHourlyTemps() {
       .attr("fill", "none")
       .attr("opacity", 0);
 
+    svg.append("text")
+      .attr("x", xScale(4))
+      .attr("y", yScale(m_25[4]) + 10)
+      .attr("id", "m_area")
+      .text("25th percentile")
+      .attr("font-size", "12px")
+      .attr("opacity", 0)
+      .attr("fill", "black");
+
+    svg.append("text")
+      .attr("x", xScale(4))
+      .attr("y", yScale(m_75[4]) - 10)
+      .attr("id", "m_area")
+      .text("75th percentile")
+      .attr("font-size", "12px")
+      .attr("opacity", 0)
+      .attr("fill", "black");
 
 
     // mousing over reveals and hides the area
     d3.select("#m_hit").on("mouseover", function(event) {
-      d3.select('#m_area').attr("opacity", 0.4)
+      d3.selectAll('#m_area').attr("opacity", 0.4)
     }).on("mouseout", function(event ) {
-      d3.select('#m_area').attr("opacity", 0)
+      d3.selectAll('#m_area').attr("opacity", 0)
     })
     
     d3.select("#f_hit").on("mouseover", function(event) {
@@ -142,9 +159,6 @@ export async function createHourlyTemps() {
     }).on("mouseout", function(event ) {
       d3.select('#f_area').attr("opacity", 0)
     })
-
-
-
 
     const avgFemale = d3.mean(f_averages);
     const avgMale = d3.mean(m_averages);
@@ -182,7 +196,7 @@ export async function createHourlyTemps() {
       .attr("y", HOURLY_TEMPS_CONFIG.MARGIN.top)
       .attr("text-anchor", "middle")
       .attr("font-size", 16)
-      .text("Female Mice Sleep Hotter Than Male Mice");
+      .text("Female Mice Are Warmer Than Male Mice");
 
     svg.append("text")
       .attr("x", HOURLY_TEMPS_CONFIG.WIDTH / 2)
@@ -197,16 +211,16 @@ export async function createHourlyTemps() {
       .attr("y", 20)
       .attr("text-anchor", "middle")
       .attr("class", "axis-label")
-      .text("Mouse Body Temperature");
+      .text("Average Mouse Body Temperature");
 
     const legend = svg.append("g")
-      .attr("transform", `translate(${HOURLY_TEMPS_CONFIG.WIDTH + 20}, ${HOURLY_TEMPS_CONFIG.MARGIN.top})`)
+      .attr("transform", `translate(${HOURLY_TEMPS_CONFIG.WIDTH - 250}, ${HOURLY_TEMPS_CONFIG.MARGIN.top + 30})`)
       .attr("class", "legend");
 
     const legendItems = [
-      { label: "Hourly Avg Female Temp", color: "#BEE3DB" },
+      { label: "Hourly Average Female Temp", color: "#BEE3DB" },
       { label: "Avg Nighttime Female Temp", color: "#86B19A", dashed: true },
-      { label: "Hourly Avg Male Temp", color: "#8FBFE0" },
+      { label: "Hourly Average Male Temp", color: "#8FBFE0" },
       { label: "Avg Nighttime Male Temp", color: "#6FA7C9", dashed: true }
     ];
 
