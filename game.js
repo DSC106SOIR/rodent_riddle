@@ -30,9 +30,9 @@ function drawLegend() {
     .attr('width', legendWidth)
     .attr('height', legendHeight + 2 * legendPad);
   const defs = legendSvg.append('defs');
-  // Remove any existing gradient so old stops don't persist
-  defs.select('#temp-gradient').remove();
-  const linearGradient = defs.append('linearGradient').attr('id', 'temp-gradient');
+  const gradientId = 'temp-gradient-game';
+  defs.select(`#${gradientId}`).remove();
+  const linearGradient = defs.append('linearGradient').attr('id', gradientId);
 
   linearGradient
     .attr('x1', '0%').attr('y1', '100%')
@@ -53,7 +53,7 @@ function drawLegend() {
     .attr('y', legendPad)
     .attr('width', 24)
     .attr('height', legendHeight)
-    .style('fill', 'url(#temp-gradient)')
+    .style('fill', `url(#${gradientId})`)
     .attr('stroke', '#aaa')
     .attr('stroke-width', 1.5)
     .attr('rx', 8);
