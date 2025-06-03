@@ -2,6 +2,7 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 import { createCircadianVisualization } from './circadian.js';
 import { createActivityRankVisualization } from './activity_rank.js';
 import { compareTemperatureChart } from './tempLine.js';
+import { createHourlyTemps } from './hourly_temps.js';
 import { drawActivityPieChart } from './activity-piechart.js'; 
 
 
@@ -32,5 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
     compareTemperatureChart(); 
 
     // Render other visualizations ...
+});
+
+// Create the hourly average temperatures plot
+document.addEventListener('DOMContentLoaded', () => {
+    createHourlyTemps();
 });
 

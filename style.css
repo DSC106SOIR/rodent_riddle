@@ -342,6 +342,14 @@ hr {
     cursor: pointer;
 }
 
+#hourly-temps {
+    background: white;
+}
+
+#other-viz div {
+    z-index: 10;
+    position: absolute;
+  }
 
 /* === Activity Ranking Visualization === */
 #activity-rank-viz {
