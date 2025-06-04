@@ -374,7 +374,7 @@ hr {
 }
 
 #hourly-temps {
-    background: white;
+    background: rgba(255, 245, 215, 0.9) 100%;
 }
 
 #other-viz div {
