@@ -126,16 +126,21 @@
 
 
     <h2>Overall Activity Level</h2>
-    This visualization shows the overall mice activity level, proving mice have a nocturnal habit.
-    <p class="viz-instructions"></p>
-    <ul class="viz-features"></ul>
+    <p class="viz-instructions">
+        This visualization shows the overall mice activity level, proving mice have a nocturnal habit.
+    </p>
+    <ul class="viz-features">
+        <li><strong>Mouse Activity Level Comparison:</strong> These pie chart shows the proportion of the time dependency of activity level; left pie chart shows all mice's activity and right 2 piecharts show that depending on sex.</li>
+    </ul>
     <div id="activity_overall">
         <!-- Visualization will be dynamically added here (other-file.js) -->    
     </div>
-    <p class="viz-questions"></p>
+    <p class="viz-questions">
+        <strong>Question to consider:</strong> Is there any time dependency or sex dependency for the mice activity level?
+    </p>
     <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
     <p class="viz-answer" style="display: none;">
-        <strong>Our suggested answer:</strong> 
+        <strong>Our suggested answer:</strong> We can see three-quarters of mice activity are done at night, which shows mice are nocturnal animals. On the other hand, we cannot see any sex dependency on the activity level.
     </p>
 
 
@@ -149,6 +154,7 @@
         <li><strong>Day/Night Cycles:</strong> Background changes indicate light conditions.</li>
         <li><strong>Interactive Features:</strong>
             <ul>
+                <li>Hover over any point to zoom in on the graph and move cursor away to restore the graph. </li>
                 <li>Hover over any point to see detailed mouse activity data of the point</li>
                 <li>Activity data is sorted by descending order</li>
             </ul>
