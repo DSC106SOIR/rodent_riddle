@@ -169,7 +169,7 @@ function drawChart1(data) {
     .domain([globalMinTemp, globalMaxTemp])
     .interpolator(d3.interpolateCool);
 
-  // drawLegend();
+  drawLegend();
 
   const x = d3.scaleLinear()
     .domain([minTime, maxTime])
@@ -236,8 +236,8 @@ function drawChart1(data) {
     .attr('height', 20)
     .attr('href', './image/mouse.png')
     .attr('opacity', d => currentMouse && d.id === currentMouse[0].id ? 1 : 0.15)
-    .attr('filter', d => currentMouse && d.id === currentMouse[0].id ? 'drop-shadow(0 0 8pxrgb(0, 0, 0))' : 'drop-shadow(0 0 2px #222)')
-    // .attr('style', d => `filter: drop-shadow(0 0 6px ${tempColor(d.temp)});`)
+    .attr('filter', d => currentMouse && d.id === currentMouse[0].id ? 'drop-shadow(0 0 8px #f6e58d)' : 'drop-shadow(0 0 2px #222)')
+    .attr('style', d => `filter: drop-shadow(0 0 6px ${tempColor(d.temp)});`)
     .on('mouseover', (event, d) => {
       clearTimeout(hideTooltipTimeout);
       tooltip.interrupt().transition().duration(200).style('opacity', 0.95);
