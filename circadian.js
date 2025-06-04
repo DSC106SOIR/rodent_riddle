@@ -338,7 +338,7 @@ export async function createCircadianVisualization() {
     const playButton = buttonContainer.append('button')
         .text('Play')
         .style('padding', '5px 16px')
-        .style('background-color', 'var(--color-secondary)')
+        .style('background-color', 'var(--color-accent)')
         .style('color', 'var(--color-light)')
         .style('border', 'none')
         .style('border-radius', '4px')
@@ -358,7 +358,7 @@ export async function createCircadianVisualization() {
         .style('padding', '5px')
         .style('border-radius', '4px')
         .style('border', 'none')
-        .style('background-color', 'var(--color-secondary)')
+        .style('background-color', 'var(--color-accent)')
         .style('color', 'var(--color-light)');
 
     // Reset Button
