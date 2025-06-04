@@ -206,8 +206,8 @@
 }
 
 #game-section #start-btn {
-  background: linear-gradient(90deg, #273c75 0%, #0097e6 100%);
-  color: #fff;
+  background: #ff5e6c;
+  color: white;
   border: none;
   border-radius: 8px;
   padding: 14px 36px;
@@ -220,7 +220,7 @@
 }
 
 #game-section #start-btn:hover {
-  background: linear-gradient(90deg, #0097e6 0%, #273c75 100%);
+  background: color: #ff5e6c;
   transform: translateY(-2px) scale(1.04);
 }
 
@@ -261,7 +261,7 @@
 }
 
 #game-section select {
-  background: #273c75;
+  background: #ff5e6c;
   color: #fff;
   border: 1px solid #7ed6df;
   border-radius: 4px;

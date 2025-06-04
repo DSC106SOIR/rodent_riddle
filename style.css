@@ -185,6 +185,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 15px;
     border-radius: 10px;
     border-left: 4px solid var(--pink-leaf);
+    list-style-type: none;
 }
 
 .viz-features strong,
@@ -211,6 +212,10 @@ h1, h2, h3, h4, h5, h6 {
 .viz-questions ol {
     padding-left: 1.5em;
     line-height: 1.6;
+}
+
+li::marker {
+    opacity: 1;
 }
 
 .viz-questions li {
@@ -378,6 +383,8 @@ hr {
 #other-viz div {
     z-index: 10;
     position: absolute;
+    border: 1px rgba(255, 245, 215, 0.9) 100%;
+
   }
 
 /* === Activity Ranking Visualization === */
@@ -503,8 +510,6 @@ hr {
     background: rgba(255, 245, 215, 0.3);
     padding: 20px;
     border-radius: 15px;
-    border: 2px solid var(--pink-leaf);
-    box-shadow: 0 4px 15px rgba(255, 170, 171, 0.2);
 }
 
 #other-viz div {
