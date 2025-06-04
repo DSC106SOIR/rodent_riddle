@@ -616,7 +616,7 @@ export async function createActivityRankVisualization() {
     const playButton = buttonContainer.append('button')
         .text('Play')
         .style('padding', '8px 16px')
-        .style('background-color', 'var(--color-secondary)')
+        .style('background-color', 'var(--color-accent)')
         .style('color', 'var(--color-light)')
         .style('border', 'none')
         .style('border-radius', '4px')
@@ -636,7 +636,7 @@ export async function createActivityRankVisualization() {
         .style('padding', '5px')
         .style('border-radius', '4px')
         .style('border', 'none')
-        .style('background-color', 'var(--color-secondary)')
+        .style('background-color', 'var(--color-accent)')
         .style('color', 'var(--color-light)');
 
     // Populate day options

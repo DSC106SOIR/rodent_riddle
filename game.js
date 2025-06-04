@@ -510,17 +510,20 @@ function checkSexGuess(guess) {
         d3.select('#sex-guess').style('display', 'none'); // Hide sex guess buttons
         if (correctSex === 'male') {
           d3.select('#legend-container').style('display', 'none');
-          document.getElementById('estrus-guess').style.display = 'none';
+          d3.select('#estrus-guess').style('display', 'none');
           let summary = 'It was a male.';
           document.getElementById('final-result').textContent = summary;
           d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);
-          d3.select('#granularity-select').style('display', 'none'); // Hide dropdown in results
+          document.getElementById('granularity-select').style.display = 'none';
+          if (document.getElementById('granularity-select').parentElement)
+            document.getElementById('granularity-select').parentElement.style.display = 'none';
           showFinalInsight();
+
         } else {
           d3.select('#graph2').style('opacity', 0).style('display', 'block');
           d3.select('#estrus-guess').style('display', 'block');
           document.getElementById('result').textContent = '';
-          d3.select('#granularity-select').style('display', 'inline-block'); // Show dropdown in estrus step
+          d3.select('#granularity-select').style('display', 'inline-block'); 
           drawChart2(currentMouse);
           setTimeout(() => {
             d3.select('#graph2').transition().duration(600).style('opacity', 1);
@@ -549,7 +552,10 @@ function checkEstrusGuess(guess) {
         else summary = 'It was a female not in estrus.';
         document.getElementById('final-result').textContent = summary;
         d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);
-        d3.select('#granularity-select').style('display', 'none'); // Hide dropdown ONLY in results
+        document.getElementById('granularity-select').style.display = 'none';
+        if (document.getElementById('granularity-select').parentElement)
+          document.getElementById('granularity-select').parentElement.style.display = 'none';
+        d3.select('#estrus-guess').style('display', 'none');
         showFinalInsight();
       });
     }, 1200);
