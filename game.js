@@ -667,32 +667,28 @@ function showFinalInsight() {
     .attr('width', w)
     .attr('height', h)
     .style('display', 'block')
-    .style('margin', '80px auto 0 auto') // push down for spacing
+    .style('margin', '120px auto 0 auto') // push down for more spacing
     .style('opacity', 0);
-  // Color by sex
   const color = d3.scaleOrdinal()
     .domain(['male', 'female'])
     .range(['#00a8ff', '#f368e0']);
-  // Radius by avgTemp (colder = inner, hotter = outer)
   const minTemp = d3.min(mouseStats, d => d.avgTemp);
   const maxTemp = d3.max(mouseStats, d => d.avgTemp);
   const radius = d3.scaleLinear()
     .domain([minTemp, maxTemp])
     .range([r0, r1]);
-
   // Assign each mouse a unique angle, evenly spaced
   const angle = d3.scaleLinear()
     .domain([0, mouseStats.length])
     .range([0, 2 * Math.PI]);
-
   // Draw the outer and inner circles for visual reference (draw these before the mice so mice are on top)
   const pointsGroup = svg.append('g')
-    .attr('transform', `translate(${w/2},${h/2})`);
+    .attr('transform', `translate(${w/2},${h/2 + 40})`); // shift graph down
   pointsGroup.append('circle')
     .attr('cx', 0)
     .attr('cy', 0)
     .attr('r', r0)
-    .attr('stroke', '#344a60')
+    .attr('stroke', '#00a8ff')
     .attr('stroke-width', 2)
     .attr('fill', 'none')
     .attr('opacity', 0.5);
@@ -700,12 +696,11 @@ function showFinalInsight() {
     .attr('cx', 0)
     .attr('cy', 0)
     .attr('r', r1)
-    .attr('stroke', '#344a60')
+    .attr('stroke', '#f368e0')
     .attr('stroke-width', 2)
     .attr('fill', 'none')
     .attr('opacity', 0.5);
 
-  // Draw colored sex circles behind each mouse
   pointsGroup.selectAll('sex-circle')
     .data(mouseStats)
     .enter()
@@ -715,7 +710,6 @@ function showFinalInsight() {
     .attr('r', 18)
     .attr('fill', d => color(d.sex))
     .attr('opacity', 0.18);
-
   // Draw mice scattered around the circle, radius by avgTemp
   pointsGroup.selectAll('image')
     .data(mouseStats)
@@ -741,12 +735,10 @@ function showFinalInsight() {
       d3.select('#final-insight-tooltip').transition().duration(200).style('opacity', 0);
     });
 
-  // Add legend for sex
   svg.append('circle').attr('cx', 40).attr('cy', h-30).attr('r', 10).attr('fill', color('male'));
   svg.append('text').attr('x', 60).attr('y', h-26).attr('fill', '#7ed6df').attr('font-size', 16).text('Male');
   svg.append('circle').attr('cx', 120).attr('cy', h-30).attr('r', 10).attr('fill', color('female'));
   svg.append('text').attr('x', 140).attr('y', h-26).attr('fill', '#f368e0').attr('font-size', 16).text('Female');
-
   // Fade in
   svg.transition().duration(900).style('opacity', 1);
   // Tooltip div
@@ -757,7 +749,6 @@ function showFinalInsight() {
       .style('opacity', 0)
       .style('transition', 'opacity 0.25s');
   }
-  // Add a title and subtitle
   svg.append('text')
     .attr('x', w/2)
     .attr('y', 24)
