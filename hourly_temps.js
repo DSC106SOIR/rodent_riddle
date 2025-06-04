@@ -167,7 +167,7 @@ export async function createHourlyTemps() {
       .attr("x2", xScale(23))
       .attr("y1", yScale(avgFemale))
       .attr("y2", yScale(avgFemale))
-      .attr("stroke", "#86B19A")
+      .attr("stroke", "#E86A92")
       .attr("stroke-dasharray", "5,5");
 
     svg.append("line")

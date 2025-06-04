@@ -170,7 +170,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 1em 0;
     line-height: 1.6;
     font-size: 0.95em;
-    background: rgba(255, 245, 215, 0.6);
+    background: rgba(254, 179, 0, 0.1);
     padding: 15px;
     border-radius: 10px;
     border-left: 4px solid var(--sleuthe-yellow);
