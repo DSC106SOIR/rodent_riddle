@@ -169,7 +169,7 @@ function drawChart1(data) {
     .domain([globalMinTemp, globalMaxTemp])
     .interpolator(d3.interpolateCool);
 
-  drawLegend();
+  // drawLegend();
 
   const x = d3.scaleLinear()
     .domain([minTime, maxTime])
@@ -200,7 +200,7 @@ function drawChart1(data) {
     .attr('y', 340)
     .attr('text-anchor', 'middle')
     .attr('font-size', '13px')
-    .attr('fill', '#7ed6df')
+    .attr('fill', 'black')
     .text(xLabel);
   svg.append('text')
     .attr('transform', 'rotate(-90)')
@@ -208,7 +208,7 @@ function drawChart1(data) {
     .attr('y', 20)
     .attr('text-anchor', 'middle')
     .attr('font-size', '13px')
-    .attr('fill', '#7ed6df')
+    .attr('fill', 'black')
     .text('Temperature (°C)');
 
   // Tooltip: ensure only one exists
@@ -235,9 +235,9 @@ function drawChart1(data) {
     .attr('width', 20)
     .attr('height', 20)
     .attr('href', './image/mouse.png')
-    .attr('opacity', d => currentMouse && d.id === currentMouse[0].id ? 1 : 0.5)
-    .attr('filter', d => currentMouse && d.id === currentMouse[0].id ? 'drop-shadow(0 0 8px #f6e58d)' : 'drop-shadow(0 0 2px #222)')
-    .attr('style', d => `filter: drop-shadow(0 0 6px ${tempColor(d.temp)});`)
+    .attr('opacity', d => currentMouse && d.id === currentMouse[0].id ? 1 : 0.15)
+    .attr('filter', d => currentMouse && d.id === currentMouse[0].id ? 'drop-shadow(0 0 8pxrgb(0, 0, 0))' : 'drop-shadow(0 0 2px #222)')
+    // .attr('style', d => `filter: drop-shadow(0 0 6px ${tempColor(d.temp)});`)
     .on('mouseover', (event, d) => {
       clearTimeout(hideTooltipTimeout);
       tooltip.interrupt().transition().duration(200).style('opacity', 0.95);
@@ -721,7 +721,6 @@ function showFinalInsight() {
     .attr('height', 26)
     .attr('href', './image/mouse.png')
     .attr('opacity', 0.95)
-    .attr('style', d => `filter: drop-shadow(0 0 6px ${color(d.sex)});`)
     .on('mouseover', function(event, d) {
       d3.select(this).attr('opacity', 1).attr('width', 32).attr('height', 32);
       d3.select('#final-insight-tooltip')
@@ -760,7 +759,7 @@ function showFinalInsight() {
     .attr('x', w/2)
     .attr('y', 44)
     .attr('text-anchor', 'middle')
-    .attr('fill', '#fff')
+    .attr('fill', 'black')
     .attr('font-size', '15px')
     .call(function(text){
       text.append('tspan').attr('x', w/2).attr('dy', 0).text('Each mouse shows average temperature (radius),');

@@ -238,6 +238,7 @@ li::marker {
     background: linear-gradient(135deg, var(--coral-pink) 0%, var(--pink-leaf) 100%);
     color: white;
     border: none;
+    align-items: center;
     padding: 10px 20px;
     border-radius: 25px;
     cursor: pointer;

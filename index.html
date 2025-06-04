@@ -193,95 +193,68 @@
         Think you understand mouse behavior? Test your scientific intuition! This interactive game challenges you to determine a mouse's sex and reproductive state (estrus) based solely on temperature and activity data. Just like real researchers, you'll need to identify patterns in physiological data to make accurate inferences about the internal states of laboratory animals.
     </p>
 
-    <div id="game-section" style="
-        border: 2px solid #ff5e6c;
-        border-radius: 15px;
-        padding: 20px;
-        margin: 20px 0;
-        background: rgba(255, 245, 215, 0.8);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        position: relative;
-        overflow: hidden;
-        min-height: 600px;
-    ">
-      <div id="start-overlay" class="start-overlay" style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 170, 171, .3);
-        z-index: 1000;
-        border-radius: 13px;
-      ">
-        <div class="start-content">
-          <h1 style="color: #ff5e6c">Mice Data Interactive</h1>
-          <img src="./image/mouse.gif" alt="Mouse GIF" style="width:180px;display:block;margin:0 auto 24px auto;" />
-          <button id="start-btn">Start Game</button>
-        </div>
-      </div>
-      <div class="main-flex" style="position: relative; z-index: 1;">
-        <div class="container mouse-bg" style="display:none; background: transparent; padding: 0; margin: 0;">
-          <div id="narrative" class="narrative">
-            <p>
-              You are a mouse scientist. Can you infer the inner life of a mouse from its outward signs? <br>
-              Guess the sex and estrus state based only on temperature and activity — just like a real researcher!
-            </p>
-          </div>
-          <h1 style="color: #ff5e6c; text-align: center; margin-bottom: 20px;">Mice Data Interactive</h1>
-          <h2 class="game-title">Mice Data Interactive</h2>
-          <p class="game-explanation">
-            Eight mice, one mystery! Find the glowing mouse and guess its sex and estrus state. Can you crack the code from the clues?
-          </p>
-          <div style="margin-bottom: 16px; text-align: center;">
-            <label for="granularity-select" style="color:#7ed6df;font-weight:600;">Time Granularity: </label>
-            <select id="granularity-select">
-              <option value="day">Day</option>
-              <option value="halfday">Halfday</option>
-              <option value="hour" selected>Hour</option>
-              <option value="minute">Minute</option>
-            </select>
-          </div>
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <div style="flex: 1;">
-              <div id="graph1"></div>
-              <div id="graph2" style="display:none;"></div>
-            </div>
-            <div id="legend-container" style="margin-left: 20px;"></div>
-          </div>
-          <div id="sex-guess" class="button-group" style="text-align: center; margin: 20px 0;">
-            <button id="guess-male">Guess: Male</button>
-            <button id="guess-female">Guess: Female</button>
-            <span id="sex-result"></span>
-          </div>
-          <div id="estrus-guess" class="button-group" style="display:none; text-align: center; margin: 20px 0;">
-            <button id="estrus-yes">Guess: Estrus</button>
-            <button id="estrus-no">Guess: Not Estrus</button>
-            <span id="result"></span>
-          </div>
-          <div id="final-explanation" style="display:none; opacity:0; text-align: center; color: #fff;">
-            <h2 style="color: #7ed6df;">Result</h2>
-            <div id="final-result" style="font-size:1.3rem;margin-bottom:18px; color: #f6e58d;"></div>
-            <h2 style="color: #7ed6df;">Why is this important?</h2>
-            <p style="color: #fff; max-width: 600px; margin: 0 auto 20px auto;">
-              Just as you did, scientists must infer the internal states of animals from their behavior and physiology. This helps us understand biology, health, and the hidden lives of creatures.
-            </p>
-            <button onclick="location.reload(); return false;" style="
-              background: #7ed6df;
-              color: #1a1a2e;
-              border: none;
-              padding: 12px 24px;
-              border-radius: 8px;
-              cursor: pointer;
-              font-weight: bold;
-              font-size: 16px;
-            ">Play Again</button>
-          </div>
-        </div>
+<div id="game-section" class="themed-game-section">
+  <div id="start-overlay" class="start-overlay themed-start-overlay">
+    <div class="start-content" style="justify-content: center;">
+      <h1 class="highlight-title">Mice Data Interactive</h1>
+      <img src="./image/mouse.gif" alt="Mouse GIF" class="mouse-gif" />
+      <button id="start-btn">Start Game</button>
+    </div>
+  </div>
+
+  <div class="main-flex" style="position: relative; z-index: 1;">
+    <div class="container mouse-bg" style="display: none;">
+      <h1 class="highlight-title center-heading">Mice Data Interactive</h1>
+      <h2 class="game-title">Mice Data Interactive</h2>
+      <p class="game-explanation">
+        Eight mice, one mystery! Find the glowing mouse and guess its sex and estrus state. Can you crack the code from the clues?
+      </p>
+
+      <div class="granularity-control">
+        <label for="granularity-select">Time Granularity: </label>
+        <select id="granularity-select">
+          <option value="day">Day</option>
+          <option value="halfday">Halfday</option>
+          <option value="hour" selected>Hour</option>
+          <option value="minute">Minute</option>
+        </select>
       </div>
 
-      <script type="module" src="game.js"></script>
+      <div class="graphs-and-legend">
+        <div class="graph-section">
+          <div id="graph1"></div>
+          <div id="graph2" style="display: none;"></div>
+        </div>
+        <div id="legend-container"></div>
+      </div>
+
+      <div id="sex-guess" class="button-group">
+        <button id="guess-male">Guess: Male</button>
+        <button id="guess-female">Guess: Female</button>
+        <span id="sex-result"></span>
+      </div>
+
+      <div id="estrus-guess" class="button-group" style="display: none;">
+        <button id="estrus-yes">Guess: Estrus</button>
+        <button id="estrus-no">Guess: Not Estrus</button>
+        <span id="result"></span>
+      </div>
+
+      <div id="final-explanation" class="final-explanation" style="display: none; opacity: 0;">
+        <h2>Result</h2>
+        <div id="final-result"></div>
+        <h2>Why is this important?</h2>
+        <p>
+          Just as you did, scientists must infer the internal states of animals from their behavior and physiology.
+          This helps us understand biology, health, and the hidden lives of creatures.
+        </p>
+        <button onclick="location.reload(); return false;" class="play-again-btn">Play Again</button>
+      </div>
     </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</div>
 
 </body>
 </html>
