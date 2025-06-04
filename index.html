@@ -90,27 +90,25 @@
     <!-- Hourly Average Temperatures By Gender -->
     <h2>Do Male and Female Mice Have the Same Temperatures?</h2>
     <p class="viz-instructions">
-        Filler TODO
+        If we can find that the average temperature of male and female mice differ by a large amount, then we should be able to
+        reasonably guess the gender of a mouse based on its temperature.
     </p>
     <ul class="viz-features">
-        <li><strong>Feature 1:</strong> Description of first interactive feature</li>
-        <li><strong>Feature 2:</strong> Description of second feature</li>
-        <li><strong>Interactive Features:</strong>
-            <ul>
-                <li>List specific interactions available</li>
-                <li>Hover behaviors, controls, etc.</li>
-            </ul>
+        <li><strong>Average Mouse Temperature:</strong> For each mouse, take its average temperature at an hour. Then, take the average of those average temperatures across each gender.</li>
+        <li><strong>Hovering</strong> Hover over each line to see the 25th and 75th percentile of average hourly male or female mouse temperatures!</li>
         </li>
     </ul>
     <div id="hourly-temps">
         <!-- Visualization will be dynamically added here (your-file.js) -->    
     </div>
     <p class="viz-questions">
-        <strong>Question to consider:</strong> A thought-provoking, open-ended question that encourages exploration and discovery.
+        <strong>Question to consider:</strong> Can we guess mouse gender based on temperature and time? Will our guess always be correct?.
     </p>
     <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
     <p class="viz-answer" style="display: none;">
-        <strong>Our suggested answer:</strong> Your detailed, analytical answer that references specific visual elements and connects to scientific concepts.
+        <strong>Our suggested answer:</strong> The temperature feature is useful in predicting mouse gender, since females tend to be hotter at each hour of the day. 
+        Still, after checking percentiles, it's clear that the hottest male mice are often hotter than the coldest male mice, meaning that there is no 
+        perfect value that separates the genders.
     </p>
 
     <!-- Activity Ranking Visualization -->
