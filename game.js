@@ -757,22 +757,22 @@ function showFinalInsight() {
       .style('opacity', 0)
       .style('transition', 'opacity 0.25s');
   }
-  // Add a title and subtitle (with wrapping)
+  // Add a title and subtitle
   svg.append('text')
     .attr('x', w/2)
-    .attr('y', 32)
+    .attr('y', 24)
     .attr('text-anchor', 'middle')
     .attr('fill', '#7ed6df')
     .attr('font-size', '22px')
     .text('Mouse Temperatures in a Circular Wave');
   svg.append('text')
     .attr('x', w/2)
-    .attr('y', 54)
+    .attr('y', 44)
     .attr('text-anchor', 'middle')
     .attr('fill', '#fff')
     .attr('font-size', '15px')
     .call(function(text){
-      text.append('tspan').attr('x', w/2).attr('dy', 0).text('Each mouse is placed by average temperature (radius),');
-      text.append('tspan').attr('x', w/2).attr('dy', 18).text('and scattered around the circle. Axis shows temperature.');
+      text.append('tspan').attr('x', w/2).attr('dy', 0).text('Each mouse shows average temperature (radius),');
+      text.append('tspan').attr('x', w/2).attr('dy', 18).text('and is scattered around the circle.');
     });
 }
