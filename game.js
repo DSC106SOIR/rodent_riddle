@@ -513,7 +513,7 @@ function checkSexGuess(guess) {
           document.getElementById('estrus-guess').style.display = 'none';
           let summary = 'It was a male.';
           document.getElementById('final-result').textContent = summary;
-          d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);Add commentMore actions
+          d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);
           d3.select('#granularity-select').style('display', 'none'); // Hide dropdown in results
           showFinalInsight();
 
@@ -549,7 +549,7 @@ function checkEstrusGuess(guess) {
         if (sex === 'female' && estrus) summary = 'It was a female in estrus.';
         else summary = 'It was a female not in estrus.';
         document.getElementById('final-result').textContent = summary;
-        d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);Add commentMore actions
+        d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);
         d3.select('#granularity-select').style('display', 'none'); // Hide dropdown ONLY in results
         showFinalInsight();
       });
