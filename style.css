@@ -39,27 +39,34 @@
   letter-spacing: -0.02em;
   line-height: 1.1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.3em;
 }
 
 .rodent-text {
   color: var(--coral-pink);
   display: inline-block;
-  transform: rotate(-2deg);
-  margin-right: 0.3em;
+  transform: rotate(-1deg);
   text-shadow: 3px 3px 6px rgba(255, 94, 108, 0.3),
                -2px -2px 4px rgba(255, 94, 108, 0.2),
                0 0 20px rgba(255, 94, 108, 0.1),
                0 0 40px rgba(255, 94, 108, 0.05);
+  position: relative;
+  top: 2px;
 }
 
 .riddle-text {
   color: var(--sleuthe-yellow);
   display: inline-block;
-  transform: rotate(1deg);
+  transform: rotate(0deg);
   text-shadow: 3px 3px 6px rgba(254, 179, 0, 0.3),
                -2px -2px 4px rgba(254, 179, 0, 0.2),
                0 0 20px rgba(254, 179, 0, 0.1),
                0 0 40px rgba(254, 179, 0, 0.05);
+  position: relative;
+  top: -2px;
 }
 
 @keyframes typing {

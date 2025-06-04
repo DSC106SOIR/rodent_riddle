@@ -510,17 +510,17 @@ function checkSexGuess(guess) {
         d3.select('#sex-guess').style('display', 'none'); // Hide sex guess buttons
         if (correctSex === 'male') {
           d3.select('#legend-container').style('display', 'none');
-          document.getElementById('estrus-guess').style.display = 'none';
+          document.getElementById('estrus-guess').style('display', 'none');
+          document.getElementById('granularity-select').parentElement.style.display = 'none'; 
           let summary = 'It was a male.';
           document.getElementById('final-result').textContent = summary;
-          d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);
-          d3.select('#granularity-select').style('display', 'none'); // Hide dropdown in results
-          showFinalInsight();
+  
+          loadNextMouse(); 
         } else {
           d3.select('#graph2').style('opacity', 0).style('display', 'block');
           d3.select('#estrus-guess').style('display', 'block');
           document.getElementById('result').textContent = '';
-          d3.select('#granularity-select').style('display', 'inline-block'); // Show dropdown in estrus step
+          document.getElementById('granularity-select').parentElement.style.display = 'inline-block';
           drawChart2(currentMouse);
           setTimeout(() => {
             d3.select('#graph2').transition().duration(600).style('opacity', 1);
@@ -542,15 +542,16 @@ function checkEstrusGuess(guess) {
       d3.select('#graph2').transition().duration(600).style('opacity', 0).on('end', () => {
         d3.select('#graph2').style('display', 'none');
         d3.select('#legend-container').style('display', 'none');
+        d3.select('#estrus-guess').style('display', 'none'); // Hide estrus buttons
+        document.getElementById('granularity-select').parentElement.style('display', 'none'); // Hide time granularity container
         const sex = getCurrentMouseSex();
         const estrus = getCurrentMouseEstrus();
         let summary = '';
         if (sex === 'female' && estrus) summary = 'It was a female in estrus.';
         else summary = 'It was a female not in estrus.';
         document.getElementById('final-result').textContent = summary;
-        d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);
-        d3.select('#granularity-select').style('display', 'none'); // Hide dropdown ONLY in results
-        showFinalInsight();
+        // Remove final insight visualization
+        loadNextMouse(); // Start next round immediately
       });
     }, 1200);
   } else {
