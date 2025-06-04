@@ -31,7 +31,28 @@
             <p class="main-subtitle">Inferring internal states from external behavior</p>
         </div>
     </div>
-    
+    <h1>
+        When do mice sleep?
+    </h1>
+
+    <h2>Overall Activity Level</h2>
+    <p class="viz-instructions">
+        This visualization shows the overall mice activity level, proving mice have a nocturnal habit.
+    </p>
+    <ul class="viz-features">
+        <li><strong>Mouse Activity Level Comparison:</strong> These pie chart shows the proportion of the time dependency of activity level; left pie chart shows all mice's activity and right 2 piecharts show that depending on sex.</li>
+    </ul>
+    <div id="activity_overall">
+        <!-- Visualization will be dynamically added here (other-file.js) -->    
+    </div>
+    <p class="viz-questions">
+        <strong>Question to consider:</strong> Is there any time dependency or sex dependency for the mice activity level?
+    </p>
+    <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
+    <p class="viz-answer" style="display: none;">
+        <strong>Our suggested answer:</strong> We can see three-quarters of mice activity are done at night, which shows mice are nocturnal animals. On the other hand, we cannot see any sex dependency on the activity level.
+    </p>
+
 
     <!-- Circadian Rhythm -->
     <h2>Circadian Rhythm</h2>
@@ -62,6 +83,10 @@
         <strong>Our suggested answer:</strong> The visualization reveals clear circadian patterns in mouse behavior. During light-off periods (night), mice consistently show heightened activity levels, coupled with elevated body temperatures (shown by warmer colors). Conversely, during light-on periods (day), their activity decreases significantly, and body temperatures tend to be cooler. This day-night activity pattern strongly indicates nocturnal behavior, which is an evolutionary adaptation common in rodents. The synchronization between activity levels and body temperature also demonstrates how circadian rhythms coordinate multiple physiological processes to optimize survival during their most active periods.
     </p>
 
+    <h1>
+        Can We Guess the Gender of a Mouse?
+    </h1>
+
     <!-- Hourly Average Temperatures By Gender -->
     <h2>Do Male and Female Mice Have the Same Temperatures?</h2>
     <p class="viz-instructions">
@@ -87,7 +112,6 @@
     <p class="viz-answer" style="display: none;">
         <strong>Our suggested answer:</strong> Your detailed, analytical answer that references specific visual elements and connects to scientific concepts.
     </p>
-
 
     <!-- Activity Ranking Visualization -->
     <h2>Activity Rankings: Day vs Night Comparison</h2>
@@ -124,25 +148,9 @@
         <strong>Our suggested answer:</strong> The visualization reveals interesting patterns in gender-based activity levels. Overall, male mice tend to show higher activity levels compared to female mice across both day and night periods. However, during estrus days, we observe a notable increase in female activity levels that extends beyond just the night period. While this increased activity doesn't surpass the overall male activity levels, it represents a significant behavioral change in female mice during their reproductive cycle. The mini-plots showing gender activity proportions help visualize these patterns, with the male proportion typically being higher but showing interesting variations during estrus periods. These findings suggest that while male mice maintain generally higher activity levels, female activity patterns are more dynamic and influenced by their reproductive state.
     </p>
 
-
-    <h2>Overall Activity Level</h2>
-    <p class="viz-instructions">
-        This visualization shows the overall mice activity level, proving mice have a nocturnal habit.
-    </p>
-    <ul class="viz-features">
-        <li><strong>Mouse Activity Level Comparison:</strong> These pie chart shows the proportion of the time dependency of activity level; left pie chart shows all mice's activity and right 2 piecharts show that depending on sex.</li>
-    </ul>
-    <div id="activity_overall">
-        <!-- Visualization will be dynamically added here (other-file.js) -->    
-    </div>
-    <p class="viz-questions">
-        <strong>Question to consider:</strong> Is there any time dependency or sex dependency for the mice activity level?
-    </p>
-    <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
-    <p class="viz-answer" style="display: none;">
-        <strong>Our suggested answer:</strong> We can see three-quarters of mice activity are done at night, which shows mice are nocturnal animals. On the other hand, we cannot see any sex dependency on the activity level.
-    </p>
-
+    <h1>
+        Can We Tell if a Female Mouse is in estrus?
+    </h1>
 
     <!-- Other Visualizations (Use the same template) -->
     <h2>Effect of Estrus</h2>
@@ -173,6 +181,9 @@
         Other than estrus day, we can see the mice one day before estrus day has high body temperature and activity level compared to others. It is because female mice start to prepare for the estrus. As we can see estrus increases mouce body temperature and activity level highest on the day but starting one day before that as well.
     </p>
 
+    <h1>
+        Test Your Knowledge!
+    </h1>
     <!-- Mice Data Interactive Game -->
     <hr>
     <h2>Interactive Mouse Behavior Game</h2>
