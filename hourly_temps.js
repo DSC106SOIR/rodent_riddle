@@ -20,7 +20,7 @@ export async function createHourlyTemps() {
     // Example structure:
     const svg = container.append('svg')
         .attr('width', HOURLY_TEMPS_CONFIG.WIDTH + 20)
-        .attr('height', HOURLY_TEMPS_CONFIG.HEIGHT + 70);
+        .attr('height', HOURLY_TEMPS_CONFIG.HEIGHT + 70)
     
 
     const x = d3.range(24);
@@ -34,7 +34,7 @@ export async function createHourlyTemps() {
     const f_75 = data.female_75th_perc;
 
     const allY = [...f_averages, ...m_averages];
-    const yMax = d3.max(allY) + 0.1;
+    const yMax = d3.max(allY) + .5;
 
     const xScale = d3.scaleLinear().domain([0, 23]).range([HOURLY_TEMPS_CONFIG.MARGIN.left, HOURLY_TEMPS_CONFIG.WIDTH]);
     const yScale = d3.scaleLinear().domain([35.8, yMax]).range([HOURLY_TEMPS_CONFIG.HEIGHT, HOURLY_TEMPS_CONFIG.MARGIN.top]);
@@ -58,34 +58,33 @@ export async function createHourlyTemps() {
     
     const m_area = d3.area()
         .x(d => xScale(d.hour))
-        .y0(d => yScale(d.lower))
+        .y0(d => Math.min(yScale(d.lower), HOURLY_TEMPS_CONFIG.HEIGHT))
         .y1(d => yScale(d.upper));
 
     const f_area = d3.area()
         .x(d => xScale(d.hour))
         .y0(d => yScale(d.lower))
-        .y1(d => yScale(d.upper));
-
+        .y1(d => Math.max(yScale(d.upper), 30));
 
     svg.append('rect')
       .attr('x', HOURLY_TEMPS_CONFIG.MARGIN.left)
       .attr('y', 30)
       .attr('width', 385)
       .attr('height', 370)
-      .attr('stroke', 'white')
-      .attr('fill', '#ececec');
+      .attr('stroke', "rgba(255, 245, 215, 0.9) 100%")
+      .attr('fill', '#B8CFCE');
 
     svg.append("path")
       .datum(m_areaData)
       .attr("id", "m_area")
-      .attr("fill", "lightblue")
+      .attr("fill", "#4C72B0")
       .attr("opacity", 0)
       .attr("d", m_area);
 
     svg.append("path")
       .datum(f_areaData)
       .attr("id", "f_area")
-      .attr("fill", "lightblue")
+      .attr("fill", "#E86A92")
       .attr("opacity", 0)
       .attr("d", f_area);
 
@@ -95,7 +94,7 @@ export async function createHourlyTemps() {
       .attr("class", "line")
       .attr("id", "f_line")
       .attr("d", line)
-      .attr("stroke", "#BEE3DB")
+      .attr("stroke", "#E86A92")
       .attr("fill", "none")
       .attr('stroke-width', '2px')
 
@@ -104,7 +103,7 @@ export async function createHourlyTemps() {
       .attr("class", "line")
       .attr("id", "m_line")
       .attr("d", line)
-      .attr("stroke", "#8FBFE0")
+      .attr("stroke", "#4C72B0")
       .attr('stroke-width', '2px')
       .attr("fill", "none");
 
@@ -176,7 +175,7 @@ export async function createHourlyTemps() {
       .attr("x2", xScale(23))
       .attr("y1", yScale(avgMale))
       .attr("y2", yScale(avgMale))
-      .attr("stroke", "#6FA7C9")
+      .attr("stroke", "#4C72B0")
       .attr("stroke-dasharray", "5,5");
 
     const yTicks = d3.range(35.8, yMax + 0.001, 0.2);
@@ -218,10 +217,12 @@ export async function createHourlyTemps() {
       .attr("class", "legend");
 
     const legendItems = [
-      { label: "Hourly Average Female Temp", color: "#BEE3DB" },
-      { label: "Avg Nighttime Female Temp", color: "#86B19A", dashed: true },
-      { label: "Hourly Average Male Temp", color: "#8FBFE0" },
-      { label: "Avg Nighttime Male Temp", color: "#6FA7C9", dashed: true }
+      { label: "Hourly Average Female Temp", color: "#E86A92" },
+      { label: "Avg Nighttime Female Temp", color: "#E86A92", dashed: true },
+      { label: "Hourly Average Male Temp", color: "#4C72B0" },
+      { label: "Avg Nighttime Male Temp", color: "#4C72B0", dashed: true },
+      { label: "Nighttime", color: "#B8CFCE"}
+
     ];
 
     legendItems.forEach((item, i) => {
