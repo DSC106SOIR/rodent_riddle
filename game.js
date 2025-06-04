@@ -688,7 +688,7 @@ function showFinalInsight() {
     .attr('cx', 0)
     .attr('cy', 0)
     .attr('r', r0)
-    .attr('stroke', '#344a60')
+    .attr('stroke', '#00a8ff')
     .attr('stroke-width', 2)
     .attr('fill', 'none')
     .attr('opacity', 0.5);
@@ -696,7 +696,7 @@ function showFinalInsight() {
     .attr('cx', 0)
     .attr('cy', 0)
     .attr('r', r1)
-    .attr('stroke', '#344a60')
+    .attr('stroke', '#f368e0')
     .attr('stroke-width', 2)
     .attr('fill', 'none')
     .attr('opacity', 0.5);
