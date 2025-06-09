@@ -131,7 +131,6 @@ p {
 
 /* ===== GAME CONTAINER ===== */
 .container {
-  max-width: 1200px;
   margin: 0 5px;
   border-radius: 20px;
   padding: 15px;
@@ -261,7 +260,7 @@ p {
 }
 
 #graph1, #graph2 {
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(255, 94, 108, 0.2);
   background: rgba(255, 255, 255, 0.9);
@@ -422,7 +421,6 @@ p {
   background: linear-gradient(135deg, 
     rgba(255, 94, 108, 0.12) 0%, 
     rgba(254, 179, 0, 0.12) 100%);
-  border: 2px solid var(--coral-pink);
   border-radius: 12px;
   padding: 12px;
   margin: 8px auto;

@@ -335,7 +335,7 @@ function drawChart2(data) {
     .attr('y', 310)
     .attr('text-anchor', 'middle')
     .attr('font-size', '13px')
-    .attr('fill', '#7ed6df')
+    .attr('fill', 'black')
     .text(xLabel);
   svg.append('text')
     .attr('transform', 'rotate(-90)')
@@ -343,7 +343,7 @@ function drawChart2(data) {
     .attr('y', 20)
     .attr('text-anchor', 'middle')
     .attr('font-size', '13px')
-    .attr('fill', '#7ed6df')
+    .attr('fill', 'black')
     .text('Activity');
 
   // Tooltip: ensure only one exists
@@ -532,6 +532,9 @@ function checkSexGuess(guess) {
           d3.select('.graphs-and-legend').classed('hidden', true);
           d3.select('#legend-container').style('display', 'none');
           d3.select('#estrus-guess').style('display', 'none');
+          // Hide game title and description
+          d3.select('.center-heading').style('display', 'none');
+          d3.select('.game-explanation').style('display', 'none');
           let summary = 'It was a male mouse.';
           document.getElementById('final-result').textContent = summary;
           d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);
@@ -576,6 +579,9 @@ function checkEstrusGuess(guess) {
         // Hide graphs and legend container completely
         d3.select('.graphs-and-legend').classed('hidden', true);
         d3.select('#legend-container').style('display', 'none');
+        // Hide game title and description
+        d3.select('.center-heading').style('display', 'none');
+        d3.select('.game-explanation').style('display', 'none');
         const sex = getCurrentMouseSex();
         const estrus = getCurrentMouseEstrus();
         let summary = '';
@@ -665,6 +671,9 @@ function showGame() {
   d3.select('#final-explanation').style('display', 'none').style('opacity', 0);
   d3.select('#sex-guess').style('display', 'block').style('opacity', 0);
   d3.select('#estrus-guess').style('display', 'none');
+  // Show game title and description again
+  d3.select('.center-heading').style('display', 'block');
+  d3.select('.game-explanation').style('display', 'block');
   
   // Clear previous results
   document.getElementById('sex-result').textContent = '';
