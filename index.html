@@ -48,26 +48,32 @@
         When do mice sleep?
     </h2>
 
-    <h3>Overall Activity Level</h3>
+    <h3>Activity Patterns Throughout the Day</h3>
     <p class="viz-instructions">
-        This visualization shows the overall mice activity level, proving mice have a nocturnal habit.
+        When are mice most active? These pie charts reveal the distribution of mouse activity during light-on (day) and light-off (night) periods.
+        Compare the overall activity patterns with those of male and female mice separately to discover behavioral insights.
     </p>
     <ul class="viz-features">
-        <li><strong>Mouse Activity Level Comparison:</strong> These pie chart shows the proportion of the time
-            dependency of activity level; left pie chart shows all mice's activity and right 2 piecharts show that
-            depending on sex.</li>
+        <li><strong>Overall Activity Distribution:</strong> The left chart shows total activity across all mice, revealing the proportion of time spent active during day versus night periods.</li>
+        <li><strong>Gender-Based Comparison:</strong> The right charts break down activity patterns by sex, allowing you to identify whether male and female mice exhibit different circadian behaviors.</li>
+        <li><strong>Color Legend:</strong> Blue represents light-off periods (night), while yellow represents light-on periods (day).</li>
+        <li><strong>Interactive Elements:</strong> Hover over chart segments to see exact percentages and compare values across different groups.</li>
     </ul>
     <div id="activity_overall">
         <!-- Visualization will be dynamically added here (other-file.js) -->
     </div>
     <p class="viz-questions">
-        <strong>Question to consider:</strong> Is there any time dependency or sex dependency for the mice activity
-        level?
+        <strong>Questions to consider:</strong> What does the size of each slice tell you about when mice are most active? 
+        Do you notice any significant differences between male and female activity patterns? What might this reveal about mouse circadian rhythms?
     </p>
     <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
     <p class="viz-answer" style="display: none;">
-        <strong>Our suggested answer:</strong> We can see three-quarters of mice activity are done at night, which shows
-        mice are nocturnal animals. On the other hand, we cannot see any sex dependency on the activity level.
+        <strong>Our suggested answer:</strong> The visualization clearly reveals that approximately three-quarters (75%) of mouse activity occurs during light-off periods (night), 
+        demonstrating strong nocturnal behavior. This aligns with mice being naturally nocturnal animals who are most active when it's dark. 
+        Importantly, when comparing male and female mice, we observe remarkably similar activity distributions—both sexes show nearly identical 
+        proportions of day versus night activity. This suggests that circadian rhythm patterns are consistent across sexes in mice, 
+        with both male and female mice exhibiting the same strong preference for nighttime activity. The small variations between sexes 
+        (within 1-2%) are likely within normal biological variation rather than indicating meaningful behavioral differences.
     </p>
 
     <!-- Circadian Rhythm -->
@@ -201,54 +207,58 @@
         Can We Tell if a Female Mouse is in Estrus?
     </h2>
 
-    <!-- Other Visualizations (Use the same template) -->
+    <!-- Estrus temperature line graph -->
     <h3>Effect of Estrus</h3>
     <p class="viz-instructions">
-        This visualization shows the difference of body temperature and activity level of female mice depending on the
-        period. The line chart shows the average body temperature of 12 female mice. Hovering shows the activity level
-        of each time.
+        This visualization shows the differences in body temperature and activity levels of female mice depending on the
+        estrus period. The line chart shows the average body temperature of 12 female mice. Hovering reveals the activity level
+        at each time point.
     </p>
     <ul class="viz-features">
-        <li><strong>Mouse Temperature:</strong> Each line represents average mouse temperature change in one day of each
-            period.<br>(red: estrus day, blue: 1day before estrus day, green: 1day after estrus day, purple: 2day after
+        <li><strong>Mouse Temperature:</strong> Each line represents the average mouse temperature change over one day for each
+            period.<br>(red: estrus day, blue: 1 day before estrus day, green: 1 day after estrus day, purple: 2 days after
             estrus day)</li>
         <li><strong>Day/Night Cycles:</strong> Background changes indicate light conditions.</li>
         <li><strong>Interactive Features:</strong>
             <ul>
-                <li>Hover over any point to zoom in on the graph and move cursor away to restore the graph. </li>
-                <li>Hover over any point to see detailed mouse activity data of the point</li>
-                <li>Activity data is sorted by descending order</li>
+                <li>Hover over any point to zoom in on the graph and move cursor away to restore the graph.</li>
+                <li>Hover over any point to see detailed mouse activity data for that point</li>
+                <li>Activity data is sorted in descending order</li>
             </ul>
         </li>
-        <li><strong>Data Sorting:</strong> Each line is an average temperature of 12 female mice on designated days as
-            following.<br>
-            Estrus Day: Average of Day2, Day6, Day10, and Day14<br> 1day Before Estrus Day: Average of Day1, Day5, Day9,
-            and Day13<br> 1day After Estrus Day: Average of Day3, Day7, Day11<br> 2day After Estrus Day: Average of
-            Day4, Day8, Day12</li>
+        <li><strong>Data Sorting:</strong> Each line represents the average temperature of 12 female mice on designated days as
+            follows:
+            <ul>
+                <li><strong>Estrus Day:</strong> Average of Day 2, Day 6, Day 10, and Day 14</li>
+                <li><strong>1 Day Before Estrus Day:</strong> Average of Day 1, Day 5, Day 9, and Day 13</li>
+                <li><strong>1 Day After Estrus Day:</strong> Average of Day 3, Day 7, Day 11</li>
+                <li><strong>2 Days After Estrus Day:</strong> Average of Day 4, Day 8, Day 12</li>
+            </ul>
+        </li>
     </ul>
     <div id="other-viz">
         <!-- Visualization will be dynamically added here (other-file.js) -->
     </div>
     <p class="viz-questions">
-        <strong>Question to consider:</strong> How do estrus cycle effect on the female mouce body temperature and
-        activity level and why?
+        <strong>Question to consider:</strong> How does the estrus cycle affect female mouse body temperature and
+        activity levels, and why?
     </p>
     <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
     <p class="viz-answer" style="display: none;">
-        <strong>Our suggested answer:</strong> The visualization reveals that estrus affects mouce temperature starting
-        from around 4hours(240 minutes) later after light is turned off(night starts) and ends around 5hours(300
-        minutes) later after light is turned on(day starts). During that period, average temperature is 0.6°C higher
-        than that in other period at maximum, which is quite large considering that mice is homeotherm. Regarding
-        activity level, estrus activates as well but affected duration is a little different from the case of body
-        temperature. Around the same time body temperature increases, activity level also increases but it ends around
-        1hour later light is turned on(day starts), which ends earlier than body temperature increasing. Hence we can
-        say that estrus let female mice move a lot to find male mice to breed which is one factor that increase body
-        temperature. In addition, the level of estrogen increases significantly. This leads to the stimulation of the
-        hypothalamus and thermoregulatory centers, which can raise the set point for body temperature and Increasing
+        <strong>Our suggested answer:</strong> The visualization reveals that estrus affects mouse temperature starting
+        around 4 hours (240 minutes) after the light is turned off (night starts) and ends around 5 hours (300
+        minutes) after the light is turned on (day starts). During that period, the average temperature is 0.6°C higher
+        than in other periods at maximum, which is quite significant considering that mice are homeothermic. Regarding
+        activity levels, estrus also increases activity, but the affected duration is slightly different from body
+        temperature changes. Around the same time body temperature increases, activity levels also increase, but they return to baseline around
+        1 hour after the light is turned on (day starts), which is earlier than the body temperature increase. Hence, we can
+        conclude that estrus causes female mice to move considerably more to find male mice for breeding, which is one factor that increases body
+        temperature. In addition, estrogen levels increase significantly during estrus. This leads to stimulation of the
+        hypothalamus and thermoregulatory centers, which can raise the set point for body temperature and increase the
         basal metabolic rate (BMR), resulting in more internal heat production.
-        Other than estrus day, we can see the mice one day before estrus day has high body temperature and activity
-        level compared to others. It is because female mice start to prepare for the estrus. As we can see estrus
-        increases mouce body temperature and activity level highest on the day but starting one day before that as well.
+        Beyond the estrus day itself, we can observe that mice one day before estrus have higher body temperature and activity
+        levels compared to other periods. This occurs because female mice begin to prepare for estrus. As we can see, estrus
+        increases mouse body temperature and activity levels most significantly on the estrus day, but these changes begin one day before as well.
     </p>
 
     <h2>

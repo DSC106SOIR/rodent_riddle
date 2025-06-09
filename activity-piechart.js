@@ -14,7 +14,7 @@ export function drawActivityPieChart() {
 
     const colorScale = d3.scaleOrdinal()
       .domain(["night", "day"])
-      .range(["#506680", "#F4C05E"]);
+      .range(["var(--color-night)", "var(--color-day)"]);
 
     function prepareData(data) {
       const rolled = d3.rollups(data, v => d3.sum(v, d => d.mean), d => d.group);
@@ -38,7 +38,7 @@ export function drawActivityPieChart() {
       .style("display", "grid")
       .style("grid-template-columns", "auto auto")
       .style("gap", "30px 80px")
-      .style("justify-content", "start")
+      .style("justify-content", "center")
       .style("align-items", "start");
 
     function drawChart(parent, data, title, size, arcFn) {
@@ -55,6 +55,7 @@ export function drawActivityPieChart() {
       .enter()
       .append("path")
       .attr("fill", d => colorScale(d.data.group))
+      .attr("fill-opacity", 0.5)
       .transition()
       .duration(1000)
       .attrTween("d", function(d) {
@@ -77,22 +78,65 @@ export function drawActivityPieChart() {
         .attr("dy", "0.35em")
         .style("fill", "#000")
         .style("font-size", "14px")
-        .text(d => `${d.data.group}: ${d.data.percent}%`);
+        .text(d => `${d.data.percent}%`);
 
       svg.append("text")
         .attr("x", size / 2)
         .attr("y", size + 20)
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
-        .style("font-weight", "bold")
         .text(title);
     }
 
-    drawChart(layout.append("div"), totalSummary, "All Mice", largeSize, arcLarge);
+    // Left container with large chart and legend
+    const leftContainer = layout.append("div")
+      .style("display", "flex")
+      .style("flex-direction", "column")
+      .style("align-items", "center")
+      .style("gap", "20px");
 
-    const femaleContainer = layout.append("div");
-    drawChart(femaleContainer, femaleSummary, "Female Mice", smallSize, arcSmall);
-    drawChart(femaleContainer, maleSummary, "Male Mice", smallSize, arcSmall);
+    drawChart(leftContainer, totalSummary, "All Mice", largeSize, arcLarge);
+
+    // Add legend below the large chart
+    const legend = leftContainer.append("div")
+      .style("display", "flex")
+      .style("justify-content", "center")
+      .style("gap", "30px")
+      .style("margin-top", "10px");
+
+    // Right container with smaller charts stacked vertically
+    const rightContainer = layout.append("div")
+      .style("display", "flex")
+      .style("flex-direction", "column")
+      .style("align-items", "center")
+      .style("gap", "10px");
+
+    drawChart(rightContainer, femaleSummary, "Female Mice", smallSize, arcSmall);
+    drawChart(rightContainer, maleSummary, "Male Mice", smallSize, arcSmall);
+
+    const legendItems = [
+      { label: "Light-OFF", color: "var(--color-night)" },
+      { label: "Light-ON", color: "var(--color-day)" }
+    ];
+
+    legendItems.forEach(item => {
+      const legendItem = legend.append("div")
+        .style("display", "flex")
+        .style("align-items", "center")
+        .style("gap", "8px");
+
+      legendItem.append("div")
+        .style("width", "16px")
+        .style("height", "16px")
+        .style("background-color", item.color)
+        .style("opacity", "0.8")
+        .style("border-radius", "2px");
+
+      legendItem.append("span")
+        .style("font-size", "14px")
+        .style("color", "var(--color-accent)")
+        .text(item.label);
+    });
   });
 }
 

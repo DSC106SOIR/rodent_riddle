@@ -486,8 +486,26 @@ hr {
     cursor: pointer;
 }
 
+/* === Activity Pie Chart Visualization === */
+#activity_overall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* === Hourly Temperatures Visualization === */
 #hourly-temps {
     background: rgba(255, 245, 215, 0.9) 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 #other-viz div {

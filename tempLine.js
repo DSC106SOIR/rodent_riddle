@@ -18,9 +18,10 @@ export function compareTemperatureChart() {
       .attr('height', height);
 
     svg.append("text")
-      .attr("x", width / 2).attr("y", 15)
-      .attr("text-anchor", "middle")
-      .style("font-size", "20px").style("font-weight", "bold")
+      .attr("x", margin.left).attr("y", 12)
+      .attr("text-anchor", "start")
+      .style("font-size", "0.9em")
+      .style("fill", "var(--color-accent)")
       .text("Female Mouse Temperature Comparison in a Day");
 
     const allData = estrusData.concat(beforeData, after1Data, after2Data);
@@ -65,32 +66,50 @@ export function compareTemperatureChart() {
     .attr('class', 'x-axis')
     .call(d3.axisBottom(x));
 
+    // Style x-axis text and lines
+    xAxisG.selectAll('text')
+      .style('fill', 'var(--color-accent)')
+      .style('font-size', '0.9em');
+    
+    xAxisG.selectAll('path, line')
+      .style('stroke', 'var(--color-accent)');
+
     
     svg.append('text')
     .attr('x', width / 2)
     .attr('y', height - margin.bottom + 40)  
     .attr('text-anchor', 'middle')
-    .attr('fill', 'black')
-    .style('font-size', '14px')
-    .text('Time(minutes)');
+    .style('fill', 'var(--color-accent)')
+    .style('font-size', '0.85em')
+    .text('Time (minutes)');
 
 
       
-    svg.append('g')
+    const yAxisG = svg.append('g')
       .attr('transform', `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y))
-      .append('text')
+      .call(d3.axisLeft(y));
+
+    // Style y-axis text and lines
+    yAxisG.selectAll('text')
+      .style('fill', 'var(--color-accent)')
+      .style('font-size', '0.9em');
+    
+    yAxisG.selectAll('path, line')
+      .style('stroke', 'var(--color-accent)');
+
+    yAxisG.append('text')
       .attr('x', -height / 2).attr('y', -40)
       .attr('transform', 'rotate(-90)')
-      .attr('fill', 'black')
       .attr('text-anchor', 'middle')
+      .style('fill', 'var(--color-accent)')
+      .style('font-size', '1.3em')
       .text('Temperature (°C)');
 
     const datasets = [
-      { data: estrusData, color: 'red', label: 'Estrus Day' },
-      { data: beforeData, color: 'steelblue', label: '1 Day Before Estrus Day' },
-      { data: after1Data, color: 'green', label: '1 Day After Estrus Day' },
-      { data: after2Data, color: 'purple', label: '2 Days After Estrus Day' }
+      { data: estrusData, color: 'var(--color-female)', label: 'Estrus day', opacity: 1.0 },
+      { data: beforeData, color: '#6B7B8C', label: 'One day before estrus day', opacity: 0.8 },
+      { data: after1Data, color: '#A0826D', label: 'One day after estrus day', opacity: 0.8 },
+      { data: after2Data, color: '#9C8B7A', label: 'Two days after estrus day', opacity: 0.6 }
     ];
 
     const paths = datasets.map(d =>
@@ -99,16 +118,30 @@ export function compareTemperatureChart() {
         .attr('fill', 'none')
         .attr('stroke', d.color)
         .attr('stroke-width', 2)
+        .attr('stroke-opacity', d.opacity)
         .attr('d', line)
     );
 
 
-    const legendX = width - margin.right - 180;
+    // Create line legend similar to hourly_temps.js
+    const legend = svg.append("g")
+      .attr("transform", `translate(${width - margin.right - 220}, ${margin.top + 20})`)
+      .attr("class", "legend");
+
     datasets.forEach((d, i) => {
-      const yPos = margin.top + 10 + i * 20;
-      svg.append("circle").attr("cx", legendX).attr("cy", yPos).attr("r", 6).style("fill", d.color);
-      svg.append("text").attr("x", legendX + 10).attr("y", yPos + 4)
-        .text(d.label).style("font-size", "12px").style("dominant-baseline", "middle");
+      const y = i * 20;
+      legend.append("line")
+        .attr("x1", 0).attr("x2", 20)
+        .attr("y1", y).attr("y2", y)
+        .attr("stroke", d.color)
+        .attr("stroke-width", 2)
+        .attr("stroke-opacity", d.opacity);
+
+      legend.append("text")
+        .attr("x", 25).attr("y", y + 4)
+        .style("font-size", "0.8em")
+        .style("fill", "var(--color-accent)")
+        .text(d.label);
     });
 
     const tooltip = d3.select("#other-viz")
@@ -118,7 +151,7 @@ export function compareTemperatureChart() {
     .style("border", "1px solid #ccc")
     .style("padding", "4px 6px")
     .style("border-radius", "4px")
-    .style("font-size", "11px")
+    .style("font-size", "0.9em")
     .style("white-space", "nowrap")
     .style("max-width", "180px")
     .style("box-shadow", "2px 2px 4px rgba(0,0,0,0.1)")

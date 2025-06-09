@@ -66,24 +66,29 @@ export async function createHourlyTemps() {
         .y0(d => yScale(d.lower))
         .y1(d => Math.max(yScale(d.upper), 30));
 
-    // Background rectangles for day/night cycle (lab setting)
-    // Night period: 0 to 12 hours (lights off)
-    svg.append('rect')
-      .attr('x', xScale(0))
-      .attr('y', 30)
-      .attr('width', xScale(12) - xScale(0))
-      .attr('height', 370)
-      .attr('fill', 'var(--color-night)')
-      .attr('opacity', 0.3);
+    // Background gradient for day/night cycle (smooth transition)
+    svg.append("defs")
+      .append("linearGradient")
+      .attr("id", "hourly-background-gradient")
+      .attr("x1", "0%").attr("x2", "100%")
+      .attr("y1", "0%").attr("y2", "0%")
+      .selectAll("stop")
+      .data([
+        { offset: "0%", color: "#506680" },   // Night color
+        { offset: "30%", color: "#506680" },  // Night color (middle of night)
+        { offset: "100%", color: "#F4C05E" } // Day color
+      ])
+      .enter().append("stop")
+      .attr("offset", d => d.offset)
+      .attr("stop-color", d => d.color);
 
-    // Day period: 12 to 24 hours (lights on)
-    svg.append('rect')
-      .attr('x', xScale(12))
-      .attr('y', 30)
-      .attr('width', xScale(23) - xScale(12))
-      .attr('height', 370)
-      .attr('fill', 'var(--color-day)')
-      .attr('opacity', 0.3);
+    svg.append("rect")
+      .attr("x", HOURLY_TEMPS_CONFIG.MARGIN.left)
+      .attr("y", HOURLY_TEMPS_CONFIG.MARGIN.top)
+      .attr("width", HOURLY_TEMPS_CONFIG.WIDTH - HOURLY_TEMPS_CONFIG.MARGIN.left)
+      .attr("height", HOURLY_TEMPS_CONFIG.HEIGHT - HOURLY_TEMPS_CONFIG.MARGIN.top)
+      .attr("fill", "url(#hourly-background-gradient)")
+      .attr("opacity", 0.4);
 
     svg.append("path")
       .datum(m_areaData)
@@ -208,15 +213,15 @@ export async function createHourlyTemps() {
       .style("fill", "var(--color-accent)");
 
     svg.append("text")
-      .attr("x", HOURLY_TEMPS_CONFIG.WIDTH / 2)
-      .attr("y", HOURLY_TEMPS_CONFIG.MARGIN.top)
-      .attr("text-anchor", "middle")
+      .attr("x", HOURLY_TEMPS_CONFIG.MARGIN.left)
+      .attr("y", HOURLY_TEMPS_CONFIG.MARGIN.top - 5)
+      .attr("text-anchor", "start")
       .style("font-size", "0.9em")
       .style("fill", "var(--color-accent)")
       .text("Female Mice Are Warmer Than Male Mice");
 
     svg.append("text")
-      .attr("x", HOURLY_TEMPS_CONFIG.WIDTH / 2)
+      .attr("x", HOURLY_TEMPS_CONFIG.WIDTH / 2 + 40)
       .attr("y", HOURLY_TEMPS_CONFIG.HEIGHT + 40)
       .attr("text-anchor", "middle")
       .attr("class", "axis-label")
