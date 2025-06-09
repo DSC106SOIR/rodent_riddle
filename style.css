@@ -124,6 +124,9 @@ body {
     background: linear-gradient(135deg, var(--ragin-beige) 0%, rgba(255, 245, 215, 0.9) 100%);
     color: var(--color-accent);
     min-height: 100vh;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
 }
 
 h1 {
@@ -544,5 +547,50 @@ hr {
   padding: 0 !important;
   border-radius: 0 !important;
   border: none !important;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.scroll-page {
+  min-height: 100vh;
+  width: 100vw;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+#nav-dots {
+  position: fixed;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1000;
+}
+
+.nav-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent, #ff6f61);
+  opacity: 0.4;
+  border: 2px solid #fff;
+  transition: opacity 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+.nav-dot.active {
+  opacity: 1;
+  transform: scale(1.3);
+  box-shadow: 0 0 0 4px rgba(255,111,97,0.15);
 }
 

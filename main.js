@@ -40,3 +40,41 @@ document.addEventListener('DOMContentLoaded', () => {
     createHourlyTemps();
 });
 
+// navigation for page
+document.addEventListener('DOMContentLoaded', function() {
+  const sections = document.querySelectorAll('.scroll-page');
+  const navDots = document.getElementById('nav-dots');
+  if (!navDots || sections.length === 0) return;
+
+  // Create dots
+  navDots.innerHTML = '';
+  sections.forEach((section, idx) => {
+    const dot = document.createElement('div');
+    dot.className = 'nav-dot';
+    dot.setAttribute('data-index', idx);
+    dot.addEventListener('click', () => {
+      section.scrollIntoView({ behavior: 'smooth' });
+    });
+    navDots.appendChild(dot);
+  });
+
+  function updateActiveDot() {
+    let activeIdx = 0;
+    const scrollY = window.scrollY;
+    const buffer = window.innerHeight / 3;
+    sections.forEach((section, idx) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= buffer && rect.bottom > buffer) {
+        activeIdx = idx;
+      }
+    });
+    navDots.querySelectorAll('.nav-dot').forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === activeIdx);
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveDot);
+  window.addEventListener('resize', updateActiveDot);
+  updateActiveDot();
+});
+
