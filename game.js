@@ -165,8 +165,8 @@ function drawChart1(data) {
   const maxTemp = d3.max(data, d => d.temp);
 
   tempColor = d3.scaleSequential()
-    .domain([globalMinTemp, globalMaxTemp])
-    .interpolator(d3.interpolateCool);
+    .domain([39, 35]) // Fixed domain like circadian.js (MAX: 39, MIN: 35)
+    .interpolator(d3.interpolateRdYlBu);
 
   drawLegend();
 
@@ -304,8 +304,8 @@ function drawChart2(data) {
   const maxTemp = d3.max(data, d => d.temp);
 
   tempColor = d3.scaleSequential()
-    .domain([globalMinTemp, globalMaxTemp])
-    .interpolator(d3.interpolateCool);
+    .domain([39, 35]) // Fixed domain like circadian.js (MAX: 39, MIN: 35)
+    .interpolator(d3.interpolateRdYlBu);
 
   drawLegend();
 
@@ -520,7 +520,7 @@ function checkSexGuess(guess) {
   console.log('Sex guess:', guess, 'Correct sex:', correctSex, 'Current mouse:', currentMouse[0]?.id);
   
   if (guess === correctSex) {
-    sexResult.textContent = '✅ You\'ve glimpsed the hidden truth!';
+    sexResult.textContent = 'You\'ve glimpsed the hidden truth!';
     sexResult.className = 'success';
     setTimeout(() => {
       d3.select('#graph1').transition().duration(600).style('opacity', 0).on('end', () => {
@@ -535,7 +535,7 @@ function checkSexGuess(guess) {
           // Hide game title and description
           d3.select('.center-heading').style('display', 'none');
           d3.select('.game-explanation').style('display', 'none');
-          let summary = 'It was a male mouse.';
+          let summary = 'It was a male mouse';
           document.getElementById('final-result').textContent = summary;
           d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);
           document.getElementById('granularity-select').style.display = 'none';
@@ -562,7 +562,7 @@ function checkSexGuess(guess) {
       });
     }, 1000);
   } else {
-    sexResult.textContent = '❌ Try again -- the inner life of a mouse is subtle!';
+    sexResult.textContent = 'Try again—the inner life of a mouse is subtle!';
     sexResult.className = 'error';
   }
 }
@@ -571,7 +571,7 @@ function checkEstrusGuess(guess) {
   const correct = getCurrentMouseEstrus();
   const result = document.getElementById('result');
   if (guess === correct) {
-    result.textContent = '✅ You\'ve glimpsed the hidden truth!';
+    result.textContent = 'You\'ve glimpsed the hidden truth!';
     result.className = 'success';
     setTimeout(() => {
       d3.select('#graph2').transition().duration(600).style('opacity', 0).on('end', () => {
@@ -585,8 +585,8 @@ function checkEstrusGuess(guess) {
         const sex = getCurrentMouseSex();
         const estrus = getCurrentMouseEstrus();
         let summary = '';
-        if (sex === 'female' && estrus) summary = 'It was a female mouse in estrus.';
-        else summary = 'It was a female mouse not in estrus.';
+        if (sex === 'female' && estrus) summary = 'It was a female mouse in estrus';
+        else summary = 'It was a female mouse not in estrus';
         document.getElementById('final-result').textContent = summary;
         d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);
         document.getElementById('granularity-select').style.display = 'none';
@@ -597,7 +597,7 @@ function checkEstrusGuess(guess) {
       });
     }, 1200);
   } else {
-    result.textContent = '❌ Try again -- the inner life of a mouse is subtle!';
+    result.textContent = 'Try again—the inner life of a mouse is subtle!';
     result.className = 'error';
   }
 }
@@ -705,9 +705,86 @@ function showFinalInsight() {
   d3.select('#legend-container').style('display', 'none'); // Hide legend in final results
   d3.select('#final-explanation').style('display', 'block').style('opacity', 1); // Ensure final explanation is visible
   
+  // Hide the original HTML text elements to avoid duplication
+  d3.select('#final-explanation h3').style('display', 'none');
+  d3.select('#final-explanation p').style('display', 'none');
+  d3.select('#final-result').style('display', 'none'); // Hide original result box
+  
   // Store the Play Again button to move it after the graph
   const playAgainBtn = document.querySelector('.play-again-btn');
   const playAgainBtnParent = playAgainBtn ? playAgainBtn.parentNode : null;
+  
+  // Get the current result text to include in the left side
+  const resultText = document.getElementById('final-result').textContent;
+  
+  // Create flex container for text and graph
+  const flexContainer = d3.select('#final-explanation')
+    .append('div')
+    .style('display', 'flex')
+    .style('align-items', 'flex-start')
+    .style('gap', '30px')
+    .style('margin', '20px 0')
+    .style('flex-wrap', 'wrap'); // Allow wrapping on smaller screens
+  
+  // Create left side for ALL text content
+  const textContainer = flexContainer
+    .append('div')
+    .style('flex', '1')
+    .style('max-width', '450px');
+  
+  // Add "Result" heading
+  textContainer.append('h3')
+    .style('color', 'var(--coral-pink)')
+    .style('font-size', '1.8rem')
+    .style('margin-bottom', '8px')
+    .style('text-align', 'center')
+    .style('font-weight', '700')
+    .style('text-shadow', '2px 2px 4px rgba(255, 94, 108, 0.3)')
+    .text('Result');
+  
+  // Add the result message
+  textContainer.append('div')
+    .style('background', 'linear-gradient(135deg, #28a745 0%, #20c997 100%)')
+    .style('color', 'white')
+    .style('border-radius', '15px')
+    .style('padding', '12px')
+    .style('margin', '12px 0')
+    .style('font-weight', '700')
+    .style('font-size', '1.2rem')
+    .style('text-shadow', '2px 2px 4px rgba(0, 0, 0, 0.4)')
+    .style('box-shadow', '0 10px 30px rgba(40, 167, 69, 0.4)')
+    .style('text-align', 'center')
+    .text(resultText);
+  
+  // Add "Why is this important?" heading
+  textContainer.append('h3')
+    .style('color', 'var(--coral-pink)')
+    .style('font-size', '1.8rem')
+    .style('margin', '20px 0 8px 0')
+    .style('font-weight', '700')
+    .style('text-shadow', '2px 2px 4px rgba(255, 94, 108, 0.3)')
+    .text('Why is this important?');
+  
+  // Add the explanation paragraph
+  textContainer.append('p')
+    .style('background', 'linear-gradient(135deg, rgba(255, 94, 108, 0.12) 0%, rgba(254, 179, 0, 0.12) 100%)')
+    .style('border-radius', '12px')
+    .style('padding', '12px')
+    .style('margin', '8px 0')
+    .style('color', 'var(--color-accent)')
+    .style('font-weight', '500')
+    .style('line-height', '1.7')
+    .style('font-size', '1rem')
+    .style('box-shadow', '0 6px 20px rgba(255, 94, 108, 0.15)')
+    .style('text-align', 'left')
+    .text('Just as you did, scientists must infer the internal states of animals from their behavior and physiology. This helps us understand biology, health, and the hidden lives of creatures.');
+  
+  // Create right side for graph
+  const graphContainer = flexContainer
+    .append('div')
+    .style('flex-shrink', '0')
+    .style('min-width', '400px'); // Ensure graph doesn't get too small
+  
   // Prepare data: one point per mouse, average temp and activity
   // Only use mice present in the current sampled data
   const grouped = d3.group(fullData, d => d.id);
@@ -723,15 +800,14 @@ function showFinalInsight() {
   }).filter(d => d.avgTemp !== null);
   // Sort mice by avgTemp (colder to hotter)
   mouseStats.sort((a, b) => a.avgTemp - b.avgTemp);
-  // SVG setup
-  const w = 540, h = 540, r0 = 150, r1 = 210;
-  const svg = d3.select('#final-explanation')
+  // SVG setup - made smaller to fit better in flex layout
+  const w = 400, h = 400, r0 = 110, r1 = 160;
+  const svg = graphContainer
     .append('svg')
     .attr('id', 'final-insight')
     .attr('width', w)
     .attr('height', h)
     .style('display', 'block')
-    .style('margin', '10px auto 0 auto') // minimal spacing
     .style('opacity', 0);
   const color = d3.scaleOrdinal()
     .domain(['male', 'female'])
@@ -747,7 +823,7 @@ function showFinalInsight() {
     .range([0, 2 * Math.PI]);
   // Draw the outer and inner circles for visual reference (draw these before the mice so mice are on top)
   const pointsGroup = svg.append('g')
-    .attr('transform', `translate(${w/2},${h/2 + 40})`); // shift graph down
+    .attr('transform', `translate(${w/2},${h/2 + 30})`); // shift graph down (adjusted for smaller size)
   pointsGroup.append('circle')
     .attr('cx', 0)
     .attr('cy', 0)
@@ -789,6 +865,7 @@ function showFinalInsight() {
       d3.select(this).attr('opacity', 1).attr('width', 32).attr('height', 32);
       d3.select('#final-insight-tooltip')
         .style('opacity', 1)
+        .style('border-color', color(d.sex)) // Set border color based on mouse sex
         .html(`<b>Mouse ${d.id}</b><br>Sex: ${d.sex}<br>Avg Temp: ${d.avgTemp.toFixed(2)}°C`)
         .style('left', (event.pageX + 10) + 'px')
         .style('top', (event.pageY - 28) + 'px');
@@ -798,10 +875,11 @@ function showFinalInsight() {
       d3.select('#final-insight-tooltip').transition().duration(200).style('opacity', 0);
     });
 
-  svg.append('circle').attr('cx', 40).attr('cy', h-30).attr('r', 10).attr('fill', color('male'));
-  svg.append('text').attr('x', 60).attr('y', h-26).attr('fill', '#7ed6df').attr('font-size', 16).text('Male');
-  svg.append('circle').attr('cx', 120).attr('cy', h-30).attr('r', 10).attr('fill', color('female'));
-  svg.append('text').attr('x', 140).attr('y', h-26).attr('fill', '#f368e0').attr('font-size', 16).text('Female');
+  // Center the legend in the middle of the graph (translated down 25px)
+  svg.append('circle').attr('cx', w/2 - 35).attr('cy', h/2 + 15).attr('r', 8).attr('fill', color('male'));
+  svg.append('text').attr('x', w/2 - 20).attr('y', h/2 + 19).attr('fill', '#7ed6df').attr('font-size', 14).text('Male');
+  svg.append('circle').attr('cx', w/2 - 35).attr('cy', h/2 + 35).attr('r', 8).attr('fill', color('female'));
+  svg.append('text').attr('x', w/2 - 20).attr('y', h/2 + 39).attr('fill', '#f368e0').attr('font-size', 14).text('Female');
   // Fade in
   svg.transition().duration(900).style('opacity', 1);
   // Tooltip div
@@ -816,29 +894,30 @@ function showFinalInsight() {
     .attr('x', w/2)
     .attr('y', 24)
     .attr('text-anchor', 'middle')
-    .attr('fill', '#7ed6df')
-    .attr('font-size', '22px')
+    .attr('fill', 'var(--coral-pink)')
+    .attr('font-size', '18px')
     .text('Mouse Temperatures in a Circular Wave');
   svg.append('text')
     .attr('x', w/2)
     .attr('y', 44)
     .attr('text-anchor', 'middle')
     .attr('fill', 'black')
-    .attr('font-size', '15px')
+    .attr('font-size', '13px')
     .call(function(text){
       text.append('tspan').attr('x', w/2).attr('dy', 0).text('Each mouse shows average temperature (radius),');
       text.append('tspan').attr('x', w/2).attr('dy', 18).text('and is scattered around the circle.');
     });
   
-  // Move the Play Again button to appear after the graph
+  // Move the Play Again button to appear after the flex container
   if (playAgainBtn && playAgainBtnParent) {
     // Remove from current position
     playAgainBtnParent.removeChild(playAgainBtn);
-    // Create a container for the button below the graph
+    // Create a container for the button below the flex container
     const buttonContainer = d3.select('#final-explanation')
       .append('div')
       .style('text-align', 'center')
-      .style('margin-top', '20px');
+      .style('margin-top', '30px')
+      .style('clear', 'both');
     // Add the button to the new position
     buttonContainer.node().appendChild(playAgainBtn);
   }

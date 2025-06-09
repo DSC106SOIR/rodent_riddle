@@ -138,14 +138,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSection = 0;
 
     // Create navigation dots
-    sections.forEach((section, idx) => {
-        const dot = document.createElement('div');
-        dot.className = 'nav-dot' + (idx === 0 ? ' active' : '');
-        dot.setAttribute('data-index', idx);
+  sections.forEach((section, idx) => {
+    const dot = document.createElement('div');
+    dot.className = 'nav-dot' + (idx === 0 ? ' active' : '');
+    dot.setAttribute('data-index', idx);
         dot.setAttribute('title', section.textContent.trim());
         dot.addEventListener('click', () => scrollToSection(idx));
-        navDots.appendChild(dot);
-    });
+    navDots.appendChild(dot);
+  });
 
     function scrollToSection(idx) {
         if (idx < 0 || idx >= sections.length) return;
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (activeIdx !== currentSection) {
             updateActiveSection(activeIdx);
-        }
+    }
     }
 
     // Keyboard navigation
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             scrollToSection(currentSection + 1);
         } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-            e.preventDefault();
+    e.preventDefault();
             scrollToSection(currentSection - 1);
         }
     });
