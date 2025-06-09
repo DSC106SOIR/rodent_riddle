@@ -24,11 +24,13 @@ function computeGlobalTempRange(data) {
 
 function drawLegend() {
   d3.select('#legend-container').html('');
-  const legendWidth = 120, legendHeight = 220, legendPad = 28;
+  const legendWidth = 60, legendHeight = 180, legendPad = 15;
   const legendSvg = d3.select('#legend-container')
     .append('svg')
     .attr('width', legendWidth)
-    .attr('height', legendHeight + 2 * legendPad);
+    .attr('height', legendHeight + 2 * legendPad)
+    .style('background', 'none')
+    .style('border', 'none');
   const defs = legendSvg.append('defs');
   const gradientId = 'temp-gradient-game';
   defs.select(`#${gradientId}`).remove();
@@ -51,12 +53,11 @@ function drawLegend() {
   legendSvg.append('rect')
     .attr('x', 0)
     .attr('y', legendPad)
-    .attr('width', 24)
+    .attr('width', 18)
     .attr('height', legendHeight)
     .style('fill', `url(#${gradientId})`)
-    .attr('stroke', '#aaa')
-    .attr('stroke-width', 1.5)
-    .attr('rx', 8);
+    .attr('stroke', 'none')
+    .attr('stroke-width', 0)
 
   // Legend scale and axis (vertical)
   const minT = Math.floor(globalMinTemp);
@@ -65,34 +66,32 @@ function drawLegend() {
     .domain([minT, maxT])
     .range([legendHeight + legendPad, legendPad]);
   const legendAxis = d3.axisRight(legendScale)
-    .ticks(6)
+    .ticks(4)
     .tickFormat(d => `${d}°C`);
   legendSvg.append('g')
-    .attr('transform', `translate(24,0)`)
+    .attr('transform', `translate(18,0)`)
     .call(legendAxis)
     .selectAll('text')
-    .attr('fill', '#fff')
-    .attr('font-size', '12px');
+    .attr('fill', 'var(--color-accent)')
+    .attr('font-size', '9px');
 
   // Add 'Hotter' label above and 'Colder' label below
   legendSvg.append('text')
-    .attr('x', 36)
-    .attr('y', 18)
+    .attr('x', 4)
+    .attr('y', 8)
     .attr('text-anchor', 'start')
-    .attr('fill', tempColor(globalMaxTemp))
-    .attr('font-size', '15px')
+    .attr('fill', 'var(--color-accent)')
+    .attr('font-size', '10px')
     .attr('font-weight', '600')
-    .attr('text-shadow', '1px 1px 2px rgba(0, 0, 0, 0.5)')
-    .text('Hotter');
+    .text('Hot');
   legendSvg.append('text')
-    .attr('x', 36)
-    .attr('y', legendHeight + legendPad + 18)
+    .attr('x', 4)
+    .attr('y', legendHeight + legendPad + 12)
     .attr('text-anchor', 'start')
-    .attr('fill', tempColor(globalMinTemp))
-    .attr('font-size', '15px')
+    .attr('fill', 'var(--color-accent)')
+    .attr('font-size', '10px')
     .attr('font-weight', '600')
-    .attr('text-shadow', '1px 1px 2px rgba(0, 0, 0, 0.5)')
-    .text('Colder');
+    .text('Cold');
 }
 
 function getXAxisConfig(granularity) {
@@ -151,8 +150,8 @@ function drawChart1(data) {
 
   const svg = d3.select('#graph1')
     .append('svg')
-    .attr('width', 700)
-    .attr('height', 350)
+    .attr('width', 580)
+    .attr('height', 320)
     .style('background', 'transparent');
 
   const { label: xLabel, ticks: xTicks, format: xFormat, domain: xDomain } = getXAxisConfig(currentGranularity);
@@ -173,18 +172,18 @@ function drawChart1(data) {
 
   const x = d3.scaleLinear()
     .domain([minTime, maxTime])
-    .range([60, 650]);
+    .range([60, 530]);
   const y = d3.scaleLinear()
     .domain([minTemp, maxTemp])
-    .range([300, 40]);
+    .range([270, 40]);
 
   const zoom = d3.zoom()
     .scaleExtent([1, 5])
-    .translateExtent([[0, 0], [700, 350]])
+    .translateExtent([[0, 0], [580, 320]])
     .on('zoom', zoomed);
 
   const xAxis = svg.append('g')
-    .attr('transform', 'translate(0,300)')
+    .attr('transform', 'translate(0,270)')
     .call(
       xTicks instanceof Array
         ? d3.axisBottom(x).tickValues(xTicks).tickFormat(xFormat)
@@ -196,15 +195,15 @@ function drawChart1(data) {
 
   // X and Y axis labels
   svg.append('text')
-    .attr('x', 350)
-    .attr('y', 340)
+    .attr('x', 290)
+    .attr('y', 310)
     .attr('text-anchor', 'middle')
     .attr('font-size', '13px')
     .attr('fill', 'black')
     .text(xLabel);
   svg.append('text')
     .attr('transform', 'rotate(-90)')
-    .attr('x', -180)
+    .attr('x', -155)
     .attr('y', 20)
     .attr('text-anchor', 'middle')
     .attr('font-size', '13px')
@@ -284,8 +283,8 @@ function drawChart2(data) {
 
   const svg = d3.select('#graph2')
     .append('svg')
-    .attr('width', 700)
-    .attr('height', 350)
+    .attr('width', 580)
+    .attr('height', 320)
     .style('background', 'transparent');
 
   const { label: xLabel, ticks: xTicks, format: xFormat, domain: xDomain } = getXAxisConfig(currentGranularity);
@@ -300,7 +299,7 @@ function drawChart2(data) {
   const yMax = 40;
   const y = d3.scaleLinear()
     .domain([yMin, yMax])
-    .range([300, 40]);
+    .range([270, 40]);
   const minTemp = d3.min(data, d => d.temp);
   const maxTemp = d3.max(data, d => d.temp);
 
@@ -312,15 +311,15 @@ function drawChart2(data) {
 
   const x = d3.scaleLinear()
     .domain([minTime, maxTime])
-    .range([60, 650]);
+    .range([60, 530]);
 
   const zoom = d3.zoom()
     .scaleExtent([1, 5])
-    .translateExtent([[0, 0], [700, 350]])
+    .translateExtent([[0, 0], [580, 320]])
     .on('zoom', zoomed);
 
   const xAxis = svg.append('g')
-    .attr('transform', 'translate(0,300)')
+    .attr('transform', 'translate(0,270)')
     .call(
       xTicks instanceof Array
         ? d3.axisBottom(x).tickValues(xTicks).tickFormat(xFormat)
@@ -332,15 +331,15 @@ function drawChart2(data) {
 
   // X and Y axis labels
   svg.append('text')
-    .attr('x', 350)
-    .attr('y', 340)
+    .attr('x', 290)
+    .attr('y', 310)
     .attr('text-anchor', 'middle')
     .attr('font-size', '13px')
     .attr('fill', '#7ed6df')
     .text(xLabel);
   svg.append('text')
     .attr('transform', 'rotate(-90)')
-    .attr('x', -180)
+    .attr('x', -155)
     .attr('y', 20)
     .attr('text-anchor', 'middle')
     .attr('font-size', '13px')
@@ -397,6 +396,7 @@ function drawChart2(data) {
   svg.call(zoom);
 
   // Immediately ensure estrus guessing UI is visible on chart load
+  console.log('drawChart2: Setting estrus buttons visible');
   d3.select('#estrus-guess').style('display', 'block');
   d3.select('#sex-guess').style('display', 'none');
   currentStep = 2;
@@ -432,8 +432,23 @@ function getSexFromId(id) {
 function loadNextMouse() {
   const grouped = d3.group(fullData, d => d.id);
   const mice = Array.from(grouped.keys());
-  const chosen = mice[Math.floor(Math.random() * mice.length)];
+  const maleMice = mice.filter(id => getSexFromId(id) === 'male');
+  const femaleMice = mice.filter(id => getSexFromId(id) === 'female');
+  console.log('Available mice - Male:', maleMice.length, 'Female:', femaleMice.length);
+  
+  // Increase chance of selecting female mice for better gameplay balance
+  let chosen;
+  if (femaleMice.length > 0 && Math.random() < 0.6) {
+    // 60% chance to select a female mouse if available
+    chosen = femaleMice[Math.floor(Math.random() * femaleMice.length)];
+    console.log('Randomly selected female mouse for better gameplay');
+  } else {
+    chosen = mice[Math.floor(Math.random() * mice.length)];
+  }
+  
   currentMouse = filterAndSampleMouseData(grouped.get(chosen));
+  console.log('Selected mouse:', chosen, 'Sex:', getSexFromId(chosen));
+  
   currentStep = 1;
   d3.select('#final-explanation').style('display', 'none');
   d3.select('#legend').style('display', 'block');
@@ -502,6 +517,8 @@ document.getElementById('granularity-select').addEventListener('change', (e) => 
 function checkSexGuess(guess) {
   const correctSex = getCurrentMouseSex();
   const sexResult = document.getElementById('sex-result');
+  console.log('Sex guess:', guess, 'Correct sex:', correctSex, 'Current mouse:', currentMouse[0]?.id);
+  
   if (guess === correctSex) {
     sexResult.textContent = '✅ You\'ve glimpsed the hidden truth!';
     sexResult.className = 'success';
@@ -510,6 +527,7 @@ function checkSexGuess(guess) {
         d3.select('#graph1').style('display', 'none');
         d3.select('#sex-guess').style('display', 'none'); // Hide sex guess buttons
         if (correctSex === 'male') {
+          console.log('Male mouse detected - going to final');
           // Hide graphs and legend container completely
           d3.select('.graphs-and-legend').classed('hidden', true);
           d3.select('#legend-container').style('display', 'none');
@@ -523,15 +541,20 @@ function checkSexGuess(guess) {
           showFinalInsight();
 
         } else {
+          console.log('Female mouse detected - showing estrus question');
+          console.log('Current mouse estrus data:', currentMouse.map(d => d.estrus));
           d3.select('#graph2').style('opacity', 0).style('display', 'block');
-          d3.select('#estrus-guess').style('display', 'block');
           document.getElementById('result').textContent = '';
           document.getElementById('result').className = '';
           d3.select('#granularity-select').style('display', 'inline-block'); 
           drawChart2(currentMouse);
+          // Ensure estrus question shows after chart is drawn
           setTimeout(() => {
             d3.select('#graph2').transition().duration(600).style('opacity', 1);
-          }, 50);
+            d3.select('#estrus-guess').style('display', 'block');
+            console.log('Estrus buttons should now be visible');
+            currentStep = 2;
+          }, 100);
         }
       });
     }, 1000);
