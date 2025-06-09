@@ -504,14 +504,17 @@ function checkSexGuess(guess) {
   const sexResult = document.getElementById('sex-result');
   if (guess === correctSex) {
     sexResult.textContent = '✅ You\'ve glimpsed the hidden truth!';
+    sexResult.className = 'success';
     setTimeout(() => {
       d3.select('#graph1').transition().duration(600).style('opacity', 0).on('end', () => {
         d3.select('#graph1').style('display', 'none');
         d3.select('#sex-guess').style('display', 'none'); // Hide sex guess buttons
         if (correctSex === 'male') {
+          // Hide graphs and legend container completely
+          d3.select('.graphs-and-legend').classed('hidden', true);
           d3.select('#legend-container').style('display', 'none');
           d3.select('#estrus-guess').style('display', 'none');
-          let summary = 'It was a male.';
+          let summary = 'It was a male mouse.';
           document.getElementById('final-result').textContent = summary;
           d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);
           document.getElementById('granularity-select').style.display = 'none';
@@ -523,6 +526,7 @@ function checkSexGuess(guess) {
           d3.select('#graph2').style('opacity', 0).style('display', 'block');
           d3.select('#estrus-guess').style('display', 'block');
           document.getElementById('result').textContent = '';
+          document.getElementById('result').className = '';
           d3.select('#granularity-select').style('display', 'inline-block'); 
           drawChart2(currentMouse);
           setTimeout(() => {
@@ -533,6 +537,7 @@ function checkSexGuess(guess) {
     }, 1000);
   } else {
     sexResult.textContent = '❌ Try again -- the inner life of a mouse is subtle!';
+    sexResult.className = 'error';
   }
 }
 
@@ -541,15 +546,18 @@ function checkEstrusGuess(guess) {
   const result = document.getElementById('result');
   if (guess === correct) {
     result.textContent = '✅ You\'ve glimpsed the hidden truth!';
+    result.className = 'success';
     setTimeout(() => {
       d3.select('#graph2').transition().duration(600).style('opacity', 0).on('end', () => {
         d3.select('#graph2').style('display', 'none');
+        // Hide graphs and legend container completely
+        d3.select('.graphs-and-legend').classed('hidden', true);
         d3.select('#legend-container').style('display', 'none');
         const sex = getCurrentMouseSex();
         const estrus = getCurrentMouseEstrus();
         let summary = '';
-        if (sex === 'female' && estrus) summary = 'It was a female in estrus.';
-        else summary = 'It was a female not in estrus.';
+        if (sex === 'female' && estrus) summary = 'It was a female mouse in estrus.';
+        else summary = 'It was a female mouse not in estrus.';
         document.getElementById('final-result').textContent = summary;
         d3.select('#final-explanation').style('display', 'block').transition().duration(600).style('opacity', 1);
         document.getElementById('granularity-select').style.display = 'none';
@@ -561,6 +569,7 @@ function checkEstrusGuess(guess) {
     }, 1200);
   } else {
     result.textContent = '❌ Try again -- the inner life of a mouse is subtle!';
+    result.className = 'error';
   }
 }
 
@@ -627,12 +636,31 @@ loadDataAndStart();
 function showGame() {
   const overlay = document.getElementById('start-overlay');
   const container = document.querySelector('.container');
+  
+  // Reset all game elements and ensure clean state
+  d3.select('.graphs-and-legend').classed('hidden', false).style('display', 'flex');
+  d3.select('#final-explanation').style('display', 'none').style('opacity', 0);
+  d3.select('#sex-guess').style('display', 'block').style('opacity', 0);
+  d3.select('#estrus-guess').style('display', 'none');
+  
+  // Clear previous results
+  document.getElementById('sex-result').textContent = '';
+  document.getElementById('sex-result').className = '';
+  document.getElementById('result').textContent = '';
+  document.getElementById('result').className = '';
+  
   overlay.classList.add('fade-out');
   setTimeout(() => {
     overlay.style.display = 'none';
     container.style.display = 'block';
     container.classList.add('fade-in');
     d3.select('#granularity-select').style('display', 'inline-block'); // Show dropdown on new game
+    
+    // Start the game by loading a mouse and showing the first chart
+    loadNextMouse();
+    setTimeout(() => {
+      d3.select('#sex-guess').transition().duration(600).style('opacity', 1);
+    }, 100);
   }, 700);
 }
 document.getElementById('start-btn').addEventListener('click', showGame);
@@ -667,7 +695,7 @@ function showFinalInsight() {
     .attr('width', w)
     .attr('height', h)
     .style('display', 'block')
-    .style('margin', '120px auto 0 auto') // push down for more spacing
+    .style('margin', '10px auto 0 auto') // minimal spacing
     .style('opacity', 0);
   const color = d3.scaleOrdinal()
     .domain(['male', 'female'])
