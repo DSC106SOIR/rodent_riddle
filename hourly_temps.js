@@ -66,13 +66,24 @@ export async function createHourlyTemps() {
         .y0(d => yScale(d.lower))
         .y1(d => Math.max(yScale(d.upper), 30));
 
+    // Background rectangles for day/night cycle (lab setting)
+    // Night period: 0 to 12 hours (lights off)
     svg.append('rect')
-      .attr('x', HOURLY_TEMPS_CONFIG.MARGIN.left)
+      .attr('x', xScale(0))
       .attr('y', 30)
-      .attr('width', 385)
+      .attr('width', xScale(12) - xScale(0))
       .attr('height', 370)
-      .attr('stroke', "rgba(255, 245, 215, 0.9) 100%")
-      .attr('fill', '#B8CFCE');
+      .attr('fill', 'var(--color-night)')
+      .attr('opacity', 0.3);
+
+    // Day period: 12 to 24 hours (lights on)
+    svg.append('rect')
+      .attr('x', xScale(12))
+      .attr('y', 30)
+      .attr('width', xScale(23) - xScale(12))
+      .attr('height', 370)
+      .attr('fill', 'var(--color-day)')
+      .attr('opacity', 0.3);
 
     svg.append("path")
       .datum(m_areaData)
@@ -132,18 +143,18 @@ export async function createHourlyTemps() {
       .attr("y", yScale(m_25[4]) + 10)
       .attr("id", "m_area")
       .text("25th percentile")
-      .attr("font-size", "12px")
+      .style("font-size", "0.8em")
       .attr("opacity", 0)
-      .attr("fill", "black");
+      .style("fill", "var(--color-accent)");
 
     svg.append("text")
       .attr("x", xScale(4))
       .attr("y", yScale(m_75[4]) - 10)
       .attr("id", "m_area")
       .text("75th percentile")
-      .attr("font-size", "12px")
+      .style("font-size", "0.8em")
       .attr("opacity", 0)
-      .attr("fill", "black");
+      .style("fill", "var(--color-accent)");
 
 
     // mousing over reveals and hides the area
@@ -182,19 +193,26 @@ export async function createHourlyTemps() {
 
     svg.append("g")
       .attr("transform", `translate(${HOURLY_TEMPS_CONFIG.MARGIN.left},0)`)
-      .call(d3.axisLeft(yScale).tickValues(yTicks).tickFormat(d => `${d.toFixed(1)}°`));
+      .call(d3.axisLeft(yScale).tickValues(yTicks).tickFormat(d => `${d.toFixed(1)}°`))
+      .selectAll("text")
+      .style("font-size", "0.8em")
+      .style("fill", "var(--color-accent)");
 
     svg.append("g")
       .attr("transform", `translate(0, ${HOURLY_TEMPS_CONFIG.HEIGHT})`)
       .call(d3.axisBottom(xScale)
         .tickValues(d3.range(0, 24, 2))
-        .tickFormat(d => `${d}:00`));
+        .tickFormat(d => `${d}:00`))
+      .selectAll("text")
+      .style("font-size", "0.8em")
+      .style("fill", "var(--color-accent)");
 
     svg.append("text")
       .attr("x", HOURLY_TEMPS_CONFIG.WIDTH / 2)
       .attr("y", HOURLY_TEMPS_CONFIG.MARGIN.top)
       .attr("text-anchor", "middle")
-      .attr("font-size", 16)
+      .style("font-size", "0.9em")
+      .style("fill", "var(--color-accent)")
       .text("Female Mice Are Warmer Than Male Mice");
 
     svg.append("text")
@@ -202,6 +220,8 @@ export async function createHourlyTemps() {
       .attr("y", HOURLY_TEMPS_CONFIG.HEIGHT + 40)
       .attr("text-anchor", "middle")
       .attr("class", "axis-label")
+      .style("font-size", "0.8em")
+      .style("fill", "var(--color-accent)")
       .text("Hour");
 
     svg.append("text")
@@ -210,6 +230,8 @@ export async function createHourlyTemps() {
       .attr("y", 20)
       .attr("text-anchor", "middle")
       .attr("class", "axis-label")
+      .style("font-size", "0.8em")
+      .style("fill", "var(--color-accent)")
       .text("Average Mouse Body Temperature");
 
     const legend = svg.append("g")
@@ -221,7 +243,7 @@ export async function createHourlyTemps() {
       { label: "Avg Nighttime Female Temp", color: "#E86A92", dashed: true },
       { label: "Hourly Average Male Temp", color: "#4C72B0" },
       { label: "Avg Nighttime Male Temp", color: "#4C72B0", dashed: true },
-      { label: "Nighttime", color: "#B8CFCE"}
+      { label: "Nighttime", color: "var(--color-night)"}
 
     ];
 
@@ -236,6 +258,8 @@ export async function createHourlyTemps() {
 
       legend.append("text")
         .attr("x", 25).attr("y", y + 4)
+        .style("font-size", "0.8em")
+        .style("fill", "var(--color-accent)")
         .text(item.label);
     });
 }
