@@ -41,10 +41,14 @@ function drawLegend() {
     .attr('x2', '0%').attr('y2', '0%')
     .selectAll('stop').remove();
 
+  // Use fixed temperature range consistent with color scale [39, 35]
+  const fixedMinTemp = 35;
+  const fixedMaxTemp = 39;
+  
   linearGradient.selectAll('stop')
     .data([
-      { offset: '0%',   color: tempColor(globalMinTemp) },
-      { offset: '100%', color: tempColor(globalMaxTemp) }
+      { offset: '0%',   color: tempColor(fixedMinTemp) },
+      { offset: '100%', color: tempColor(fixedMaxTemp) }
     ])
     .enter().append('stop')
     .attr('offset',     d => d.offset)
@@ -59,11 +63,9 @@ function drawLegend() {
     .attr('stroke', 'none')
     .attr('stroke-width', 0)
 
-  // Legend scale and axis (vertical)
-  const minT = Math.floor(globalMinTemp);
-  const maxT = Math.ceil(globalMaxTemp);
+  // Legend scale and axis (vertical) - use fixed temperature range
   const legendScale = d3.scaleLinear()
-    .domain([minT, maxT])
+    .domain([fixedMinTemp, fixedMaxTemp])
     .range([legendHeight + legendPad, legendPad]);
   const legendAxis = d3.axisRight(legendScale)
     .ticks(4)
@@ -92,6 +94,16 @@ function drawLegend() {
     .attr('font-size', '10px')
     .attr('font-weight', '600')
     .text('Cold');
+  
+  // Add subtitle explaining the glow effect
+  legendSvg.append('text')
+    .attr('x', 30)
+    .attr('y', legendHeight + legendPad + 26)
+    .attr('text-anchor', 'middle')
+    .attr('fill', 'var(--color-accent)')
+    .attr('font-size', '8px')
+    .attr('font-style', 'italic')
+    .text('(glow color)');
 }
 
 function getXAxisConfig(granularity) {
