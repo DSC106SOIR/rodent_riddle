@@ -151,7 +151,7 @@ export function compareTemperatureChart() {
     .style("border", "1px solid #ccc")
     .style("padding", "4px 6px")
     .style("border-radius", "4px")
-    .style("font-size", "0.9em")
+    .style("font-size", "0.65em")
     .style("white-space", "nowrap")
     .style("max-width", "180px")
     .style("box-shadow", "2px 2px 4px rgba(0,0,0,0.1)")
