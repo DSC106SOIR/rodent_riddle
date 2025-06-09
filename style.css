@@ -168,25 +168,133 @@ h1, h2, h3, h4, h5, h6 {
 
 .viz-instructions {
     color: var(--color-accent);
-    margin: 1em 0;
+    margin: 0; /* Remove margin, handled by flex container */
     line-height: 1.6;
     font-size: 0.95em;
     background: rgba(254, 179, 0, 0.1);
     padding: 15px;
     border-radius: 10px;
     border-left: 4px solid var(--sleuthe-yellow);
+    transition: all 0.3s ease;
+    height: fit-content; /* Ensure proper height alignment */
 }
+
+/* Flex container for instructions and features */
+.viz-flex-container {
+    display: flex;
+    gap: 15px;
+    margin: 1em 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    align-items: stretch; /* Make all children same height */
+}
+
+.viz-instructions-wrapper {
+    flex: 0.8; /* 80% when collapsed */
+    transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 0; /* Allow shrinking */
+}
+
+.viz-features-wrapper {
+    flex: 0.2; /* 20% when collapsed */
+    transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(255, 170, 171, 0.2);
+    min-width: 200px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* When features are expanded, adjust flex ratios */
+.viz-flex-container.features-expanded .viz-instructions-wrapper {
+    flex: 0.3; /* 60% when expanded (6:4 ratio) */
+}
+
+.viz-flex-container.features-expanded .viz-features-wrapper {
+    flex: 0.7; /* 70% when expanded */
+    max-width: none;
+    animation: expandSubtle 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes expandSubtle {
+    0% {
+        opacity: 0.8;
+        transform: translateX(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.viz-features-toggle {
+    background: linear-gradient(135deg, var(--pink-leaf) 0%, var(--coral-pink) 100%);
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    user-select: none;
+    font-size: 0.95em;
+    position: relative;
+    overflow: hidden;
+    flex: 1; /* Take full height of the wrapper */
+    border: none; /* Remove any border */
+}
+
+.viz-features-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.8s ease;
+}
+
+.viz-features-toggle:hover::before {
+    left: 100%;
+}
+
+.viz-features-toggle:hover {
+    background: linear-gradient(135deg, var(--coral-pink) 0%, var(--sleuthe-yellow) 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 170, 171, 0.2);
+}
+
+.viz-features-toggle.expanded {
+    background: linear-gradient(135deg, var(--coral-pink) 0%, var(--sleuthe-yellow) 100%);
+    flex: none; /* Don't stretch when expanded */
+    height: auto; /* Auto height for text content */
+    min-height: 30px; /* Minimum height for the button */
+}
+
+.viz-features-toggle .toggle-text {
+    font-size: 0.95em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
+}
+
+
 
 .viz-features {
     color: var(--color-accent);
-    margin: 1em 0;
+    margin: 0;
     line-height: 1.6;
     font-size: 0.95em;
     background: rgba(255, 170, 171, 0.3);
     padding: 15px;
-    border-radius: 10px;
-    border-left: 4px solid var(--pink-leaf);
+    border-radius: 0;
+    border-left: none;
     list-style-type: none;
+    transition: all 0.3s ease;
 }
 
 .viz-features strong,
@@ -607,6 +715,27 @@ h2 {
   h2 {
     scroll-margin-top: 60px;
     padding-top: 20px;
+  }
+  
+  /* Responsive flex layout for smaller screens */
+  .viz-flex-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .viz-instructions-wrapper {
+    flex: none;
+  }
+  
+  .viz-features-wrapper {
+    flex: none;
+    min-width: auto;
+    max-width: none;
+  }
+  
+  .viz-flex-container.features-expanded .viz-instructions-wrapper,
+  .viz-flex-container.features-expanded .viz-features-wrapper {
+    flex: none;
   }
 }
 

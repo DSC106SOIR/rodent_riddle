@@ -40,6 +40,86 @@ document.addEventListener('DOMContentLoaded', () => {
     createHourlyTemps();
 });
 
+// Make viz-features collapsible dropdowns with flex layout
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize collapsible viz-features with side-by-side layout
+    const vizFeatures = document.querySelectorAll('.viz-features');
+    
+    vizFeatures.forEach((features, index) => {
+        // Find the preceding viz-instructions element
+        const instructions = features.previousElementSibling;
+        if (!instructions || !instructions.classList.contains('viz-instructions')) {
+            return; // Skip if no instructions found
+        }
+        
+        // Create flex container
+        const flexContainer = document.createElement('div');
+        flexContainer.className = 'viz-flex-container';
+        
+        // Create wrapper for instructions
+        const instructionsWrapper = document.createElement('div');
+        instructionsWrapper.className = 'viz-instructions-wrapper';
+        
+        // Create wrapper for features
+        const featuresWrapper = document.createElement('div');
+        featuresWrapper.className = 'viz-features-wrapper';
+        
+        // Create toggle button/header
+        const toggle = document.createElement('div');
+        toggle.className = 'viz-features-toggle';
+        toggle.innerHTML = `
+            <span class="toggle-text">Show how to interact with this visualization</span>
+        `;
+        
+        // Initially hide the features list
+        features.style.display = 'none';
+        features.classList.add('collapsed');
+        
+        // Insert flex container before the instructions
+        instructions.parentNode.insertBefore(flexContainer, instructions);
+        
+        // Move instructions into its wrapper
+        instructionsWrapper.appendChild(instructions);
+        
+        // Move features into its wrapper
+        featuresWrapper.appendChild(toggle);
+        featuresWrapper.appendChild(features);
+        
+        // Add wrappers to flex container
+        flexContainer.appendChild(instructionsWrapper);
+        flexContainer.appendChild(featuresWrapper);
+        
+        // Add click handler
+        toggle.addEventListener('click', function() {
+            const isCollapsed = features.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                // Expand: First trigger width change, then show content
+                toggle.querySelector('.toggle-text').textContent = 'Hide interaction guide';
+                toggle.classList.add('expanded');
+                flexContainer.classList.add('features-expanded');
+                
+                // After width transition, show content
+                setTimeout(() => {
+                    features.style.display = 'block';
+                    features.classList.remove('collapsed');
+                }, 300); // Half of the width transition duration
+            } else {
+                // Collapse: First hide content, then change width
+                features.style.display = 'none';
+                features.classList.add('collapsed');
+                
+                // After content hides, trigger width transition
+                setTimeout(() => {
+                    toggle.querySelector('.toggle-text').textContent = 'Show how to interact with this visualization';
+                    toggle.classList.remove('expanded');
+                    flexContainer.classList.remove('features-expanded');
+                }, 50); // Small delay for content to hide
+            }
+        });
+    });
+});
+
 // Clean H2-based section navigation
 document.addEventListener('DOMContentLoaded', function() {
     // Find all h2 elements that should serve as section headers
