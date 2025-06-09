@@ -136,6 +136,7 @@ h1 {
 
 h2 {
     color: var(--coral-pink);
+    font-size: 300%;
     font-weight: 600;
     margin: 2rem 0 1rem 0;
     border-bottom: 2px solid var(--sleuthe-yellow);
@@ -544,5 +545,68 @@ hr {
   padding: 0 !important;
   border-radius: 0 !important;
   border: none !important;
+}
+
+/* Navigation dots for H2-based sections */
+#nav-dots {
+  position: fixed;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1000;
+}
+
+.nav-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent, #ff6f61);
+  opacity: 0.4;
+  border: 2px solid var(--ragin-beige);
+  transition: opacity 0.3s, transform 0.3s;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-dot:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+.nav-dot.active {
+  opacity: 1;
+  transform: scale(1.3);
+  box-shadow: 0 0 0 4px rgba(255,111,97,0.15);
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure sections have enough spacing */
+h2 {
+  scroll-margin-top: 80px; /* Offset for navigation */
+  padding-top: 40px;
+}
+
+@media (max-width: 768px) {
+  #nav-dots {
+    right: 16px;
+    gap: 12px;
+  }
+  
+  .nav-dot {
+    width: 12px;
+    height: 12px;
+  }
+  
+  h2 {
+    scroll-margin-top: 60px;
+    padding-top: 20px;
+  }
 }
 

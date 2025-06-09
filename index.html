@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rodent Riddle</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="game.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="main.js" type="module"></script>
     <script>
         function toggleAnswer(button) {
@@ -21,6 +23,7 @@
         }
     </script>
 </head>
+
 <body>
     <div class="main-header">
         <h1 class="main-title">
@@ -31,37 +34,46 @@
             <p class="main-subtitle">Inferring internal states from external behavior</p>
         </div>
     </div>
-    <h1>
+    <h2>
         When do mice sleep?
-    </h1>
+    </h2>
 
-    <h2>Overall Activity Level</h2>
+    <h3>Overall Activity Level</h3>
     <p class="viz-instructions">
         This visualization shows the overall mice activity level, proving mice have a nocturnal habit.
     </p>
     <ul class="viz-features">
-        <li><strong>Mouse Activity Level Comparison:</strong> These pie chart shows the proportion of the time dependency of activity level; left pie chart shows all mice's activity and right 2 piecharts show that depending on sex.</li>
+        <li><strong>Mouse Activity Level Comparison:</strong> These pie chart shows the proportion of the time
+            dependency of activity level; left pie chart shows all mice's activity and right 2 piecharts show that
+            depending on sex.</li>
     </ul>
     <div id="activity_overall">
-        <!-- Visualization will be dynamically added here (other-file.js) -->    
+        <!-- Visualization will be dynamically added here (other-file.js) -->
     </div>
     <p class="viz-questions">
-        <strong>Question to consider:</strong> Is there any time dependency or sex dependency for the mice activity level?
+        <strong>Question to consider:</strong> Is there any time dependency or sex dependency for the mice activity
+        level?
     </p>
     <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
     <p class="viz-answer" style="display: none;">
-        <strong>Our suggested answer:</strong> We can see three-quarters of mice activity are done at night, which shows mice are nocturnal animals. On the other hand, we cannot see any sex dependency on the activity level.
+        <strong>Our suggested answer:</strong> We can see three-quarters of mice activity are done at night, which shows
+        mice are nocturnal animals. On the other hand, we cannot see any sex dependency on the activity level.
     </p>
 
 
     <!-- Circadian Rhythm -->
-    <h2>Circadian Rhythm</h2>
+    <h3>Circadian Rhythm</h3>
     <p class="viz-instructions">
-        This visualization shows mouse movement patterns and body temperature over multiple day/night cycles. The main plot (left) displays mouse positions and their movement (more active movement represent higher activity levels), while the right plot shows the relationship between temperature and activity levels. The color of each point represents the body temperature of the mouse.
+        This visualization shows mouse movement patterns and body temperature over multiple day/night cycles. The main
+        plot (left) displays mouse positions and their movement (more active movement represent higher activity levels),
+        while the right plot shows the relationship between temperature and activity levels. The color of each point
+        represents the body temperature of the mouse.
     </p>
     <ul class="viz-features">
-        <li><strong>Mouse Movement:</strong> Each point represents a mouse, with colors indicating body temperature (blue: cooler, red: warmer).</li>
-        <li><strong>Day/Night Cycles:</strong> Background changes indicate light conditions, with the status shown in the top-right corner.</li>
+        <li><strong>Mouse Movement:</strong> Each point represents a mouse, with colors indicating body temperature
+            (blue: cooler, red: warmer).</li>
+        <li><strong>Day/Night Cycles:</strong> Background changes indicate light conditions, with the status shown in
+            the top-right corner.</li>
         <li><strong>Interactive Features:</strong>
             <ul>
                 <li>Hover over any point to see detailed mouse data and highlight the same mouse in both plots</li>
@@ -70,60 +82,81 @@
                 <li>Play/Pause and Reset buttons control the animation</li>
             </ul>
         </li>
-        <li><strong>Temperature Scale:</strong> The color bar below the main plot shows the temperature range from 35°C (blue) to 39°C (red).</li>
+        <li><strong>Temperature Scale:</strong> The color bar below the main plot shows the temperature range from 35°C
+            (blue) to 39°C (red).</li>
     </ul>
     <div id="circadian-viz">
-        <!-- Visualization will be dynamically added here (circadian.js) -->    
+        <!-- Visualization will be dynamically added here (circadian.js) -->
     </div>
     <p class="viz-questions">
-        <strong>Question to consider:</strong> How do the activity patterns of these mice across day and night cycles reveal their natural circadian rhythm?
+        <strong>Question to consider:</strong> How do the activity patterns of these mice across day and night cycles
+        reveal their natural circadian rhythm?
     </p>
     <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
     <p class="viz-answer" style="display: none;">
-        <strong>Our suggested answer:</strong> The visualization reveals clear circadian patterns in mouse behavior. During light-off periods (night), mice consistently show heightened activity levels, coupled with elevated body temperatures (shown by warmer colors). Conversely, during light-on periods (day), their activity decreases significantly, and body temperatures tend to be cooler. This day-night activity pattern strongly indicates nocturnal behavior, which is an evolutionary adaptation common in rodents. The synchronization between activity levels and body temperature also demonstrates how circadian rhythms coordinate multiple physiological processes to optimize survival during their most active periods.
+        <strong>Our suggested answer:</strong> The visualization reveals clear circadian patterns in mouse behavior.
+        During light-off periods (night), mice consistently show heightened activity levels, coupled with elevated body
+        temperatures (shown by warmer colors). Conversely, during light-on periods (day), their activity decreases
+        significantly, and body temperatures tend to be cooler. This day-night activity pattern strongly indicates
+        nocturnal behavior, which is an evolutionary adaptation common in rodents. The synchronization between activity
+        levels and body temperature also demonstrates how circadian rhythms coordinate multiple physiological processes
+        to optimize survival during their most active periods.
     </p>
 
-    <h1>
+    <h2>
         Can We Guess the Gender of a Mouse?
-    </h1>
+    </h2>
 
     <!-- Hourly Average Temperatures By Gender -->
-    <h2>Do Male and Female Mice Have the Same Temperatures?</h2>
+    <h3>Do Male and Female Mice Have the Same Temperatures?</h3>
     <p class="viz-instructions">
-        If we can find that the average temperature of male and female mice differ by a large amount, then we should be able to
+        If we can find that the average temperature of male and female mice differ by a large amount, then we should be
+        able to
         reasonably guess the gender of a mouse based on its temperature.
     </p>
     <ul class="viz-features">
-        <li><strong>Average Mouse Temperature:</strong> For each mouse, take its average temperature at an hour. Then, take the average of those average temperatures across each gender.</li>
-        <li><strong>Hovering</strong> Hover over each line to see the 25th and 75th percentile of average hourly male or female mouse temperatures!</li>
+        <li><strong>Average Mouse Temperature:</strong> For each mouse, take its average temperature at an hour. Then,
+            take the average of those average temperatures across each gender.</li>
+        <li><strong>Hovering</strong> Hover over each line to see the 25th and 75th percentile of average hourly male or
+            female mouse temperatures!</li>
         </li>
     </ul>
     <div id="hourly-temps">
-        <!-- Visualization will be dynamically added here (your-file.js) -->    
+        <!-- Visualization will be dynamically added here (your-file.js) -->
     </div>
     <p class="viz-questions">
-        <strong>Question to consider:</strong> Can we guess mouse gender based on temperature and time? Will our guess always be correct?.
+        <strong>Question to consider:</strong> Can we guess mouse gender based on temperature and time? Will our guess
+        always be correct?.
     </p>
     <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
     <p class="viz-answer" style="display: none;">
-        <strong>Our suggested answer:</strong> The temperature feature is useful in predicting mouse gender, since females tend to be hotter at each hour of the day. 
-        Still, after checking percentiles, it's clear that the hottest male mice are often hotter than the coldest male mice, meaning that there is no 
+        <strong>Our suggested answer:</strong> The temperature feature is useful in predicting mouse gender, since
+        females tend to be hotter at each hour of the day.
+        Still, after checking percentiles, it's clear that the hottest male mice are often hotter than the coldest male
+        mice, meaning that there is no
         perfect value that separates the genders.
     </p>
 
     <!-- Activity Ranking Visualization -->
-    <h2>Activity Rankings: Day vs Night Comparison</h2>
+    <h3>Activity Rankings: Day vs Night Comparison</h3>
     <p class="viz-instructions">
-        This visualization provides a comprehensive view of mouse activity patterns across day and night cycles, with a special focus on gender differences. The dual bar charts show activity levels during light-off (night) and light-on (day) periods, with mice automatically sorted by their activity levels. The visualization includes mini-plots showing the proportion of male vs female activity over time, allowing for detailed analysis of gender-based activity patterns.
+        This visualization provides a comprehensive view of mouse activity patterns across day and night cycles, with a
+        special focus on gender differences. The dual bar charts show activity levels during light-off (night) and
+        light-on (day) periods, with mice automatically sorted by their activity levels. The visualization includes
+        mini-plots showing the proportion of male vs female activity over time, allowing for detailed analysis of
+        gender-based activity patterns.
     </p>
     <ul class="viz-features">
-        <li><strong>Dual Bar Charts:</strong> Upper bars (light off) and lower bars (light on) show activity levels, with mice ranked by activity at each time point.</li>
-        <li><strong>Gender Analysis:</strong> Blue bars represent male mice, pink bars represent female mice, with mini-plots showing the proportion of activity by gender over time.</li>
+        <li><strong>Dual Bar Charts:</strong> Upper bars (light off) and lower bars (light on) show activity levels,
+            with mice ranked by activity at each time point.</li>
+        <li><strong>Gender Analysis:</strong> Blue bars represent male mice, pink bars represent female mice, with
+            mini-plots showing the proportion of activity by gender over time.</li>
         <li><strong>Dynamic Features:</strong>
             <ul>
                 <li>Real-time activity ranking updates as you move through time</li>
                 <li>Running average rankings show consistent activity patterns</li>
-                <li>Hover over bars to see detailed mouse information and highlight corresponding bars across all plots</li>
+                <li>Hover over bars to see detailed mouse information and highlight corresponding bars across all plots
+                </li>
                 <li>Mini-plots reveal gender activity proportions throughout the cycle</li>
             </ul>
         </li>
@@ -136,27 +169,40 @@
         </li>
     </ul>
     <div id="activity-rank-viz">
-        <!-- Visualization will be dynamically added here (activity_rank.js) -->    
+        <!-- Visualization will be dynamically added here (activity_rank.js) -->
     </div>
     <p class="viz-questions">
-        <strong>Question to consider:</strong> How do the activity levels of male and female mice compare during different periods of the day, and what changes do we observe in female activity patterns during estrus days?
+        <strong>Question to consider:</strong> How do the activity levels of male and female mice compare during
+        different periods of the day, and what changes do we observe in female activity patterns during estrus days?
     </p>
     <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
     <p class="viz-answer" style="display: none;">
-        <strong>Our suggested answer:</strong> The visualization reveals interesting patterns in gender-based activity levels. Overall, male mice tend to show higher activity levels compared to female mice across both day and night periods. However, during estrus days, we observe a notable increase in female activity levels that extends beyond just the night period. While this increased activity doesn't surpass the overall male activity levels, it represents a significant behavioral change in female mice during their reproductive cycle. The mini-plots showing gender activity proportions help visualize these patterns, with the male proportion typically being higher but showing interesting variations during estrus periods. These findings suggest that while male mice maintain generally higher activity levels, female activity patterns are more dynamic and influenced by their reproductive state.
+        <strong>Our suggested answer:</strong> The visualization reveals interesting patterns in gender-based activity
+        levels. Overall, male mice tend to show higher activity levels compared to female mice across both day and night
+        periods. However, during estrus days, we observe a notable increase in female activity levels that extends
+        beyond just the night period. While this increased activity doesn't surpass the overall male activity levels, it
+        represents a significant behavioral change in female mice during their reproductive cycle. The mini-plots
+        showing gender activity proportions help visualize these patterns, with the male proportion typically being
+        higher but showing interesting variations during estrus periods. These findings suggest that while male mice
+        maintain generally higher activity levels, female activity patterns are more dynamic and influenced by their
+        reproductive state.
     </p>
 
-    <h1>
+    <h2>
         Can We Tell if a Female Mouse is in Estrus?
-    </h1>
+    </h2>
 
     <!-- Other Visualizations (Use the same template) -->
-    <h2>Effect of Estrus</h2>
+    <h3>Effect of Estrus</h3>
     <p class="viz-instructions">
-        This visualization shows the difference of body temperature and activity level of female mice depending on the period. The line chart shows the average body temperature of 12 female mice. Hovering shows the activity level of each time.
+        This visualization shows the difference of body temperature and activity level of female mice depending on the
+        period. The line chart shows the average body temperature of 12 female mice. Hovering shows the activity level
+        of each time.
     </p>
     <ul class="viz-features">
-    <li><strong>Mouse Temperature:</strong> Each line represents average mouse temperature change in one day of each period.<br>(red: estrus day, blue: 1day before estrus day, green: 1day after estrus day, purple: 2day after estrus day)</li>
+        <li><strong>Mouse Temperature:</strong> Each line represents average mouse temperature change in one day of each
+            period.<br>(red: estrus day, blue: 1day before estrus day, green: 1day after estrus day, purple: 2day after
+            estrus day)</li>
         <li><strong>Day/Night Cycles:</strong> Background changes indicate light conditions.</li>
         <li><strong>Interactive Features:</strong>
             <ul>
@@ -165,94 +211,115 @@
                 <li>Activity data is sorted by descending order</li>
             </ul>
         </li>
-        <li><strong>Data Sorting:</strong> Each line is an average temperature of 12 female mice on designated days as following.<br>
-        Estrus Day: Average of Day2, Day6, Day10, and Day14<br> 1day Before Estrus Day: Average of Day1, Day5, Day9, and Day13<br> 1day After Estrus Day: Average of Day3, Day7, Day11<br> 2day After Estrus Day: Average of Day4, Day8, Day12</li>
+        <li><strong>Data Sorting:</strong> Each line is an average temperature of 12 female mice on designated days as
+            following.<br>
+            Estrus Day: Average of Day2, Day6, Day10, and Day14<br> 1day Before Estrus Day: Average of Day1, Day5, Day9,
+            and Day13<br> 1day After Estrus Day: Average of Day3, Day7, Day11<br> 2day After Estrus Day: Average of
+            Day4, Day8, Day12</li>
     </ul>
     <div id="other-viz">
-        <!-- Visualization will be dynamically added here (other-file.js) -->    
+        <!-- Visualization will be dynamically added here (other-file.js) -->
     </div>
     <p class="viz-questions">
-        <strong>Question to consider:</strong> How do estrus cycle effect on the female mouce body temperature and activity level and why?
+        <strong>Question to consider:</strong> How do estrus cycle effect on the female mouce body temperature and
+        activity level and why?
     </p>
     <button class="show-answer-btn" onclick="toggleAnswer(this)">Show our suggested answer</button>
     <p class="viz-answer" style="display: none;">
-        <strong>Our suggested answer:</strong> The visualization reveals that estrus affects mouce temperature starting from around 4hours(240 minutes) later after light is turned off(night starts) and ends around 5hours(300 minutes) later after light is turned on(day starts). During that period, average temperature is 0.6°C higher than that in other period at maximum, which is quite large considering that mice is homeotherm. Regarding activity level, estrus activates as well but affected duration is a little different from the case of body temperature. Around the same time body temperature increases, activity level also increases but it ends around 1hour later light is turned on(day starts), which ends earlier than body temperature increasing. Hence we can say that estrus let female mice move a lot to find male mice to breed which is one factor that increase body temperature. In addition, the level of estrogen increases significantly. This leads to the stimulation of the hypothalamus and thermoregulatory centers, which can raise the set point for body temperature and Increasing basal metabolic rate (BMR), resulting in more internal heat production.
-        Other than estrus day, we can see the mice one day before estrus day has high body temperature and activity level compared to others. It is because female mice start to prepare for the estrus. As we can see estrus increases mouce body temperature and activity level highest on the day but starting one day before that as well.
+        <strong>Our suggested answer:</strong> The visualization reveals that estrus affects mouce temperature starting
+        from around 4hours(240 minutes) later after light is turned off(night starts) and ends around 5hours(300
+        minutes) later after light is turned on(day starts). During that period, average temperature is 0.6°C higher
+        than that in other period at maximum, which is quite large considering that mice is homeotherm. Regarding
+        activity level, estrus activates as well but affected duration is a little different from the case of body
+        temperature. Around the same time body temperature increases, activity level also increases but it ends around
+        1hour later light is turned on(day starts), which ends earlier than body temperature increasing. Hence we can
+        say that estrus let female mice move a lot to find male mice to breed which is one factor that increase body
+        temperature. In addition, the level of estrogen increases significantly. This leads to the stimulation of the
+        hypothalamus and thermoregulatory centers, which can raise the set point for body temperature and Increasing
+        basal metabolic rate (BMR), resulting in more internal heat production.
+        Other than estrus day, we can see the mice one day before estrus day has high body temperature and activity
+        level compared to others. It is because female mice start to prepare for the estrus. As we can see estrus
+        increases mouce body temperature and activity level highest on the day but starting one day before that as well.
     </p>
 
 
-    <h1>
+    <h2>
         Test Your Knowledge!
-    </h1>
+    </h2>
     <!-- Mice Data Interactive Game -->
-    <hr>
-    <h2>Interactive Mouse Behavior Game</h2>
+    <h3>Interactive Mouse Behavior Game</h3>
     <p class="viz-instructions">
-        Think you understand mouse behavior? Test your scientific intuition! This interactive game challenges you to determine a mouse's sex and reproductive state (estrus) based solely on temperature and activity data. Just like real researchers, you'll need to identify patterns in physiological data to make accurate inferences about the internal states of laboratory animals.
+        Think you understand mouse behavior? Test your scientific intuition! This interactive game challenges you to
+        determine a mouse's sex and reproductive state (estrus) based solely on temperature and activity data. Just like
+        real researchers, you'll need to identify patterns in physiological data to make accurate inferences about the
+        internal states of laboratory animals.
     </p>
 
-<div id="game-section" class="themed-game-section">
-  <div id="start-overlay" class="start-overlay themed-start-overlay">
-    <div class="start-content" style="justify-content: center;">
-      <h1 class="highlight-title">Mice Data Interactive</h1>
-      <img src="./image/mouse.gif" alt="Mouse GIF" class="mouse-gif" />
-      <button id="start-btn">Start Game</button>
-    </div>
-  </div>
-
-  <div class="main-flex" style="position: relative; z-index: 1;">
-    <div class="container mouse-bg" style="display: none;">
-      <h1 class="highlight-title center-heading">Mice Data Interactive</h1>
-      <h2 class="game-title">Mice Data Interactive</h2>
-      <p class="game-explanation">
-        Eight mice, one mystery! Find the glowing mouse and guess its sex and estrus state. Can you crack the code from the clues?
-      </p>
-
-      <div class="granularity-control">
-        <label for="granularity-select">Time Granularity: </label>
-        <select id="granularity-select">
-          <option value="day">Day</option>
-          <option value="halfday">Halfday</option>
-          <option value="hour" selected>Hour</option>
-          <option value="minute">Minute</option>
-        </select>
-      </div>
-
-      <div class="graphs-and-legend">
-        <div class="graph-section">
-          <div id="graph1"></div>
-          <div id="graph2" style="display: none;"></div>
+    <div id="game-section" class="themed-game-section">
+        <div id="start-overlay" class="start-overlay themed-start-overlay">
+            <div class="start-content" style="justify-content: center;">
+                <h1 class="highlight-title">Mice Data Interactive</h1>
+                <img src="./image/mouse.gif" alt="Mouse GIF" class="mouse-gif" />
+                <button id="start-btn">Start Game</button>
+            </div>
         </div>
-        <div id="legend-container"></div>
-      </div>
 
-      <div id="sex-guess" class="button-group">
-        <button id="guess-male">Guess: Male</button>
-        <button id="guess-female">Guess: Female</button>
-        <span id="sex-result"></span>
-      </div>
+        <div class="main-flex" style="position: relative; z-index: 1;">
+            <div class="container mouse-bg" style="display: none;">
+                <h1 class="highlight-title center-heading">Mice Data Interactive</h1>
+                <h2 class="game-title">Mice Data Interactive</h2>
+                <p class="game-explanation">
+                    Eight mice, one mystery! Find the glowing mouse and guess its sex and estrus state. Can you crack
+                    the code from the clues?
+                </p>
 
-      <div id="estrus-guess" class="button-group" style="display: none;">
-        <button id="estrus-yes">Guess: Estrus</button>
-        <button id="estrus-no">Guess: Not Estrus</button>
-        <span id="result"></span>
-      </div>
+                <div class="granularity-control">
+                    <label for="granularity-select">Time Granularity: </label>
+                    <select id="granularity-select">
+                        <option value="day">Day</option>
+                        <option value="halfday">Halfday</option>
+                        <option value="hour" selected>Hour</option>
+                        <option value="minute">Minute</option>
+                    </select>
+                </div>
 
-      <div id="final-explanation" class="final-explanation" style="display: none; opacity: 0;">
-        <h2>Result</h2>
-        <div id="final-result"></div>
-        <h2>Why is this important?</h2>
-        <p>
-          Just as you did, scientists must infer the internal states of animals from their behavior and physiology.
-          This helps us understand biology, health, and the hidden lives of creatures.
-        </p>
-        <button onclick="location.reload(); return false;" class="play-again-btn">Play Again</button>
-      </div>
+                <div class="graphs-and-legend">
+                    <div class="graph-section">
+                        <div id="graph1"></div>
+                        <div id="graph2" style="display: none;"></div>
+                    </div>
+                    <div id="legend-container"></div>
+                </div>
+
+                <div id="sex-guess" class="button-group">
+                    <button id="guess-male">Guess: Male</button>
+                    <button id="guess-female">Guess: Female</button>
+                    <span id="sex-result"></span>
+                </div>
+
+                <div id="estrus-guess" class="button-group" style="display: none;">
+                    <button id="estrus-yes">Guess: Estrus</button>
+                    <button id="estrus-no">Guess: Not Estrus</button>
+                    <span id="result"></span>
+                </div>
+
+                <div id="final-explanation" class="final-explanation" style="display: none; opacity: 0;">
+                    <h3>Result</h3>
+                    <div id="final-result"></div>
+                    <h3>Why is this important?</h3>
+                    <p>
+                        Just as you did, scientists must infer the internal states of animals from their behavior and
+                        physiology.
+                        This helps us understand biology, health, and the hidden lives of creatures.
+                    </p>
+                    <button onclick="location.reload(); return false;" class="play-again-btn">Play Again</button>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="game.js"></script>
     </div>
-  </div>
-
-  <script type="module" src="game.js"></script>
-</div>
 
 </body>
+
 </html>
