@@ -704,6 +704,10 @@ function showFinalInsight() {
   d3.select('#granularity-select').style('display', 'none'); // Always hide dropdown in final insight/results
   d3.select('#legend-container').style('display', 'none'); // Hide legend in final results
   d3.select('#final-explanation').style('display', 'block').style('opacity', 1); // Ensure final explanation is visible
+  
+  // Store the Play Again button to move it after the graph
+  const playAgainBtn = document.querySelector('.play-again-btn');
+  const playAgainBtnParent = playAgainBtn ? playAgainBtn.parentNode : null;
   // Prepare data: one point per mouse, average temp and activity
   // Only use mice present in the current sampled data
   const grouped = d3.group(fullData, d => d.id);
@@ -825,4 +829,17 @@ function showFinalInsight() {
       text.append('tspan').attr('x', w/2).attr('dy', 0).text('Each mouse shows average temperature (radius),');
       text.append('tspan').attr('x', w/2).attr('dy', 18).text('and is scattered around the circle.');
     });
+  
+  // Move the Play Again button to appear after the graph
+  if (playAgainBtn && playAgainBtnParent) {
+    // Remove from current position
+    playAgainBtnParent.removeChild(playAgainBtn);
+    // Create a container for the button below the graph
+    const buttonContainer = d3.select('#final-explanation')
+      .append('div')
+      .style('text-align', 'center')
+      .style('margin-top', '20px');
+    // Add the button to the new position
+    buttonContainer.node().appendChild(playAgainBtn);
+  }
 }

@@ -27,7 +27,7 @@ p {
 #game-section .highlight-title {
   margin: 0 0 10px 0;
   font-size: 1.6rem;
-  color: var(--coral-pink);
+  color: var(--coral-accent);
 }
 
 /* Reduce spacing around game elements */
