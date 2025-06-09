@@ -82,9 +82,9 @@ export function drawActivityPieChart() {
 
       svg.append("text")
         .attr("x", size / 2)
-        .attr("y", size + 20)
+        .attr("y", size + 10)
         .attr("text-anchor", "middle")
-        .style("font-size", "16px")
+        .style("font-size", "0.9em")
         .text(title);
     }
 
